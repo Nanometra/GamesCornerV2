@@ -1,0 +1,155 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<!-- =============================================================== -->
+	<!-- Informations du projet -->
+	<!-- =============================================================== -->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.projet</groupId>
+	<artifactId>GamesCornerV2</artifactId>
+	<packaging>war</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>TestGamesCorner Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+
+	<!-- =============================================================== -->
+	<!-- Propriétés -->
+	<!-- =============================================================== -->
+	<properties>
+		<!-- Build -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- Test -->
+		<junit.version>4.10</junit.version>
+		<!-- POSTGRESQL -->
+		<postgresql.version>42.2.5</postgresql.version>
+		<!-- JSF -->
+		<jsf.version>2.2.18</jsf.version>
+		<!-- Servlet API -->
+		<servlet.api.version>3.1.0</servlet.api.version>
+		<!-- Commons -->
+		<commons.version>1.3.3</commons.version>
+		<!-- PRIMEFACES -->
+		<primefaces.version>6.2</primefaces.version>
+		<!-- Bootstrap -->
+		<bootstrap.version>1.0.10</bootstrap.version>
+		<!-- Maven-compiler-plugin -->
+		<maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
+		<!-- JDK source -->
+		<jdk.source.version>1.8</jdk.source.version>
+		<!-- JDK target -->
+		<jdk.target.version>1.8</jdk.target.version>
+		<!-- slf4J Log Java -->
+		<slf4j.version>1.7.26</slf4j.version>
+	</properties>
+
+	<!-- =============================================================== -->
+	<!-- Repositories externes -->
+	<!-- =============================================================== -->
+	<repositories>
+		<repository>
+			<id>prime-repo</id>
+			<name>PrimeFaces Maven Repository</name>
+			<url>http://repository.primefaces.org</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
+
+	<!-- =============================================================== -->
+	<!-- Dépendances -->
+	<!-- =============================================================== -->
+	<dependencies>
+		<!-- Implémentation de JSF -->
+		<!-- https://mvnrepository.com/artifact/com.sun.faces/jsf-api -->
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>${jsf.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.sun.faces/jsf-impl -->
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+			<version>${jsf.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${servlet.api.version}</version>
+			<!-- <scope>provided</scope> -->
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/javax.inject/javax.inject -->
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
+
+		<!-- ============================================================================== -->
+
+		<!-- https://mvnrepository.com/artifact/org.primefaces/primefaces -->
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>${primefaces.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.primefaces.themes/bootstrap -->
+		<dependency>
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>${bootstrap.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>${commons.version}</version>
+		</dependency>
+
+		<!-- ============================================================================== -->
+
+		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>${postgresql.version}</version>
+		</dependency>
+
+		<!-- ============================================================================== -->
+		<!-- JUnit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	
+	<!-- =============================================================== -->
+	<!-- Build -->
+	<!-- =============================================================== -->
+	<build>
+		<finalName>GamesCornerV2</finalName>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin.version}</version>
+				<configuration>
+					<source>${jdk.source.version}</source>
+					<target>${jdk.target.version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
