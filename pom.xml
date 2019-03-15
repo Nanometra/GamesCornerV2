@@ -41,6 +41,8 @@
 		<jdk.target.version>1.8</jdk.target.version>
 		<!-- slf4J Log Java -->
 		<slf4j.version>1.7.26</slf4j.version>
+		<!-- API pour les EL -->
+		<javax.el-api.version>3.0.1-b06</javax.el-api.version>
 	</properties>
 
 	<!-- =============================================================== -->
@@ -94,6 +96,13 @@
 			<version>1</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/javax.el/javax.el-api -->
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>javax.el-api</artifactId>
+			<version>${javax.el-api.version}</version>
+		</dependency>
+
 		<!-- ============================================================================== -->
 
 		<!-- https://mvnrepository.com/artifact/org.primefaces/primefaces -->
@@ -134,13 +143,29 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	
+
 	<!-- =============================================================== -->
 	<!-- Build -->
 	<!-- =============================================================== -->
 	<build>
 		<finalName>GamesCornerV2</finalName>
 		<sourceDirectory>src/main/java</sourceDirectory>
+		<!-- Déclaration des ressources du projet -->
+		<resources>	
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<filtering>false</filtering>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>*</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
