@@ -1,0 +1,30 @@
+@charset "ISO-8859-1";
+
+/* Général ------------------------------------------------------------------------------------- */
+body {
+
+}
+
+h1 {
+	/* Centrage horizontal */
+	text-align : center;
+	margin : auto;
+	
+	/* Centrage vertical */
+	position : absolute;
+	left : 50%;
+	top : 50%;
+	width : 200px;
+	height : 200px;
+	margin-left : -100px; /* Doit être égal à la moitié négative du width */
+	margin-right : -100px; /* Doit être égal à la moitié négative du height */    
+}
+
+/* Forms --------------------------------------------------------------------------------------- */
+
+
+
+/* Styles et couleurs -------------------------------------------------------------------------- */
+
+
+/* Tableaux ------------------------------------------------------------------------------------ */

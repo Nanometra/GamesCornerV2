@@ -15,7 +15,7 @@ public class Panier implements Serializable {
 	private Client client;
 	private Commande commande;
 	private Boolean validerPanier;
-	
+
 	public Panier() {
 		super();
 	}
@@ -65,5 +65,5 @@ public class Panier implements Serializable {
 		return "Panier [prixTotal=" + prixTotal + ", listeSelection=" + listeSelection + ", client=" + client
 				+ ", commande=" + commande + ", validerPanier=" + validerPanier + "]";
 	}
-	
+
 }

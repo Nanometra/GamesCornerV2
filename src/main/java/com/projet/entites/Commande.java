@@ -16,7 +16,7 @@ public class Commande implements Serializable {
 	private String moyenPaiement;
 	private List<Selection> listeSelection;
 	private Panier panier;
-	
+
 	public Commande() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -75,5 +75,5 @@ public class Commande implements Serializable {
 		return "Commande [id=" + id + ", prixTotal=" + prixTotal + ", client=" + client + ", moyenPaiement="
 				+ moyenPaiement + ", listeSelection=" + listeSelection + ", panier=" + panier + "]";
 	}
-	
+
 }

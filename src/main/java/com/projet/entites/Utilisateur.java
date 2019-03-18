@@ -10,7 +10,7 @@ public abstract class Utilisateur implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	protected int id;	
+	protected int id;
 	protected String nom;
 	protected String prenom;
 	protected String motDePasse;
@@ -30,9 +30,12 @@ public abstract class Utilisateur implements Serializable {
 	 */
 	protected Boolean actif;
 
-	/* Indique si l'utilisateur est également vendeur sur la partie vente particulier à particulier */
+	/*
+	 * Indique si l'utilisateur est également vendeur sur la partie vente
+	 * particulier à particulier
+	 */
 	protected Boolean vendeur;
-	
+
 	/* Indique si l'utilisateur est également un admin sur la partie */
 	protected Boolean admin;
 
@@ -119,7 +122,7 @@ public abstract class Utilisateur implements Serializable {
 	public void setAdmin(Boolean admin) {
 		this.admin = admin;
 	}
-	
+
 	public Boolean getVendeur() {
 		return vendeur;
 	}

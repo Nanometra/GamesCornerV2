@@ -5,7 +5,7 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-@ManagedBean(name="resultatBean")
+@ManagedBean(name = "resultatBean")
 @RequestScoped
 public class ResultatBean implements Serializable {
 
@@ -18,5 +18,5 @@ public class ResultatBean implements Serializable {
 		System.out.println("Dans le bean ResultatBean");
 		return "success";
 	}
-	
+
 }

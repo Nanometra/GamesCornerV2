@@ -11,10 +11,10 @@ public class Vendeur extends Utilisateur {
 	private static final long serialVersionUID = 1L;
 
 	private Date dateDebutVendeur;
-	
-	/* % de commission prélevé par le site au vendeur. */ 
+
+	/* % de commission prélevé par le site au vendeur. */
 	private Float commission;
-	
+
 	// Liste des articles du vendeur
 	private Map<Integer, Article> listeArticles;
 
@@ -50,5 +50,5 @@ public class Vendeur extends Utilisateur {
 	public String toString() {
 		return "Vendeur [dateDebutVendeur=" + dateDebutVendeur + ", commission=" + commission + "]";
 	}
-	
+
 }

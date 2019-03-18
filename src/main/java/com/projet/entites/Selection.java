@@ -2,8 +2,8 @@ package com.projet.entites;
 
 import java.io.Serializable;
 
-/** 
- * Classe qui représente le panier du client qui sera persisté en base. 
+/**
+ * Classe qui représente le panier du client qui sera persisté en base.
  * 
  * @author Noemi
  *
@@ -20,7 +20,7 @@ public class Selection implements Serializable {
 	private int quantite;
 	private Client client;
 	private transient Panier panier;
-	
+
 	public Selection() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -71,5 +71,5 @@ public class Selection implements Serializable {
 		return "Selection [id=" + id + ", article=" + article + ", quantite=" + quantite + ", client=" + client
 				+ ", panier=" + panier + "]";
 	}
-	
+
 }
