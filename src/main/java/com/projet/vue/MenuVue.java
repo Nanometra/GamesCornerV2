@@ -48,12 +48,12 @@ public class MenuVue {
 
 		item = new DefaultMenuItem("Supprimer");
 		item.setIcon("pi pi-times");
-		item.setCommand("{menuVue.delete}");
+		item.setCommand("#{menuVue.delete}");
 		item.setAjax(false);
 		secondSubMenu.addElement(item);
 		
 /*
-*  ====================== Redirection dans le sous menu Actions ======================
+*  ====================== Mise à jour dans le sous menu Actions ======================
 */
 		
 		item = new DefaultMenuItem("Redirection");
