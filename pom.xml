@@ -43,6 +43,8 @@
 		<slf4j.version>1.7.26</slf4j.version>
 		<!-- API pour les EL -->
 		<javax.el-api.version>3.0.1-b06</javax.el-api.version>
+		<!-- Hibernate -->
+		<hibernate.version>5.3.7.Final</hibernate.version>
 	</properties>
 
 	<!-- =============================================================== -->
@@ -142,8 +144,19 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
+	
 
+		<!-- ============================================================================== -->
+		<!-- Hibernate -->
+		
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+	</dependencies>
+	
 	<!-- =============================================================== -->
 	<!-- Build -->
 	<!-- =============================================================== -->
@@ -151,9 +164,13 @@
 		<finalName>GamesCornerV2</finalName>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<!-- Déclaration des ressources du projet -->
-		<resources>	
+		<resources>
+			<!-- Cette balise permet de filter le répertoire contenant les fichiers 
+				de ressources du projet et Maven va interpréter les références à ces fichiers 
+				lors du build -->
 			<resource>
 				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
 			</resource>
 			<resource>
 				<filtering>false</filtering>

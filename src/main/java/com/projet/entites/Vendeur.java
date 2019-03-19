@@ -3,6 +3,12 @@ package com.projet.entites;
 import java.util.Date;
 import java.util.Map;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
 public class Vendeur extends Utilisateur {
 
 	/**
@@ -10,12 +16,14 @@ public class Vendeur extends Utilisateur {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateDebutVendeur;
 
 	/* % de commission prélevé par le site au vendeur. */
 	private Float commission;
 
 	// Liste des articles du vendeur
+	@OneToMany(mappedBy="vendeur")
 	private Map<Integer, Article> listeArticles;
 
 	public Vendeur() {

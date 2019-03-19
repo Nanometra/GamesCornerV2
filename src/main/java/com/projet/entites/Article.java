@@ -4,23 +4,46 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Map;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Article implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected int id;
 	protected String description;
 	protected Float prix;
 	protected String etat;
 	protected String image;
 	protected Float rating;
+
+	@Temporal(TemporalType.TIMESTAMP)
 	protected Date dateSortie;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="vendeur_id")
 	protected Vendeur vendeur;
 
+	@OneToMany(mappedBy="article", cascade=CascadeType.ALL, orphanRemoval = true)
 	protected Map<Integer, Selection> listeSelection;
 
 	public Article() {

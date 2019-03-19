@@ -3,6 +3,21 @@ package com.projet.entites;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="discriminant", discriminatorType = DiscriminatorType.STRING)
 public abstract class Utilisateur implements Serializable {
 
 	/**
@@ -10,12 +25,17 @@ public abstract class Utilisateur implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	protected int id;
 	protected String nom;
 	protected String prenom;
 	protected String motDePasse;
 	protected String confirmationMotDePasse;
 	protected String email;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(unique = true, nullable = true)
 	protected Date dateInscription;
 
 	/* Chemin vers l'image de profil de l'utilisateur */

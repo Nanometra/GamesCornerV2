@@ -12,6 +12,10 @@ public class FileUploadVue {
 	
 	private UploadedFile file;
 
+	public FileUploadVue() {
+		super();
+	}
+
 	public FileUploadVue(UploadedFile file) {
 		super();
 		this.file = file;
@@ -25,7 +29,7 @@ public class FileUploadVue {
 		this.file = file;
 	}
 	
-	public void uplaod() {
+	public void upload() {
 		if (file != null) {
 			FacesMessage message = new FacesMessage("Succes", file.getFileName() + "est uploadé.");
 			FacesContext.getCurrentInstance().addMessage(null, message);

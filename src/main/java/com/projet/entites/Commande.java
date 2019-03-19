@@ -3,6 +3,17 @@ package com.projet.entites;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Commande implements Serializable {
 
 	/**
@@ -10,12 +21,21 @@ public class Commande implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private Float prixTotal;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "client_id")
 	private Client client;
+
 	private String moyenPaiement;
+
+	@OneToMany(mappedBy = "commande", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Selection> listeSelection;
-	private Panier panier;
+	
+	private transient Panier panier;
 
 	public Commande() {
 		super();
