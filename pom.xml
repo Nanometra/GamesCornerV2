@@ -45,6 +45,8 @@
 		<javax.el-api.version>3.0.1-b06</javax.el-api.version>
 		<!-- Hibernate -->
 		<hibernate.version>5.3.7.Final</hibernate.version>
+		<hibernate.validator.version>6.0.13.Final</hibernate.validator.version>
+		<hibernate.search.version>5.10.5.Final</hibernate.search.version>
 	</properties>
 
 	<!-- =============================================================== -->
@@ -144,19 +146,31 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
-	
+
 
 		<!-- ============================================================================== -->
 		<!-- Hibernate -->
-		
+
 		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate.validator.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-search-orm -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-search-orm</artifactId>
+			<version>${hibernate.search.version}</version>
+		</dependency>
 	</dependencies>
-	
+
 	<!-- =============================================================== -->
 	<!-- Build -->
 	<!-- =============================================================== -->
@@ -169,8 +183,11 @@
 				de ressources du projet et Maven va interpréter les références à ces fichiers 
 				lors du build -->
 			<resource>
-				<directory>src/main/resources</directory>
+				<directory>src/main/resources/**</directory>
 				<filtering>true</filtering>
+				<includes>
+					<include>**/*.properties</include>
+				</includes>
 			</resource>
 			<resource>
 				<filtering>false</filtering>
@@ -183,6 +200,10 @@
 				</excludes>
 			</resource>
 		</resources>
+<!-- 		<filters> -->
+<!-- 			<filter>db.properties</filter> -->
+<!-- 			<filter>hibernate.properties</filter> -->
+<!-- 		</filters> -->
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
