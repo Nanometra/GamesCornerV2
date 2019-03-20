@@ -183,7 +183,7 @@
 				de ressources du projet et Maven va interpréter les références à ces fichiers 
 				lors du build -->
 			<resource>
-				<directory>src/main/resources/**</directory>
+				<directory>src/main/resources</directory>
 				<filtering>true</filtering>
 				<includes>
 					<include>**/*.properties</include>
@@ -201,8 +201,8 @@
 			</resource>
 		</resources>
 <!-- 		<filters> -->
-<!-- 			<filter>db.properties</filter> -->
-<!-- 			<filter>hibernate.properties</filter> -->
+<!-- 			<filter>src/main/filters/db.properties</filter> -->
+<!-- 			<filter>src/main/filters/hibernate.properties</filter> -->
 <!-- 		</filters> -->
 		<plugins>
 			<plugin>
