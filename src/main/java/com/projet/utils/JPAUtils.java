@@ -35,7 +35,6 @@ public class JPAUtils {
 			throw new DAOConfigurationException("Le fichier " + FICHIER_JPA + " est introuvable.");
 		}
 		
-		
 		return emf = getEMF(PU, fichierJpa, fichierJdbc, fichierHibernate);
 	}
 	

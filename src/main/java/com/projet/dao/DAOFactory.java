@@ -36,18 +36,20 @@ public class DAOFactory {
 		Map<Integer, String> concat = new HashMap<Integer, String>();
 
 		try {
-			// Chargement du fichier avec toutes les propriétés.
+			// Chargement du fichier contenant le nom des propriétés.
 			props.load(fichierBase);
-			keys = getListeValeur(props);
-
+			keys = getListeValeur(props, keys);
+			
+			props = new Properties();
+			
 			for (int i = 0; i < inputStreams.length; i++) {
 				props.load(inputStreams[i]);
 
-				value = getListeValeur(props);
-
-				properties = getProperties(keys, value, properties);
-
+				value = getListeValeur(props, value);
+				props = new Properties();
 			}
+
+			properties = getProperties(keys, value, properties);
 
 //			properties.put(PROPERTY_DRIVER, props.getProperty(PROPERTY_JDBC_DRIVER));
 //			properties.put(PROPERTY_URL, props.getProperty(PROPERTY_JDBC_URL));
@@ -96,11 +98,15 @@ public class DAOFactory {
 
 	// Méthode au sein de la classe qui permet de récupérer les valeurs de chaques
 	// propriétés
-	private static Map<Integer, String> getListeValeur(Properties props) {
+	private static Map<Integer, String> getListeValeur(Properties props, Map<Integer, String> value) {
 		int taille = props.size();
 		Enumeration<Object> valeurs = props.elements();
-		Map<Integer, String> value = new HashMap<Integer, String>();
 		int i = 0;
+		if (value.size() == 0) {
+			i = 0;
+		} else {
+			i = value.size();
+		}
 
 		while (valeurs.hasMoreElements()) {
 			value.put(i, (String) valeurs.nextElement());
@@ -108,19 +114,6 @@ public class DAOFactory {
 		}
 
 		return value;
-	}
-
-	private static Map<Integer, String> mergeMap(Map<Integer, String> value, Map<Integer, String> concat) {
-		int i = concat.size() + 1;
-		int j = i + value.size();
-		int k = 0;
-			for (i = concat.size() + 1 ; i < j ; i++) {
-				concat.put(i, value.get(k));
-				k++;
-				System.out.println("Test");
-			}
-			
-		return concat;
 	}
 
 	private static Map<String, String> getProperties(Map<Integer, String> keys, Map<Integer, String> value,
