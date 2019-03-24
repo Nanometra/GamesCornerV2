@@ -1,5 +1,6 @@
 package com.projet.utils;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 import javax.persistence.EntityManager;
@@ -17,7 +18,7 @@ public class JPAUtils {
 	private static final String FICHIER_JPA = "/com/projet/properties/jpa.properties";
 	
 	
-	public static EntityManagerFactory getEntityManagerFactory() {
+	public static EntityManagerFactory getEntityManagerFactory() throws DAOConfigurationException, IOException {
 		
 		ClassLoader cl = Thread.currentThread().getContextClassLoader();
 		InputStream fichierJdbc = cl.getResourceAsStream(FICHIER_JDBC);

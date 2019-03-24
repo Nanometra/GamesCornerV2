@@ -1,12 +1,17 @@
 package com.projet.listener;
 
+import java.io.IOException;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
+import com.projet.dao.DAOConfigurationException;
+import com.projet.utils.JPAUtils;
+
+// Classe Listener qui se charge lorsque le serveur est allumé
 @WebListener
 public class LocalEntityManagerFactory implements ServletContextListener {
 
@@ -14,7 +19,12 @@ public class LocalEntityManagerFactory implements ServletContextListener {
 	
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
-		emf = Persistence.createEntityManagerFactory("GamesCornerV2_PU");
+//		emf = Persistence.createEntityManagerFactory("GamesCornerV2_PU");
+		try {
+			emf = JPAUtils.getEntityManagerFactory();
+		} catch (DAOConfigurationException | IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
