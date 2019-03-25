@@ -22,16 +22,15 @@ public class DAOFactory {
 		Map<String, String> properties = new HashMap<String, String>();
 		Map<Integer, String> keys = new HashMap<Integer, String>();
 		Map<Integer, String> concat = new HashMap<Integer, String>();
-		List cles = new ArrayList();
 
 		try {
 			// Chargement du fichier contenant le nom des propriétés.
 			props.load(fichierBase);
-			keys = getListeValeur(props, keys, cles);
+			keys = getListeValeur(props, keys);
 
 			props.clear();
 
-			concat = mergeFichiers(props, cles, inputStreams);
+			concat = mergeFichiers(props, inputStreams);
 
 			properties = getProperties(keys, concat, properties);
 
@@ -49,30 +48,11 @@ public class DAOFactory {
 		return emf;
 	}
 
-	// Méthode utilisée au sein de la classe permettant de récupérer les noms de
-	// chaques propriétés
-//	private static Map<Integer, String> getListeCle(Properties props) {
-//		// Récupération des clés du fichier properties correspondant
-//		Set<Object> clefs = props.keySet();
-//		Iterator it = clefs.iterator();
-//		// Map qui va récupérer toutes les clés
-//		Map<Integer, String> keys = new HashMap<Integer, String>();
-//		Object elem;
-//		int i = 0;
-//		while (it.hasNext()) {
-//			elem = it.next();
-//			keys.put(i, (String) elem);
-//			i++;
-//		}
-//
-//		return keys;
-//	}
-
 	// Méthode au sein de la classe qui permet de récupérer les valeurs de chaques
 	// propriétés
-	private static Map<Integer, String> getListeValeur(Properties props, Map<Integer, String> value, List cles) {
+	private static Map<Integer, String> getListeValeur(Properties props, Map<Integer, String> value) {
 
-		List keys = trierMap(props, cles);
+		List keys = trierMap(props);
 
 		int i = 0;
 		if (value.size() == 0) {
@@ -92,33 +72,26 @@ public class DAOFactory {
 	}
 
 	// Permet de trier les propriétés selon leur hashage
-	private static List trierMap(Properties props, List cles) {
+	private static List trierMap(Properties props) {
 		// Range les clés dans leur ordre de hashage
-		if (cles.isEmpty()) {
-			cles = new ArrayList(props.keySet());
-			Collections.sort(cles);
-		} else {
-			for (int i = 0 ; i < cles.size() ; i++) {
-				cles.add(cles.get(i));
-			}
-			Collections.sort(cles);
-		}
-		
+		List cles = new ArrayList(props.keySet());
+		Collections.sort(cles);
+
 		return cles;
 	}
 
 	// Méthode qui permet de merger les données de plusieurs fichiers de propriétés
 	// et de les trier selon leur ordre de hashage.
-	private static Map<Integer, String> mergeFichiers(Properties props, List cles,
-			InputStream... inputStream) throws IOException {
+	private static Map<Integer, String> mergeFichiers(Properties props, InputStream... inputStream)
+			throws IOException {
 
 		Map<Integer, String> value = new HashMap<Integer, String>();
 
-		for (int i = 0 ; i < inputStream.length ; i++) {
+		for (int i = 0; i < inputStream.length; i++) {
 			props.load(inputStream[i]);
 		}
-		
-		value = getListeValeur(props, value, cles);
+
+		value = getListeValeur(props, value);
 		props.clear();
 
 		return value;
