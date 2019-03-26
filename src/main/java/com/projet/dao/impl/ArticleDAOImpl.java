@@ -1,48 +1,58 @@
 package com.projet.dao.impl;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 import com.projet.dao.IArticleDAO;
 import com.projet.entites.Article;
 
 public class ArticleDAOImpl implements IArticleDAO {
-
-//	Map<String, String> properties = new HashMap<String, String>();
-//	
-//	EntityManagerFactory emf = Persistence.createEntityManagerFactory("GamesCornerV2_PU", properties);
+	
+	private EntityManagerFactory emf;
+	private EntityManager em;
+	
+	private static EntityManager getEntityManager(EntityManagerFactory emf) {
+		EntityManager em = emf.createEntityManager();
+		return em;
+	}
 	
 	@Override
 	public Article find(Integer id) {
-		// TODO Auto-generated method stub
+		em = getEntityManager(emf);		
+		em.getTransaction().begin();
+		
+		em.getTransaction().commit();
+		em.close();
 		return null;
 	}
 
 	@Override
 	public List<Article> findAll() {
-		// TODO Auto-generated method stub
+		em = getEntityManager(emf);
 		return null;
 	}
 
 	@Override
-	public void add(Article entity) {
-		// TODO Auto-generated method stub
-		
+	public void add(Article article) {
+		em = getEntityManager(emf);
+		em.persist(article);
+		em.close();
 	}
 
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
-		
+		em = getEntityManager(emf);
+		Article article = em.find(Article.class, id);
+		em.remove(article);
+		em.close();
 	}
 
 	@Override
 	public Article update(Article entity) {
-		// TODO Auto-generated method stub
+		em = getEntityManager(emf);
+		
 		return null;
 	}
 
