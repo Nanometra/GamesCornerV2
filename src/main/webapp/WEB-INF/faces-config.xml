@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
-	version="2.2">
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+						http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
+	version="2.3">
 	<application>
 		<!-- Resource bundle permet d'afficher des messages qui son définis dans 
 			des fichiers properties. C'est l'internationalisation. -->
 		<resource-bundle>
-			<!-- Le chemin entier jusqu'au nom du fichier d'internationalisation depuis src/main/resources -->
+			<!-- Le chemin entier jusqu'au nom du fichier d'internationalisation depuis 
+				src/main/resources -->
 			<base-name>JSF Hello World</base-name>
-			<!-- Nom par lequel la méthode Application.getResourceBundle() retrouve la méthode. -->
+			<!-- Nom par lequel la méthode Application.getResourceBundle() retrouve 
+				la méthode. -->
 			<var>msg</var>
 		</resource-bundle>
 	</application>
 
 	<navigation-rule>
-		<from-view-id>/Bienvenue.xhtml</from-view-id>	
+		<from-view-id>/Bienvenue.xhtml</from-view-id>
 		<navigation-case>
 			<from-action>#{resultatBean.resultat}</from-action>
 			<from-outcome>success</from-outcome>
@@ -23,5 +26,5 @@
 			<redirect></redirect>
 		</navigation-case>
 	</navigation-rule>
-	
+
 </faces-config>

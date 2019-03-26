@@ -2,6 +2,8 @@ package com.projet.dao;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -121,6 +123,8 @@ public class DAOFactory {
 	 * ==================================================================================================================
 	 */
 
-	
+//	public Connection getConnexion() {
+//		return DriverManager.
+//	}
 	
 }

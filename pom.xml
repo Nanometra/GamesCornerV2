@@ -47,6 +47,8 @@
 		<slf4j.version>1.7.26</slf4j.version>
 		<!-- API pour les EL -->
 		<javax.el-api.version>3.0.1-b06</javax.el-api.version>
+		<!-- API Faces -->
+		<javax.faces-api>2.3</javax.faces-api>
 		<!-- Hibernate -->
 		<hibernate.version>5.3.7.Final</hibernate.version>
 		<hibernate.validator.version>6.0.13.Final</hibernate.validator.version>
@@ -109,6 +111,14 @@
 			<groupId>javax.el</groupId>
 			<artifactId>javax.el-api</artifactId>
 			<version>${javax.el-api.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/javax.faces/javax.faces-api -->
+		<dependency>
+			<groupId>javax.faces</groupId>
+			<artifactId>javax.faces-api</artifactId>
+			<version>${javax.faces-api}</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- ============================================================================== -->
