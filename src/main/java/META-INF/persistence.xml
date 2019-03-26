@@ -3,21 +3,13 @@
 	<persistence-unit name="GamesCornerV2_PU" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<properties>
-			<property name="javax.persistence.jdbc.driver" value="${jdbc.driver}"/>
-			<property name="javax.persistence.jdbc.url" value="${jdbc.url}"/>
-			<property name="javax.persistence.jdbc.user" value="${jdbc.username}"/>
-			<property name="javax.persistence.jdbc.password" value="${jdbc.password}"/>
-			<property name="hibernate.dialect" value="${hibernate.dialect}"/>
-			<property name="hibernate.show_sql" value="${hibernate.sql}"/>
-<!-- 			<property name="javax.persistence.schema-generation.database.action" value="${hbm2ddl.auto}"/> -->
-			<!-- ==================================================================================================== -->
-<!-- 			<property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/> -->
-<!-- 			<property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/gamescornerv2"/> -->
-<!-- 			<property name="hibernate.connection.username" value="gamescornerv2_admin"/> -->
-<!-- 			<property name="hibernate.connection.password" value="admin"/> -->
-<!-- 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL95Dialect"/> -->
-<!-- 			<property name="hibernate.show_sql" value="true"/> -->
-<!-- 			<property name="hibernate.hbm2ddl.auto" value="${hbm2ddl.auto}"/> -->
+			<property name="${driver}" value="${projet.driver}"/>
+			<property name="${url}" value="${projet.url}"/>
+			<property name="${username}" value="${projet.username}"/>
+			<property name="${password}" value="${projet.password}"/>
+			<property name="${dialect}" value="${projet.dialect}"/>
+			<property name="${sql}" value="${projet.show_sql}"/>
+			<property name="${schema-generation}" value="${projet.schema-generation.hbm2ddl.auto}"/>
 		</properties>
 	</persistence-unit>
 </persistence>

@@ -35,6 +35,10 @@
 		<bootstrap.version>1.0.10</bootstrap.version>
 		<!-- Maven-compiler-plugin -->
 		<maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
+		<!-- Maven-war-plugin -->
+		<maven.war.plugin.version>3.2.2</maven.war.plugin.version>
+		<!-- Maven-resources-plugin -->
+		<maven.resources.plugin.version>3.1.0</maven.resources.plugin.version>
 		<!-- JDK source -->
 		<jdk.source.version>1.8</jdk.source.version>
 		<!-- JDK target -->
@@ -200,10 +204,9 @@
 				</excludes>
 			</resource>
 		</resources>
-<!-- 		<filters> -->
-<!-- 			<filter>src/main/filters/db.properties</filter> -->
-<!-- 			<filter>src/main/filters/hibernate.properties</filter> -->
-<!-- 		</filters> -->
+		<filters>
+			<filter>src/main/filters/default.properties</filter>
+		</filters>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -211,6 +214,24 @@
 				<configuration>
 					<source>${jdk.source.version}</source>
 					<target>${jdk.target.version}</target>
+				</configuration>
+			</plugin>
+			<!-- Ajout d'un plugin Maven pour régler le problème de composants -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${maven.war.plugin.version}</version>
+				<configuration>
+					<warSourceDirectory>src/webapp</warSourceDirectory>
+				</configuration>
+			</plugin>
+			<!-- Plugin pour la copie des resources vers un répertoire de sortie. -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven.resources.plugin.version}</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
 		</plugins>
