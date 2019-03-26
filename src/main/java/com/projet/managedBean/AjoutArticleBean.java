@@ -4,10 +4,11 @@ import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.inject.Named;
 
 import com.projet.entites.Article;
 
-@ManagedBean
+@Named
 @SessionScoped
 public class AjoutArticleBean implements Serializable {
 
