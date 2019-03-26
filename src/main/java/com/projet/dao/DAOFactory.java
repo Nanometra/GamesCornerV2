@@ -47,7 +47,11 @@ public class DAOFactory {
 
 		return emf;
 	}
-
+	
+	/*
+	 *  ================================== Méthodes utilisées uniquement dans la classe ==================================
+	 */
+	
 	// Méthode au sein de la classe qui permet de récupérer les valeurs de chaques
 	// propriétés
 	private static Map<Integer, String> getListeValeur(Properties props, Map<Integer, String> value) {
@@ -112,5 +116,11 @@ public class DAOFactory {
 
 		return properties;
 	}
+	
+	/*
+	 * ==================================================================================================================
+	 */
 
+	
+	
 }

@@ -1,6 +1,7 @@
 package com.projet.listener;
 
 import java.io.IOException;
+import java.sql.Connection;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -19,9 +20,10 @@ public class LocalEntityManagerFactory implements ServletContextListener {
 	
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
-//		emf = Persistence.createEntityManagerFactory("GamesCornerV2_PU");
 		try {
 			emf = JPAUtils.getEntityManagerFactory();
+			
+			// Récupération de la connexion depuis la DataSource
 		} catch (DAOConfigurationException | IOException e) {
 			e.printStackTrace();
 		}

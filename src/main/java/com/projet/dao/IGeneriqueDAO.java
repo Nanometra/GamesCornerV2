@@ -12,6 +12,6 @@ public interface IGeneriqueDAO<T> {
 	
 	void delete (Integer id);
 	
-	T update (T entity);
+	void update (T entity);
 	
 }

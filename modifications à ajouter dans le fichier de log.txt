@@ -1,4 +1,4 @@
-1. Partie à rajouter dans la partie résolution de problèmes pour le problème d'autowiring.
+﻿1. Partie à rajouter dans la partie résolution de problèmes pour le problème d'autowiring.
 
 Pour prendre en compte les annotations java dans le contexte Spring (et dans notre cas ajouter les différents fichiers de configuration du projet), il faut :
 Sélectionner le projet --> Propriétés --> Spring --> Beans Support --> Config Detection et cocher la dernière option qui auto détecte les fichiers avec des annotations Java Spring  
@@ -9,4 +9,7 @@ Le flag Assumed Unchanged permet d'ignorer des fichiers qui ont été modifiés 
 Ce flag peut être appliqué sur un fichier ou sur un dossier ou même sur l'ensemble du projet.
 Pour cela, il faut :
 	- Click - droit sur le fichier ou le dossier --> Team --> Advanced --> Assumed Unchanged
-Pour annuler ce flag il suffit de cliquer sur No Assumed Unchanged juste en dessous
+Pour annuler ce flag il suffit de cliquer sur No Assumed Unchanged juste en dessous.
+Les seuls fichiers qui sont pour l'instant rajoutés en tant qu'Assumed Unchanged sont les fichiers de classpaths : 
+	- .classpath
+	- .settings/org.eclipse.wst.common.component
