@@ -15,12 +15,14 @@
 
 		<fieldset>
 			<h:form>
-				Login : <h:inputText id="login" value="#{inscriptionBean.login}" />
+				<label for="login">Login : </label><h:inputText id="login" styleClass="input" value="#{inscriptionBean.login}" />
 				<br />
 				
-				Mot de passe : <h:inputText id="password"
+				<label for="password">Mot de passe : </label><h:inputText id="password" styleClass="input" 
 					value="#{inscriptionBean.password}" />
 				<br />
+				
+				<h:commandButton />
 			</h:form>
 		</fieldset>
 	</h:body>

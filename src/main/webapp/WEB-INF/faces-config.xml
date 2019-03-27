@@ -26,5 +26,15 @@
 			<redirect></redirect>
 		</navigation-case>
 	</navigation-rule>
-
+	
+	<navigation-rule>
+		<from-view-id>/Bienvenue.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{resultatBean.resultat}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/resultat.xhtml</to-view-id>
+			<redirect></redirect>
+		</navigation-case>
+	</navigation-rule>
+	
 </faces-config>

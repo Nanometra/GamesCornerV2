@@ -1,6 +1,7 @@
 @charset "ISO-8859-1";
 
 /* Général ------------------------------------------------------------------------------------- */
+
 body {
 
 }
@@ -25,11 +26,34 @@ h2 {
 	text-align : center;
 	margin : auto;
 }
+
+label {
+	font-family : "Verdana", sans-serif;
+	font-style : normal; 	
+/* 	font-weight : bold; */
+	display : block; /* La balise devient de type block */ 
+	width : 150px; 
+	float : left;
+}
+
 /* Forms --------------------------------------------------------------------------------------- */
 
+fieldset {
+	position : absolute;
+	margin : auto; 
+	
+	left : 40%;
+	top : 10%;
+	
+	border-style : inset; 
+}
 
+.input {
+	padding-left : 50px;
+	margin-left : 10px;
+}
 
-/* Styles et couleurs -------------------------------------------------------------------------- */
+/* Images et couleurs -------------------------------------------------------------------------- */
 
 
 /* Tableaux ------------------------------------------------------------------------------------ */
