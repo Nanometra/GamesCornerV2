@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15524316636810" configfile="/GamesCornerV2/src/main/webapp/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="Bienvenue.xhtml" id="pf15526617436650" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf15526617436651 pf15536788860300" path="/Bienvenue.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="resultat.xhtml" x="180" id="pf15526617436652" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf15526617436651 pf15536788860300" path="/resultat.xhtml"/>
-  <links id="pf15526617436651" target="pf15526617436652" source="pf15526617436650" outcome="success" redirect="true" fromaction="#{resultatBean.resultat}"/>
-  <links id="pf15536788860300" target="pf15526617436652" source="pf15526617436650" outcome="success" redirect="true" fromaction="#{resultatBean.resultat}"/>
+  <nodes xsi:type="pageflow:PFPage" name="resultat.xhtml" x="180" id="pf15526617436652" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf15536791459843" path="/resultat.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="bienvenue.xhtml" id="pf15536791459844" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15536791459843" path="/bienvenue.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="inscription.xhtml" id="pf15536792332045" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf15536792332046" path="/connexion.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="accueil.xhtml" id="pf15536792332047" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf15536792332046" path="/accueil.xhtml"/>
+  <links id="pf15536791459843" target="pf15526617436652" source="pf15536791459844" outcome="success" redirect="true" fromaction="#{resultatBean.resultat}"/>
+  <links id="pf15536792332046" target="pf15536792332047" source="pf15536792332045" outcome="succes" redirect="true" fromaction="#{connexionBean.connexion}"/>
 </pageflow:Pageflow>

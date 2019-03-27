@@ -13,3 +13,41 @@ Pour annuler ce flag il suffit de cliquer sur No Assumed Unchanged juste en dess
 Les seuls fichiers qui sont pour l'instant rajoutés en tant qu'Assumed Unchanged sont les fichiers de classpaths : 
 	- .classpath
 	- .settings/org.eclipse.wst.common.component
+
+1. Partie à rajouter dans la partie résolution de problèmes pour le problème d'autowiring.
+
+Pour prendre en compte les annotations java dans le contexte Spring (et dans notre cas ajouter les différents fichiers de configuration du projet), il faut :
+Sélectionner le projet --> Propriétés --> Spring --> Beans Support --> Config Detection et cocher la dernière option qui auto détecte les fichiers avec des annotations Java Spring  
+	
+2. Utilité de "Assumed Unchanged" : 
+
+Le flag Assumed Unchanged permet d'ignorer des fichiers qui ont été modifiés (ils n'apparaissent pas en tant que unversioned files). 
+Ce flag peut être appliqué sur un fichier ou sur un dossier ou même sur l'ensemble du projet.
+Pour cela, il faut :
+	- Click - droit sur le fichier ou le dossier --> Team --> Advanced --> Assumed Unchanged
+Pour annuler ce flag il suffit de cliquer sur No Assumed Unchanged juste en dessous.
+
+3. Mise en place d'un DataSource sur Tomcat :
+
+Un DataSource ou pool de connexion défini un nombre de connexion déjà ouvertes. Chaque fois qu'il y a besoin d'utiliser une connexion, on pioche une qui est disponible dans le pool puis on la retourne au pool une fois l'opération finie.
+Lors de la configuration du datasource, il est possible de définir la balise res-auth (dans le fichier web.xml) soit avec "Container" soit avec "Application".
+En utilisant la valeur Container, on laisse le conteneur gérer la connexion à la datasource. C'est pratique pour ne pas avoir à entrer les informations en dur dans le code.
+En utilisant la valeur Application, c'est le développeur qui doit s'assurer de la connexion à la datasource en spécifiant directement dans le code les informations de connexion (url, username, password).   
+
+4. WebListener (Annotations)
+
+Cette annotation permet de spécifier que la classe Java est un listener. Elle permet également de se passer de la définition de la classe dans le fichier web.xml. 
+On profite ici de l'initialisation de ces servlets Listener qui permettent, dans notre cas, d'initialiser une Entity Manager Factory et une datasource.
+
+5. Passage à Faces-Config 2.3
+
+Il est nécessaire de modifier le fichier faces-config.xml en 2.3, de créer une classe qui aura les implémentations @ApplicationScope et @FacesConfig ainsi que d'ajouter un fichier beans.xml dans le WEB-INF pour prendre en compte le changement de JSF 2.2 en JSF 2.3
+
+6. @Named vs @ManagedBean pour JSF
+
+@ManagedBean du package javax.faces.bean.ManagedBean s'utilise avec Tomcat. Cette annotation s'utilise lorsque le beans est pris en charge par le conteneur JSF.
+@Named du package javax.faces.bean s'utilise lorsqu'on utilise un serveur d'application. Elle s'applique lorsque le bean est CDI (Context and Dependency Injection) et est pris en charge par le serveur d'application.
+
+Dans le cas de notre projet qui est déployé sur Tomcat, on utilise donc l'annotation @ManagedBean.
+
+Pour installer CDI dans Tomcat et ainsi pouvoir utiliser @Named avec Tomcat, on peut envisager d'installer une implémentation de CDI dans Tomcat nommée Weld

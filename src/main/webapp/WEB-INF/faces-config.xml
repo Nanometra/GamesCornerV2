@@ -18,7 +18,7 @@
 	</application>
 
 	<navigation-rule>
-		<from-view-id>/Bienvenue.xhtml</from-view-id>
+		<from-view-id>/bienvenue.xhtml</from-view-id>
 		<navigation-case>
 			<from-action>#{resultatBean.resultat}</from-action>
 			<from-outcome>success</from-outcome>
@@ -28,11 +28,11 @@
 	</navigation-rule>
 	
 	<navigation-rule>
-		<from-view-id>/Bienvenue.xhtml</from-view-id>
+		<from-view-id>/connexion.xhtml</from-view-id>
 		<navigation-case>
-			<from-action>#{resultatBean.resultat}</from-action>
-			<from-outcome>success</from-outcome>
-			<to-view-id>/resultat.xhtml</to-view-id>
+			<from-action>#{connexionBean.connexion}</from-action>
+			<from-outcome>succes</from-outcome>
+			<to-view-id>/accueil.xhtml</to-view-id>
 			<redirect></redirect>
 		</navigation-case>
 	</navigation-rule>

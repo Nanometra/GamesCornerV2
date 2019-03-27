@@ -1,14 +1,22 @@
 package com.projet.managedBean;
 
+import java.io.Serializable;
+
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.inject.Named;
 
-@Named
+@ManagedBean
 @SessionScoped
-public class InscriptionBean {
+public class ConnexionBean implements Serializable {
 
-	private String login = "";
-	private String password = "";
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private String login;
+	private String password;
+	
 	public String getLogin() {
 		return login;
 	}
@@ -22,6 +30,8 @@ public class InscriptionBean {
 		this.password = password;
 	}
 	
-	
+	public String connexion() {
+		return "succes";
+	}
 	
 }

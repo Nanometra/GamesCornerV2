@@ -13,7 +13,7 @@
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
 		<param-value>Development</param-value>
 	</context-param>
-	
+
 	<!-- Permet de changer le nom/emplacement du fichier faces-config.xml -->
 	<context-param>
 		<param-name>javax.faces.CONFIG_FILES</param-name>
@@ -21,6 +21,12 @@
 	</context-param>
 	<context-param>
 		<param-name>javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
+	<!-- Active le CDI -->
+	<context-param>
+		<param-name>javax.faces.ENABLE_CDI_RESOLVER_CHAIN</param-name>
 		<param-value>true</param-value>
 	</context-param>
 
@@ -35,7 +41,7 @@
 		<url-pattern>*.jsf</url-pattern>
 		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- Configuration du DataSource -->
 	<resource-ref>
 		<description>

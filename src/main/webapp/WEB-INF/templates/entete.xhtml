@@ -1,19 +1,14 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-
-<h:head>
-	<title>Accueil - Games Corner</title>
-	<h:outputStylesheet library="default" name="css/style.css" />
-</h:head>
+	xmlns:p="http://primefaces.org/ui">
 
 <h:body>
 	<h:form>
-		<!-- Utilisation de Menubar de Primefaces --> 
+		<!-- Utilisation de Menubar de Primefaces -->
 		<p:growl id="messages" />
 
 		<p:menubar>
@@ -24,7 +19,8 @@
 				</p:submenu>
 				<p:menuitem value="Ouvrir" url="#" />
 				<p:separator />
-				<p:menuitem value="Quitter" url="http://localhost:8080/GamesCornerV2/accueil.xhtml" />
+				<p:menuitem value="Quitter"
+					url="http://localhost:8080/GamesCornerV2/accueil.xhtml" />
 			</p:submenu>
 
 			<p:submenu label="Editer" icon="pi pi-pencil">
@@ -55,16 +51,15 @@
 				</p:submenu>
 			</p:submenu>
 
-			<p:menuitem value="Quitter" url="http://localhost:8080/GamesCornerV2/" />
-				
-			<p:menuitem value="Connexion" url="http://localhost:8080/GamesCornerV2/connexion.xhtml" />
+			<p:menuitem value="Quitter"
+				url="http://localhost:8080/GamesCornerV2/" icon="pi pi-times" />
 
 			<f:facet name="options">
-				<p:inputText style="margin:1px 10px 1px 1px;" placeholder="Rechercher" />
+				<p:inputText style="margin:1px 10px 1px 1px;"
+					placeholder="Rechercher" />
 				<p:commandButton type="button" value="Logout" icon="pi pi-home" />
 			</f:facet>
 		</p:menubar>
 	</h:form>
-<!-- 	<ui:composition template="templates/header.xhtml" /> -->
 </h:body>
 </html>

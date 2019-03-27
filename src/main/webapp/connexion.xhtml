@@ -1,27 +1,25 @@
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
 <f:view>
 	<h:head>
-		<title>Inscription - GamesCorner</title>
+		<title>Connexion - GamesCorner</title>
 		<h:outputStylesheet library="default" name="css/style.css" />
 	</h:head>
 
 	<h:body>
-		<h2>Inscription Utilisateur</h2>
+		<h2>Connexion Utilisateur</h2>
 
 		<fieldset>
 			<h:form>
-				<h:outputLabel for="login">Nom <label class="requis">*</label> : </h:outputLabel>
+				<h:outputLabel for="login">Login : </h:outputLabel>
 				<h:inputText id="login" styleClass="input" value="#{connexionBean.login}" />
 				<br />
 				
-				<h:outputLabel for="password">Mot de passe <label class="requis">*</label> : 
+				<h:outputLabel for="password">Mot de passe : 
 				</h:outputLabel><h:inputText id="password" styleClass="input" 
 					value="#{connexionBean.password}" />
 				<br />

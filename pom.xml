@@ -49,6 +49,8 @@
 		<javax.el-api.version>3.0.1-b06</javax.el-api.version>
 		<!-- API Faces -->
 		<javax.faces-api>2.3</javax.faces-api>
+		<!-- JavaEE API -->
+		<javaee-api.version>8.0</javaee-api.version>
 		<!-- Hibernate -->
 		<hibernate.version>5.3.7.Final</hibernate.version>
 		<hibernate.validator.version>6.0.13.Final</hibernate.validator.version>
@@ -182,6 +184,13 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-search-orm</artifactId>
 			<version>${hibernate.search.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax/javaee-api -->
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>${javaee-api.version}</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
