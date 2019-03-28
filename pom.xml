@@ -223,6 +223,7 @@
 				</excludes>
 			</resource>
 		</resources>
+		<!-- Alimente le filtering -->
 		<filters>
 			<filter>src/main/filters/default.properties</filter>
 		</filters>
