@@ -48,8 +48,8 @@ fieldset {
 	border-style : inset; 
 }
 
-.input { 
-	
+.requis { 
+	color : red;
 }
 
 /* Images et couleurs -------------------------------------------------------------------------- */

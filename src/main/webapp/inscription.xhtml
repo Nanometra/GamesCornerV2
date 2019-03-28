@@ -17,15 +17,35 @@
 
 		<fieldset>
 			<h:form>
-				<h:outputLabel for="login">Nom <label class="requis">*</label> : </h:outputLabel>
-				<h:inputText id="login" styleClass="input" value="#{connexionBean.login}" />
+				<h:outputLabel for="nom">Nom <h:outputLabel class="requis">*</h:outputLabel> : </h:outputLabel>
+				<h:inputText id="nom" styleClass="input" value="#{}" />
+				<br />
+				
+				<h:outputLabel for="prenom">Prénom : </h:outputLabel>
+				<h:inputText id="prenom" styleClass="input" value="#{}" />
 				<br />
 				
 				<h:outputLabel for="password">Mot de passe <label class="requis">*</label> : 
 				</h:outputLabel><h:inputText id="password" styleClass="input" 
-					value="#{connexionBean.password}" />
+					value="#{}" />
 				<br />
-				<p:commandButton value="Valider" action="#{connexionBean.connexion}" style="margin-top:10px;" />
+				
+				<h:outputLabel for="password">Confirmation mot de passe <label class="requis">*</label> : 
+				</h:outputLabel><h:inputText id="password" styleClass="input" 
+					value="#{}" />
+				<br />
+				
+				<h:outputLabel for="email">E-mail <label class="requis">*</label> : 
+				</h:outputLabel><h:inputText id="email" styleClass="input" 
+					value="#{}" />
+				<br />
+				
+				<h:outputLabel for="password">Mot de passe <label class="requis">*</label> : 
+				</h:outputLabel><h:inputText id="password" styleClass="input" 
+					value="#{}" />
+				<br />
+				
+				<p:commandButton value="Valider" action="#{}" style="margin-top:10px;" />
 			</h:form>
 		</fieldset>
 	</h:body>

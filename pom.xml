@@ -255,4 +255,11 @@
 			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+	<profile>
+	<id>dev</id>
+	<properties>
+	<db.url>xxx</db.url></properties>
+	</profile>
+	</profiles>
 </project>
