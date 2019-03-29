@@ -1,10 +1,10 @@
 package com.projet.listener;
 
 import java.io.IOException;
-import java.sql.Connection;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
@@ -17,16 +17,18 @@ import com.projet.utils.JPAUtils;
 public class LocalEntityManagerFactory implements ServletContextListener {
 
 	private static EntityManagerFactory emf;
+	private ServletContext ctx;
 	
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
 		try {
 			emf = JPAUtils.getEntityManagerFactory();
-			
+			ctx = event.getServletContext();
+			ctx.setAttribute("emf", emf);
 			// Récupération de la connexion depuis la DataSource
 		} catch (DAOConfigurationException | IOException e) {
 			e.printStackTrace();
-		}
+		}		
 	}
 
 	@Override

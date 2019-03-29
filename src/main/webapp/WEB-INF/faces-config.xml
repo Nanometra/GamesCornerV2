@@ -37,4 +37,14 @@
 		</navigation-case>
 	</navigation-rule>
 	
+	<navigation-rule>
+		<from-view-id>/inscription.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{inscriptionBean.inscrire}</from-action>
+			<from-outcome>succes</from-outcome>
+			<to-view-id>/accueil.xhtml</to-view-id>
+			<redirect></redirect>
+		</navigation-case>
+	</navigation-rule>
+	
 </faces-config>

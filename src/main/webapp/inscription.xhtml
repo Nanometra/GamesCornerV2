@@ -6,46 +6,57 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<f:view>
+
 	<h:head>
 		<title>Inscription - GamesCorner</title>
 		<h:outputStylesheet library="default" name="css/style.css" />
 	</h:head>
 
+<f:view>
 	<h:body>
 		<h2>Inscription Utilisateur</h2>
 
 		<fieldset>
-			<h:form>
+			<h:form>			
 				<h:outputLabel for="nom">Nom <h:outputLabel class="requis">*</h:outputLabel> : </h:outputLabel>
-				<h:inputText id="nom" styleClass="input" value="#{}" />
+				<h:inputText id="nom" styleClass="input" value="#{inscriptionBean.utilisateur.nom}" />
 				<br />
 				
 				<h:outputLabel for="prenom">Prénom : </h:outputLabel>
-				<h:inputText id="prenom" styleClass="input" value="#{}" />
+				<h:inputText id="prenom" styleClass="input" value="#{inscriptionBean.utilisateur.prenom}" />
 				<br />
 				
 				<h:outputLabel for="password">Mot de passe <label class="requis">*</label> : 
 				</h:outputLabel><h:inputText id="password" styleClass="input" 
-					value="#{}" />
+					value="#{inscriptionBean.utilisateur.motDePasse}" />
 				<br />
 				
-				<h:outputLabel for="password">Confirmation mot de passe <label class="requis">*</label> : 
-				</h:outputLabel><h:inputText id="password" styleClass="input" 
-					value="#{}" />
-				<br />
+<!-- 				<h:outputLabel for="password">Confirmation mot de passe <label class="requis">*</label> :  -->
+<!-- 				</h:outputLabel><h:inputText id="password" styleClass="input"  -->
+<!-- 					value="#{inscriptionBean.utilisateur.confirmationMotDePasse}" /> -->
+<!-- 				<br /> -->
 				
 				<h:outputLabel for="email">E-mail <label class="requis">*</label> : 
 				</h:outputLabel><h:inputText id="email" styleClass="input" 
-					value="#{}" />
+					value="#{inscriptionBean.utilisateur.email}" />
 				<br />
 				
-				<h:outputLabel for="password">Mot de passe <label class="requis">*</label> : 
-				</h:outputLabel><h:inputText id="password" styleClass="input" 
-					value="#{}" />
+				<h:outputLabel for="adresse">Adresse de livraison <label class="requis">*</label> : 
+				</h:outputLabel><h:inputText id="adresse" styleClass="input" 
+					value="#{inscriptionBean.utilisateur.adresseLivraison}" />
+				<br />
+								
+				<h:outputLabel for="codePostal">Code Postal <label class="requis">*</label> : 
+				</h:outputLabel><h:inputText id="codePostal" styleClass="input" 
+					value="#{inscriptionBean.utilisateur.codePostal}" />
 				<br />
 				
-				<p:commandButton value="Valider" action="#{}" style="margin-top:10px;" />
+				<h:outputLabel for="telephone">Téléphone <label class="requis">*</label> : 
+				</h:outputLabel><h:inputText id="telephone" styleClass="input" 
+					value="#{inscriptionBean.utilisateur.telephone}" />
+				<br />
+				
+				<p:commandButton value="Valider" action="#{inscriptionBean.inscrire}" style="margin-top:10px;" />
 			</h:form>
 		</fieldset>
 	</h:body>

@@ -7,11 +7,18 @@ import javax.transaction.Transactional;
 import com.projet.dao.IArticleDAO;
 import com.projet.entites.Article;
 import com.projet.service.IArticleService;
+import com.projet.utils.DAOUtils;
 
 @Transactional
 public class ArticleServiceImpl implements IArticleService {
 
-	private IArticleDAO articleDao;
+	private  IArticleDAO articleDao;
+	
+	public ArticleServiceImpl(IArticleDAO articleDao) {
+		super();
+		this.articleDao = DAOUtils.getArticleDAO();
+	}
+
 	
 	@Override
 	public Article find(Integer id) {

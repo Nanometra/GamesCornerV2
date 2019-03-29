@@ -1,14 +1,13 @@
 package com.projet.dao.impl;
 
 import java.util.List;
-import static com.projet.dao.DAOUtils.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-import com.projet.dao.DAOUtils;
 import com.projet.dao.IArticleDAO;
 import com.projet.entites.Article;
+import com.projet.utils.DAOUtils;
 
 public class ArticleDAOImpl implements IArticleDAO {
 
@@ -19,6 +18,12 @@ public class ArticleDAOImpl implements IArticleDAO {
 //		EntityManager em = emf.createEntityManager();
 //		return em;
 //	}
+
+	public ArticleDAOImpl(EntityManagerFactory emf, EntityManager em) {
+		super();
+		this.emf = emf;
+		this.em = em;
+	}
 
 	@Override
 	public Article find(Integer id) {
@@ -31,6 +36,8 @@ public class ArticleDAOImpl implements IArticleDAO {
 	@Override
 	public List<Article> findAll() {
 		em = DAOUtils.getEntityManager(emf);
+
+		em.close();
 		return null;
 	}
 
@@ -52,9 +59,10 @@ public class ArticleDAOImpl implements IArticleDAO {
 	@Override
 	public void update(Article entity) {
 		em = DAOUtils.getEntityManager(emf);
-		
+
 		Article article = em.find(Article.class, entity.getId());
-				
+		em.merge(entity);
+
 	}
 
 }
