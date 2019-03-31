@@ -1,5 +1,8 @@
 package com.projet.utils;
 
+import java.util.Map;
+
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.servlet.ServletContext;
@@ -27,8 +30,16 @@ public class DAOUtils {
 //		return ds.getConnection();
 //	}
 	
+	// Récupère l'attribut EMF passé dans le listener
+	public static EntityManagerFactory getEMFAttribut() {
+		Map<String, Object> requestMap = FacesContext.getCurrentInstance().getExternalContext().getRequestMap();
+		EntityManagerFactory emf = (EntityManagerFactory) requestMap.get("emf");
+		
+		return emf;
+	}
+	
 	// Récupère les implémentations des différentes DAO.
-
+	
 	public static IArticleDAO getArticleDAO() {
 		EntityManagerFactory emf = (EntityManagerFactory) ctx.getAttribute("emf");
 		return new ArticleDAOImpl(emf, getEntityManager(emf));

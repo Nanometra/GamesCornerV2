@@ -55,6 +55,7 @@
 		<hibernate.version>5.3.7.Final</hibernate.version>
 		<hibernate.validator.version>6.0.13.Final</hibernate.validator.version>
 		<hibernate.search.version>5.10.5.Final</hibernate.search.version>
+		<hibernate-jpa.version>1.0.2.Final</hibernate-jpa.version>
 	</properties>
 
 	<!-- =============================================================== -->
@@ -192,6 +193,13 @@
 			<version>${javaee-api.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api -->
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.1-api</artifactId>
+			<version>${hibernate-jpa.version}</version>
+		</dependency>
+
 	</dependencies>
 
 	<!-- =============================================================== -->
@@ -205,23 +213,24 @@
 			<!-- Cette balise permet de filter le répertoire contenant les fichiers 
 				de ressources du projet et Maven va interpréter les références à ces fichiers 
 				lors du build -->
-			<!-- C'est dans ce répertoire que l'on indique les fichiers qui doivent être filtrés 
-				(on remplace les EL par les valeurs définis dans le fichier de propriétés). -->
+			<!-- C'est dans ce répertoire que l'on indique les fichiers qui doivent 
+				être filtrés (on remplace les EL par les valeurs définis dans le fichier 
+				de propriétés). -->
+			<!-- <resource> -->
+			<!-- <directory>src/main/resources</directory> -->
+			<!-- <filtering>true</filtering> -->
+			<!-- <includes> -->
+			<!-- <include>**/*.properties</include> -->
+			<!-- <include>**/*.xml</include> -->
+			<!-- </includes> -->
+			<!-- </resource> -->
 			<resource>
-				<directory>src/main/resources</directory>
+				<directory>src/main/java/META-INF/</directory>
 				<filtering>true</filtering>
 				<includes>
-<!-- 					<include>**/*.properties</include> -->
 					<include>**/*.xml</include>
 				</includes>
 			</resource>
-<!-- 			<resource> -->
-<!-- 				<directory>src/main/java/META-INF/</directory> -->
-<!-- 				<filtering>true</filtering> -->
-<!-- 				<includes> -->
-<!-- 					<include>**/*.xml</include> -->
-<!-- 				</includes> -->
-<!-- 			</resource> -->
 			<resource>
 				<filtering>false</filtering>
 				<directory>src/main/java</directory>
@@ -236,7 +245,7 @@
 		<!-- Alimente le filtering -->
 		<filters>
 			<filter>src/main/filters/default.properties</filter>
-<!-- 			<filter>src/main/java/META-INF/persistence.xml</filter> -->
+			<!-- <filter>src/main/java/META-INF/persistence.xml</filter> -->
 		</filters>
 		<plugins>
 			<plugin>
@@ -268,10 +277,11 @@
 		</plugins>
 	</build>
 	<profiles>
-	<profile>
-	<id>dev</id>
-	<properties>
-	<db.url>xxx</db.url></properties>
-	</profile>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<db.url>xxx</db.url>
+			</properties>
+		</profile>
 	</profiles>
 </project>

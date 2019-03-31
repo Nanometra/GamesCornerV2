@@ -9,22 +9,22 @@ import javax.servlet.UnavailableException;
 import javax.servlet.annotation.WebListener;
 import javax.sql.DataSource;
 
-@WebListener
+//@WebListener
 public class DataSourceListener implements ServletContextListener {
 
-	private static final String PATH = "java:comp/env/ds/GamesCornerV2";
-	private DataSource ds;
-	
-	@Override
+//	private static final String PATH = "java:comp/env/ds/GamesCornerV2";
+//	private DataSource ds;
+//	
+//	@Override
 	public void contextInitialized(ServletContextEvent event) {
-		try {	
-		// Récupération de la datasource
-			Context initCtx = new InitialContext();
-			ds = (DataSource) initCtx.lookup(PATH);
-		} catch (Exception e) {
-			e.printStackTrace(); 
-		}
-		
+//		try {	
+//		// Récupération de la datasource
+//			Context initCtx = new InitialContext();
+//			ds = (DataSource) initCtx.lookup(PATH);
+//		} catch (Exception e) {
+//			e.printStackTrace(); 
+//		}
+//		
 	}
 
 	@Override

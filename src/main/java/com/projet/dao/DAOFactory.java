@@ -16,6 +16,12 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class DAOFactory {
+	
+	private static final DAOFactory singleton = new DAOFactory();
+	
+	/*
+	 *  ================================== Chargement de l'entity manager factory depuis les fichiers de propriétés ==================================
+	 */
 
 	public static EntityManagerFactory getEMF(String PU, InputStream fichierBase, InputStream... inputStreams)
 			throws DAOConfigurationException, IOException {
@@ -47,6 +53,20 @@ public class DAOFactory {
 
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory(PU, properties);
 
+		return emf;
+	}
+	
+	/*
+	 *  ================================== Chargement de l'entity manager factory  ==================================
+	 */
+	
+	public static DAOFactory getInstance() {
+		return singleton;
+	}
+	
+	public static EntityManagerFactory getEMF(String PU) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory(PU);
+		
 		return emf;
 	}
 	

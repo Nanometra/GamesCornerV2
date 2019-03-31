@@ -17,23 +17,27 @@ import com.projet.utils.JPAUtils;
 public class LocalEntityManagerFactory implements ServletContextListener {
 
 	private static EntityManagerFactory emf;
-	private ServletContext ctx;
+	private EntityManagerFactory test;
 	
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
+		ServletContext ctx = event.getServletContext();
+		
 		try {
-			emf = JPAUtils.getEntityManagerFactory();
-			ctx = event.getServletContext();
+			this.emf = JPAUtils.getEntityManagerFactory();
 			ctx.setAttribute("emf", emf);
-			// Récupération de la connexion depuis la DataSource
+			test = (EntityManagerFactory) ctx.getAttribute("emf");
+//			// Récupération de la connexion depuis la DataSource
 		} catch (DAOConfigurationException | IOException e) {
 			e.printStackTrace();
-		}		
+		}	
 	}
 
 	@Override
 	public void contextDestroyed(ServletContextEvent event) {
+		ServletContext ctx = event.getServletContext();
 		emf.close();
+		ctx.removeAttribute("emf");
 	}
 
 	public static EntityManager createEntityManager() {
