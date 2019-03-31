@@ -15,8 +15,8 @@ import com.projet.dao.impl.UtilisateurDAOImpl;
 
 public class DAOUtils {
 
-	private static DataSource ds;
-	private static ServletContext ctx;
+	private static final String ATT_EMF = "emf";
+	private static DataSource ds;	
 	
 
 	// Créer un entity manager à partir d'un entitymanagerFactory
@@ -32,8 +32,11 @@ public class DAOUtils {
 	
 	// Récupère l'attribut EMF passé dans le listener
 	public static EntityManagerFactory getEMFAttribut() {
-		Map<String, Object> requestMap = FacesContext.getCurrentInstance().getExternalContext().getRequestMap();
-		EntityManagerFactory emf = (EntityManagerFactory) requestMap.get("emf");
+		ServletContext ctx = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
+		
+//		Map<String, Object> requestMap = FacesContext.getCurrentInstance().getExternalContext().getRequestMap();
+//		EntityManagerFactory emf = (EntityManagerFactory) requestMap.get("emf");
+		EntityManagerFactory emf = (EntityManagerFactory) ctx.getAttribute(ATT_EMF);
 		
 		return emf;
 	}
