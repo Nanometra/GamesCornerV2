@@ -50,4 +50,14 @@ Il est nécessaire de modifier le fichier faces-config.xml en 2.3, de créer une
 
 Dans le cas de notre projet qui est déployé sur Tomcat, on utilise donc l'annotation @ManagedBean.
 
-Pour installer CDI dans Tomcat et ainsi pouvoir utiliser @Named avec Tomcat, on peut envisager d'installer une implémentation de CDI dans Tomcat nommée Weld
+Pour installer CDI dans Tomcat et ainsi pouvoir utiliser @Named avec Tomcat, on peut envisager d'installer une implémentation de CDI dans Tomcat nommée Weld.
+
+7. Transactionnalité dans la couche DAO :
+
+Dans le cadre de notre essai sans couche service dans le managedBean dans un premier temps, il s'est avéré qu'il était absolument nécessaire d'implémenter une transaction à partir de l'entity manager pour 
+que l'objet nouvellement créée soit inséré en base.
+En attendant d'implémenter la couche Service qui intégrera cette notion de transactionnalité, il faudra donc l'utiliser, dans un premier temps dans la couche DAO.
+
+
+
+

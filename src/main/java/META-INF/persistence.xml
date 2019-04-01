@@ -3,13 +3,13 @@
 	<persistence-unit name="GamesCornerV2_PU" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<properties>
-			<property name="${driver}" value="${projet.driver}"/>
-			<property name="${url}" value="${projet.url}"/>
-			<property name="${username}" value="${projet.username}"/>
-			<property name="${password}" value="${projet.password}"/>
-			<property name="${dialect}" value="${projet.dialect}"/>
-			<property name="${sql}" value="${projet.show_sql}"/>
-			<property name="${schema-generation}" value="${projet.schema-generation.hbm2ddl.auto}"/>
+			<property name="${driver}" value="${db.driver}"/>
+			<property name="${url}" value="${db.url}"/>
+			<property name="${username}" value="${db.username}"/>
+			<property name="${password}" value="${db.password}"/>
+			<property name="${dialect}" value="${hibernate.dialect}"/>
+			<property name="${sql}" value="${hibernate.sql}"/>
+			<property name="${schema-generation}" value="${hbm2ddl.auto}"/>
 		</properties>
 	</persistence-unit>
 </persistence>

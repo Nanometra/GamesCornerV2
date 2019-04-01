@@ -1,7 +1,5 @@
 package com.projet.utils;
 
-import java.util.Map;
-
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -44,8 +42,7 @@ public class DAOUtils {
 	// Récupère les implémentations des différentes DAO.
 	
 	public static IArticleDAO getArticleDAO() {
-		EntityManagerFactory emf = (EntityManagerFactory) ctx.getAttribute("emf");
-		return new ArticleDAOImpl(emf, getEntityManager(emf));
+		return new ArticleDAOImpl();
 	}
 	
 	public static IUtilisateurDAO getUtilisateurDAO() {

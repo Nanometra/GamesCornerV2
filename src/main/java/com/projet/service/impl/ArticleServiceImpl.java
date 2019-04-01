@@ -16,7 +16,6 @@ public class ArticleServiceImpl implements IArticleService {
 	
 	public ArticleServiceImpl(IArticleDAO articleDao) {
 		super();
-		this.articleDao = DAOUtils.getArticleDAO();
 	}
 
 	

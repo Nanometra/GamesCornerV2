@@ -39,6 +39,10 @@ public class JPAUtils {
 		return emf = getEMF(PU, fichierJpa, fichierJdbc, fichierHibernate);
 	}
 	
+	public static EntityManagerFactory getEntityManagerFactorySansFiles() {
+		return emf = getEMF(PU);
+	}
+	
 	public static EntityManager getEntityManager() {
 		return emf.createEntityManager(); 
 	}

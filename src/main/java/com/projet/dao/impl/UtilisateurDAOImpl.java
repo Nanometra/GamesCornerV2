@@ -15,12 +15,10 @@ import com.projet.entites.Utilisateur;
 import com.projet.utils.DAOUtils;
 
 public class UtilisateurDAOImpl implements IUtilisateurDAO {
-
-	private static final String PU = "GamesCornerV2_PU";
 	
-	@PersistenceUnit(unitName="GamesCornerV2_PU")
+//	@PersistenceUnit(unitName="GamesCornerV2_PU")
 	private EntityManagerFactory emf;
-	@PersistenceContext(unitName="GamesCornerV2_PU")
+//	@PersistenceContext(unitName="GamesCornerV2_PU")
 	private EntityManager em;
 	private ServletContext ctx;
 	
@@ -32,6 +30,7 @@ public class UtilisateurDAOImpl implements IUtilisateurDAO {
 	
 	private void initEntityManager(EntityManagerFactory emf) {
 		em = DAOUtils.getEntityManager(emf);
+//		em = Persistence.createEntityManagerFactory(PU).createEntityManager();
 	}
 
 	@Override
@@ -52,15 +51,19 @@ public class UtilisateurDAOImpl implements IUtilisateurDAO {
 	@Override
 	public void add(Utilisateur utilisateur) {
 		initEntityManager(emf);
+		em.getTransaction().begin();
 		em.persist(utilisateur);
+		em.getTransaction().commit();
 		em.close();
 	}
 
 	@Override
 	public void delete(Integer id) {
 		initEntityManager(emf);
+		em.getTransaction().begin();
 		Utilisateur utilisateur = em.find(Utilisateur.class, id);
 		em.remove(utilisateur);
+		em.getTransaction().commit();
 		em.close();
 	}
 

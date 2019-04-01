@@ -19,10 +19,8 @@ public class ArticleDAOImpl implements IArticleDAO {
 //		return em;
 //	}
 
-	public ArticleDAOImpl(EntityManagerFactory emf, EntityManager em) {
+	public ArticleDAOImpl() {
 		super();
-		this.emf = emf;
-		this.em = em;
 	}
 
 	@Override
