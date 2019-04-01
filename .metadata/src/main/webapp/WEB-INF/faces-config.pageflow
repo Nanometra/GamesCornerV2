@@ -2,10 +2,8 @@
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15524316636810" configfile="/GamesCornerV2/src/main/webapp/WEB-INF/faces-config.xml">
   <nodes xsi:type="pageflow:PFPage" name="resultat.xhtml" x="180" id="pf15526617436652" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf15536791459843" path="/resultat.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="bienvenue.xhtml" id="pf15536791459844" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15536791459843" path="/bienvenue.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="inscription.xhtml" id="pf15536792332045" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf15536792332046" path="/connexion.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="accueil.xhtml" id="pf15536792332047" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf15536792332046 pf15538564372550" path="/accueil.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="inscription.xhtml" id="pf15538564372551" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf15538564372550" path="/inscription.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="accueil.xhtml" x="18" y="96" id="pf15536792332047" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf15538564372550" path="/accueil.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="inscription.xhtml" x="171" y="96" id="pf15538564372551" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf15538564372550" path="/inscription.xhtml"/>
   <links id="pf15536791459843" target="pf15526617436652" source="pf15536791459844" outcome="success" redirect="true" fromaction="#{resultatBean.resultat}"/>
-  <links id="pf15536792332046" target="pf15536792332047" source="pf15536792332045" outcome="succes" redirect="true" fromaction="#{connexionBean.connexion}"/>
   <links id="pf15538564372550" target="pf15536792332047" source="pf15538564372551" outcome="succes" redirect="true" fromaction="#{inscriptionBean.inscrire}"/>
 </pageflow:Pageflow>

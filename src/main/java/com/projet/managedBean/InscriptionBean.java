@@ -5,13 +5,10 @@ import java.util.Date;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
-import javax.persistence.EntityManagerFactory;
 
 import com.projet.dao.IUtilisateurDAO;
-import com.projet.dao.impl.UtilisateurDAOImpl;
 import com.projet.entites.Client;
 import com.projet.entites.Utilisateur;
 import com.projet.utils.DAOUtils;
@@ -28,8 +25,6 @@ public class InscriptionBean implements Serializable {
 	@Inject
 	private Utilisateur utilisateur;
 	private IUtilisateurDAO utilisateurDAO;
-
-	private EntityManagerFactory emf;
 	
 	public InscriptionBean() {
 		utilisateur = new Client();
