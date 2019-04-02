@@ -3,9 +3,8 @@ package com.projet.managedBean;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
 
 import com.projet.dao.IUtilisateurDAO;
@@ -13,8 +12,8 @@ import com.projet.entites.Client;
 import com.projet.entites.Utilisateur;
 import com.projet.utils.DAOUtils;
 
-@ManagedBean
-@SessionScoped
+@ManagedBean(name="inscriptionBean")
+@RequestScoped
 public class InscriptionBean implements Serializable {
 
 	/**
@@ -31,10 +30,10 @@ public class InscriptionBean implements Serializable {
 		utilisateurDAO = DAOUtils.getUtilisateurDAO();
 	}
 	
-	@PostConstruct
-	public void init() {
-		utilisateur = new Client();
-	}
+//	@PostConstruct
+//	public void init() {
+//		utilisateur = new Client();
+//	}
 	
 	public Utilisateur getUtilisateur() {
 		return utilisateur;
@@ -57,7 +56,10 @@ public class InscriptionBean implements Serializable {
 		utilisateurDAO.add(utilisateur);
 		return "succes";
 	}
-	
+	public String resultat() {
+		System.out.println("Dans le bean ResultatBean");
+		return "success";
+	}
 	private void initialiserDateInscription() {
 		Date dateInscription = new Date(System.currentTimeMillis());
 		utilisateur.setDateInscription(dateInscription);

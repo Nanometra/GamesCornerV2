@@ -58,6 +58,17 @@ Dans le cadre de notre essai sans couche service dans le managedBean dans un pre
 que l'objet nouvellement créée soit inséré en base.
 En attendant d'implémenter la couche Service qui intégrera cette notion de transactionnalité, il faudra donc l'utiliser, dans un premier temps dans la couche DAO.
 
+8. Problème avec <p:commandButton> :
+
+La balise ne semble plus fonctionner, elle ne semble pas détecter les méthodes et renvoie une erreur La propriété [inscrire] n'a pas été trouvée sur le type [com.projet.managedBean.InscriptionBean] qui indique qu'elle considère la méthode inscrire comme une propriété et non comme une méthode.
+Pour l'instant, on reste sur l'utilisation de la balise <h:commandButton> à la place.
+La balise <p:panelGrid> semble fonctionner parfaitement, c'est seulement le bouton qui déclenche un bug.
+
+9. Portée de la scope sur InscriptionBean :
+
+Le bean InscriptionBean doit être de portée @RequestScope (contrairement au bean ConnexionBean qui lui sera de portée @SessionScope).
+En effet, la portée du bean InscriptionBean permet l'enregistrement d'un client et cette information doit être limitée à la requête sinon on observe un problème sur l'enregistrement des prochains clients. Le premier client enregistré reste en session et lorsqu'on cherche à enregistrer un nouveau client, on utilise l'ID du client actuel et de ce fait, on obtient l'erreur suivante : 
+PersistentObjectException: detached entity passed to persist
 
 
 

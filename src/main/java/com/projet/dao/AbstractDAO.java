@@ -2,6 +2,7 @@ package com.projet.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 
 import com.projet.utils.DAOUtils;
 
@@ -9,6 +10,7 @@ public abstract class AbstractDAO {
 
 	protected EntityManagerFactory emf;
 	protected EntityManager em;
+	protected EntityTransaction tx;
 	
 	public AbstractDAO() {
 		super();
@@ -16,8 +18,9 @@ public abstract class AbstractDAO {
 	}
 
 	protected void initOperation() {
-		this.em = DAOUtils.getEntityManager(emf);
-		em.getTransaction().begin();
+		em = DAOUtils.getEntityManager(emf);
+		tx = em.getTransaction();
+		tx.begin();
 	}
 	
 }

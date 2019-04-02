@@ -16,7 +16,7 @@ import com.projet.entites.Utilisateur;
 import com.projet.utils.DAOUtils;
 
 public class UtilisateurDAOImpl extends AbstractDAO implements IUtilisateurDAO {
-	
+
 	public UtilisateurDAOImpl() {
 		super();
 	}
@@ -38,10 +38,18 @@ public class UtilisateurDAOImpl extends AbstractDAO implements IUtilisateurDAO {
 
 	@Override
 	public void add(Utilisateur utilisateur) {
-		super.initOperation();
-		super.em.persist(utilisateur);
-		super.em.getTransaction().commit();
-		super.em.close();
+		try {
+			super.initOperation();
+			em.persist(utilisateur);
+			tx.commit();	
+		} catch (Exception e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			em.close();
+		}
 	}
 
 	@Override
@@ -59,5 +67,5 @@ public class UtilisateurDAOImpl extends AbstractDAO implements IUtilisateurDAO {
 		super.em.getTransaction().commit();
 		super.em.close();
 	}
-	
+
 }
