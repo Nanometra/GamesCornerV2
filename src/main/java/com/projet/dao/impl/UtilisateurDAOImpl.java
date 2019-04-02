@@ -1,19 +1,13 @@
 package com.projet.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceUnit;
-import javax.servlet.ServletContext;
+import javax.persistence.Query;
 
 import com.projet.dao.AbstractDAO;
-import com.projet.dao.DAOFactory;
 import com.projet.dao.IUtilisateurDAO;
 import com.projet.entites.Utilisateur;
-import com.projet.utils.DAOUtils;
 
 public class UtilisateurDAOImpl extends AbstractDAO implements IUtilisateurDAO {
 
@@ -25,15 +19,31 @@ public class UtilisateurDAOImpl extends AbstractDAO implements IUtilisateurDAO {
 	public Utilisateur find(Integer id) {
 		super.initOperation();
 		Utilisateur utilisateur = super.em.find(Utilisateur.class, id);
-		super.em.close();
+		em.close();
 		return utilisateur;
 	}
 
 	@Override
 	public List<Utilisateur> findAll() {
-		super.initOperation();
-		super.em.close();
-		return null;
+		List<Utilisateur> listeUtilisateurs = new ArrayList<Utilisateur>();
+		
+		try {
+			super.initOperation();
+//			CriteriaBuilder builder = em.getCriteriaBuilder();
+//			CriteriaQuery<Utilisateur> query = builder.createQuery(Utilisateur.class);
+//			Root<Utilisateur> listeUtilisateurs = query.from(Utilisateur.class);
+//			query.select(listeUtilisateurs);
+			
+			Query query = em.createQuery("SELECT u FROM Utilisateur u");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (em != null) {
+				em.close();
+			}
+		}
+		return listeUtilisateurs;
 	}
 
 	@Override
@@ -41,31 +51,33 @@ public class UtilisateurDAOImpl extends AbstractDAO implements IUtilisateurDAO {
 		try {
 			super.initOperation();
 			em.persist(utilisateur);
-			tx.commit();	
+			tx.commit();
 		} catch (Exception e) {
 			if (tx != null) {
 				tx.rollback();
 			}
 			e.printStackTrace();
 		} finally {
-			em.close();
+			if (em != null) {
+				em.close();
+			}
 		}
 	}
 
 	@Override
 	public void delete(Integer id) {
 		super.initOperation();
-		Utilisateur utilisateur = super.em.find(Utilisateur.class, id);
-		super.em.remove(utilisateur);
-		super.em.getTransaction().commit();
-		super.em.close();
+		Utilisateur utilisateur = em.find(Utilisateur.class, id);
+		em.remove(utilisateur);
+		em.getTransaction().commit();
+		em.close();
 	}
 
 	@Override
 	public void update(Utilisateur entity) {
 		super.initOperation();
-		super.em.getTransaction().commit();
-		super.em.close();
+		em.getTransaction().commit();
+		em.close();
 	}
 
 }
