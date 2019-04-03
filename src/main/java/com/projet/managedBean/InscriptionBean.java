@@ -3,8 +3,10 @@ package com.projet.managedBean;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import com.projet.dao.IUtilisateurDAO;
@@ -53,12 +55,11 @@ public class InscriptionBean implements Serializable {
 	public String inscrire() {
 		initialiserDateInscription();
 		utilisateurDAO.add(utilisateur);
+		FacesMessage message = new FacesMessage("Succès de l'inscription");
+		FacesContext.getCurrentInstance().addMessage(null, message);
 		return "succes";
 	}
-	public String resultat() {
-		System.out.println("Dans le bean ResultatBean");
-		return "success";
-	}
+
 	private void initialiserDateInscription() {
 		Date dateInscription = new Date(System.currentTimeMillis());
 		utilisateur.setDateInscription(dateInscription);

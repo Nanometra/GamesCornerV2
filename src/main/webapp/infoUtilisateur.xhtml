@@ -17,11 +17,11 @@
 			id="listeUtilisateurs"
 			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
 			paginator="true" rows="10" style="margin-bottom:20px">
-
-			<!-- 			<p:column> -->
-			<!-- 				<p:selectBooleanCheckbox value="#{utilisateur.id}" /> -->
-			<!-- 			</p:column> -->
-
+			
+<!-- 			<p:column> -->
+<!-- 				<p:selectBooleanCheckbox value="#{utilisateur.id}" /> -->
+<!-- 			</p:column> -->
+			
 			<p:column headerText="Id">
 				<h:outputText value="#{utilisateur.id}" />
 			</p:column>
@@ -46,11 +46,9 @@
 				<h:outputText value="#{utilisateur.email}" />
 			</p:column>
 
-			<p:column headerText="Actions">
+			<p:column headerText="Action">
 				<h:commandLink action="#{listeUtilisateursBean.supprimerUtilisateur(utilisateur)}">
-					<p:graphicImage name="default/images/supprimer.png" width="50" />
-					<p:graphicImage name="default/images/modifier.png" width="50" />
-					<f:actionListener binding="${listeUtilisateursBean.modifierUtilisateur()}" />
+					<p:graphicImage name="default/images/supprimer.png" width="50"  />
 				</h:commandLink>
 			</p:column>
 		</p:dataTable>

@@ -54,5 +54,8 @@ public class ListeUtilisateursBean implements Serializable{
 		return "listeUtilisateurs";
 	}
 	
+	public void modifierUtilisateur(Utilisateur utilisateur) {
+		
+	}
 	
 }

@@ -14,10 +14,11 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 @Entity
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="discriminant", discriminatorType = DiscriminatorType.STRING)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "discriminant", discriminatorType = DiscriminatorType.STRING)
 public abstract class Utilisateur implements Serializable {
 
 	/**
@@ -26,15 +27,21 @@ public abstract class Utilisateur implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected int id;
+
+	@NotNull(message = "Veuillez saisir un nom.")
 	protected String nom;
 	protected String prenom;
+
+	@NotNull(message = "Veuillez entrer un mot de passe.")
 	protected String motDePasse;
 	protected String confirmationMotDePasse;
+	
+	@NotNull(message="Veuillez saisir un email.")
 	protected String email;
 	protected String pseudo;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(unique = true, nullable = true)
 	protected Date dateInscription;
@@ -175,5 +182,5 @@ public abstract class Utilisateur implements Serializable {
 	public void setPseudo(String pseudo) {
 		this.pseudo = pseudo;
 	}
-	
+
 }

@@ -22,18 +22,10 @@ public class DAOUtils {
 		EntityManager em = emf.createEntityManager();
 		return em;
 	}
-
-//	public static Connection getConnexion() throws SQLException {
-//		// Récupération de la Connection depuis la DataSrouce 
-//		return ds.getConnection();
-//	}
 	
 	// Récupère l'attribut EMF passé dans le listener
 	public static EntityManagerFactory getEMFAttribut() {
 		ServletContext ctx = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
-		
-//		Map<String, Object> requestMap = FacesContext.getCurrentInstance().getExternalContext().getRequestMap();
-//		EntityManagerFactory emf = (EntityManagerFactory) requestMap.get("emf");
 		EntityManagerFactory emf = (EntityManagerFactory) ctx.getAttribute(ATT_EMF);
 		
 		return emf;
