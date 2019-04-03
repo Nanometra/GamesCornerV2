@@ -26,16 +26,17 @@ public class UtilisateurDAOImpl extends AbstractDAO implements IUtilisateurDAO {
 	@Override
 	public List<Utilisateur> findAll() {
 		List<Utilisateur> listeUtilisateurs = new ArrayList<Utilisateur>();
-		
+
 		try {
 			super.initOperation();
 //			CriteriaBuilder builder = em.getCriteriaBuilder();
 //			CriteriaQuery<Utilisateur> query = builder.createQuery(Utilisateur.class);
 //			Root<Utilisateur> listeUtilisateurs = query.from(Utilisateur.class);
 //			query.select(listeUtilisateurs);
-			
+
 			Query query = em.createQuery("SELECT u FROM Utilisateur u");
-			
+			listeUtilisateurs = query.getResultList();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -66,11 +67,21 @@ public class UtilisateurDAOImpl extends AbstractDAO implements IUtilisateurDAO {
 
 	@Override
 	public void delete(Integer id) {
-		super.initOperation();
-		Utilisateur utilisateur = em.find(Utilisateur.class, id);
-		em.remove(utilisateur);
-		em.getTransaction().commit();
-		em.close();
+		try {
+			super.initOperation();
+			Utilisateur utilisateur = em.find(Utilisateur.class, id);
+			em.remove(utilisateur);
+			tx.commit();
+		} catch (Exception e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			if (em != null) {
+				em.close();
+			}
+		}
 	}
 
 	@Override

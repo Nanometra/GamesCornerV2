@@ -38,6 +38,10 @@ label {
 
 /* Forms --------------------------------------------------------------------------------------- */
 
+form {
+	text-align: center;
+}
+
 fieldset {
 	position : absolute;
 	margin : auto; 
@@ -52,7 +56,21 @@ fieldset {
 	color : red;
 }
 
+#inscription {
+	position:absolute;
+    top:50%;
+    left:50%;
+    width:410px; /* A toi de donner la bonne largeur */
+    height:300px; /* A toi de donner la bonne hauteur */
+    margin-left:-200px; /* -largeur/2 */
+    margin-top:-200px; /* -hauteur/2 */
+}
+
 /* Images et couleurs -------------------------------------------------------------------------- */
 
 
 /* Tableaux ------------------------------------------------------------------------------------ */
+
+#listeUtilisateurs {
+	
+}

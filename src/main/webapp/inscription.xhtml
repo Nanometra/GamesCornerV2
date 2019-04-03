@@ -15,37 +15,41 @@
 	<h:body>
 		<h2>Inscription Utilisateur</h2>
 
-		<h:form>
+		<h:form id="inscription">
 			<p:panelGrid columns="2">
 				<f:facet name="header">
-					<p:graphicImage name="default/images/Sekiro.jpg" /> 
+<!-- 					<p:graphicImage name="default/images/Sekiro.jpg" />  -->
 				</f:facet>
 
-				<h:outputText value="Nom : " />
+				<h:outputText value="Nom *" />
 				<h:inputText id="nom" styleClass="input" value="#{inscriptionBean.utilisateur.nom}" />
 
-				<h:outputText value="Prénom : " />
+				<h:outputText value="Prénom " />
 				<h:inputText id="prenom" styleClass="input" value="#{inscriptionBean.utilisateur.prenom}" />
 				
-				<h:outputText value="Mot de passe : " />
+				<h:outputText value="Pseudo " />
+				<h:inputText id="pseudo" styleClass="input" value="#{inscriptionBean.utilisateur.pseudo}" />
+				
+				<h:outputText value="Mot de passe *" />
 				<h:inputText id="password" styleClass="input" value="#{inscriptionBean.utilisateur.motDePasse}" />
 				
-				<h:outputText value="Email : " />
+				<h:outputText value="Email *" />
 				<h:inputText id="email" styleClass="input" value="#{inscriptionBean.utilisateur.email}" />
 				
-				<h:outputText value="Adresse de livraison : " />
+				<h:outputText value="Adresse de livraison *" />
 				<h:inputText id="adresse" styleClass="input" value="#{inscriptionBean.utilisateur.adresseLivraison}" />
 				
-				<h:outputText value="Code Postal (CP) : " />
+				<h:outputText value="Code Postal (CP) *" />
 				<h:inputText id="codePostal" styleClass="input" value="#{inscriptionBean.utilisateur.codePostal}" />
 				
-				<h:outputText value="Téléphone : " />
+				<h:outputText value="Téléphone *" />
 				<h:inputText id="telephone" styleClass="input" value="#{inscriptionBean.utilisateur.telephone}" />
 			</p:panelGrid>
 
 			<h:commandButton value="Valider" action="#{inscriptionBean.inscrire}" />
 		</h:form>
-
+	
+	<a href="accueil.xhtml" >Accueil</a>
 	</h:body>
 </f:view>
 </html>

@@ -33,6 +33,7 @@ public abstract class Utilisateur implements Serializable {
 	protected String motDePasse;
 	protected String confirmationMotDePasse;
 	protected String email;
+	protected String pseudo;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(unique = true, nullable = true)
@@ -159,4 +160,20 @@ public abstract class Utilisateur implements Serializable {
 				+ ", vendeur=" + vendeur + ", admin=" + admin + "]";
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getPseudo() {
+		return pseudo;
+	}
+
+	public void setPseudo(String pseudo) {
+		this.pseudo = pseudo;
+	}
+	
 }

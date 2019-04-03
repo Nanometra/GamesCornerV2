@@ -5,15 +5,55 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="">
-	<ui:define name="header">
-	    Add your header here or delete to use the default
-	</ui:define>
-	<ui:define name="content">
-	    Add your content here or delete to use the default
-	</ui:define>
-	<ui:define name="footer">
-	    Add your footer here or delete to use the default
-	</ui:define>
-</ui:composition>
+<h:head>
+	<title>Visualisation clients - GamesCorner</title>
+	<h:outputStylesheet library="default" name="css/style.css" />
+</h:head>
+
+<h:body>
+	<h:form>
+		<p:dataTable var="utilisateur"
+			value="#{listeUtilisateursBean.listeUtilisateurs}"
+			id="listeUtilisateurs"
+			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+			paginator="true" rows="10" style="margin-bottom:20px">
+			
+<!-- 			<p:column> -->
+<!-- 				<p:selectBooleanCheckbox value="#{utilisateur.id}" /> -->
+<!-- 			</p:column> -->
+			
+			<p:column headerText="Id">
+				<h:outputText value="#{utilisateur.id}" />
+			</p:column>
+
+			<p:column headerText="Nom">
+				<h:outputText value="#{utilisateur.nom}" />
+			</p:column>
+
+			<p:column headerText="Prénom">
+				<h:outputText value="#{utilisateur.prenom}" />
+			</p:column>
+
+			<p:column headerText="Pseudo">
+				<h:outputText value="#{utilisateur.pseudo}" />
+			</p:column>
+
+			<p:column headerText="Telephone">
+				<h:outputText value="#{utilisateur.telephone}" />
+			</p:column>
+
+			<p:column headerText="Email">
+				<h:outputText value="#{utilisateur.email}" />
+			</p:column>
+
+			<p:column headerText="Action">
+				<h:commandLink action="#{listeUtilisateursBean.supprimerUtilisateur(utilisateur)}">
+					<p:graphicImage name="default/images/supprimer.png" width="50"  />
+				</h:commandLink>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+	<br />
+	<a href="accueil.xhtml">Accueil</a>
+</h:body>
 </html>
