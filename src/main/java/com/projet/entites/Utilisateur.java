@@ -30,15 +30,15 @@ public abstract class Utilisateur implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected int id;
 
-	@NotNull(message = "Veuillez saisir un nom.")
+	@NotNull
 	protected String nom;
 	protected String prenom;
 
-	@NotNull(message = "Veuillez entrer un mot de passe.")
+	@NotNull
 	protected String motDePasse;
 	protected String confirmationMotDePasse;
 	
-	@NotNull(message="Veuillez saisir un email.")
+	@NotNull
 	protected String email;
 	protected String pseudo;
 
