@@ -1,12 +1,16 @@
 package com.projet.dao.impl;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 
 import com.projet.dao.AbstractDAO;
 import com.projet.dao.IUtilisateurDAO;
+import com.projet.entites.Client;
 import com.projet.entites.Utilisateur;
 
 public class UtilisateurDAOImpl extends AbstractDAO implements IUtilisateurDAO {
@@ -18,7 +22,7 @@ public class UtilisateurDAOImpl extends AbstractDAO implements IUtilisateurDAO {
 	@Override
 	public Utilisateur find(Integer id) {
 		super.initOperation();
-		Utilisateur utilisateur = super.em.find(Utilisateur.class, id);
+		Utilisateur utilisateur = em.find(Utilisateur.class, id);
 		em.close();
 		return utilisateur;
 	}
@@ -89,6 +93,20 @@ public class UtilisateurDAOImpl extends AbstractDAO implements IUtilisateurDAO {
 		super.initOperation();
 		em.getTransaction().commit();
 		em.close();
+	}
+
+	@Override
+	public List<Utilisateur> findByEmail(String email) {
+		super.initOperation();
+		Utilisateur utilisateur = new Client();
+		List<Utilisateur> listeUtilisateur = new ArrayList<Utilisateur>();
+		
+		Query query = em.createQuery("SELECT u FROM Utilisateur u WHERE u.email =:email");
+		query.setParameter("email", email);
+		listeUtilisateur = (List<Utilisateur>) query.getResultList();
+		
+		em.close();
+		return listeUtilisateur;
 	}
 
 }

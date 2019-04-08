@@ -1,5 +1,7 @@
 package com.projet.validator;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 import javax.faces.application.FacesMessage;
@@ -11,15 +13,21 @@ import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
+import com.projet.dao.IUtilisateurDAO;
+import com.projet.entites.Utilisateur;
+import com.projet.utils.DAOUtils;
+
 @ManagedBean
 @RequestScoped
 @FacesValidator
 public class EmailValidator implements Validator {
 
-//	public static final Pattern VALID_EMAIL_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9]+\\.[A-Z]{2;6}$", Pattern.CASE_INSENSITIVE);
-	public static final Pattern VALID_EMAIL_REGEX = Pattern.compile("[a-zA-Z0-9]+@[a-zA-Z0-9]+\\\\\\\\.[a-zA-Z0-9]+", Pattern.CASE_INSENSITIVE);
-	
+	public static final Pattern VALID_EMAIL_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9]+\\.[A-Z]{2,6}$",
+			Pattern.CASE_INSENSITIVE);
+//	public static final Pattern VALID_EMAIL_REGEX = Pattern.compile("[a-zA-Z0-9]+@[a-zA-Z0-9]+\\\\\\\\.[a-zA-Z0-9]+", Pattern.CASE_INSENSITIVE);
+
 	private String email;
+	private IUtilisateurDAO utilisateurDAO;
 
 	public EmailValidator() {
 		super();
@@ -27,20 +35,32 @@ public class EmailValidator implements Validator {
 
 	@Override
 	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
-				
+
+		utilisateurDAO = DAOUtils.getUtilisateurDAO();
+
 		if (value == null) {
-			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Veuillez saisir une adresse mail.", null);
-			throw new ValidatorException(message);
-		}
-		
-		email = (String) value;
-		boolean matches = VALID_EMAIL_REGEX.matcher(email).matches();
-		
-		if (!matches) {
-			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_FATAL, "L'email que vous avez entré est incorrect", null);
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Veuillez saisir une adresse mail.",
+					null);
 			throw new ValidatorException(message);
 		}
 
+		email = (String) value;
+		boolean matches = VALID_EMAIL_REGEX.matcher(email).matches();
+
+		if (!matches) {
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_FATAL,
+					"L'email que vous avez entré est incorrect", null);
+			throw new ValidatorException(message);
+		} else {
+			List<Utilisateur> listeUtilisateur = new ArrayList<Utilisateur>();
+			listeUtilisateur = utilisateurDAO.findByEmail(email);
+
+			if (listeUtilisateur.size() >= 1) {
+				FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+						"L'email entré a déjà été utilisé.", null);
+				throw new ValidatorException(message);
+			} 
+		}
 	}
 
 	public String getEmail() {
@@ -50,5 +70,5 @@ public class EmailValidator implements Validator {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 }

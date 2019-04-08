@@ -34,11 +34,11 @@
 				<br />
 				
 				<h:outputText value="Mot de passe *" />
-				<h:inputText id="password" styleClass="input" value="#{inscriptionBean.utilisateur.motDePasse}" />
+				<h:inputSecret id="password" styleClass="input" value="#{inscriptionBean.utilisateur.motDePasse}" required="true" />
 				<br />
 				
 				<h:outputText value="Description " />
-				<p:inputTextarea rows="6" cols="20" maxlength="255" />
+				<p:inputTextarea rows="6" cols="20" maxlength="255" value="#{inscriptionBean.utilisateur.description}" />
 				<br />
 				
 				<h:outputText value="Email *" />
