@@ -70,5 +70,10 @@ Le bean InscriptionBean doit être de portée @RequestScope (contrairement au be
 En effet, la portée du bean InscriptionBean permet l'enregistrement d'un client et cette information doit être limitée à la requête sinon on observe un problème sur l'enregistrement des prochains clients. Le premier client enregistré reste en session et lorsqu'on cherche à enregistrer un nouveau client, on utilise l'ID du client actuel et de ce fait, on obtient l'erreur suivante : 
 PersistentObjectException: detached entity passed to persist
 
+10. Problème de validation :
+
+Lorsqu'on cherche à ajouter un client, si les champs marqués d'une étoile ne sont pas remplis, l'inscription ne marchera pas. 
+Cela est du aux champs @NotNull qui sont apposés dans les POJO Utilisateur et Client.
+Il faudra rajouter les champs de validation pour ces paramètres avec cette vérification qui se fait du côté serveur et non client pour le moment.
 
 

@@ -39,8 +39,7 @@ public class EmailValidator implements Validator {
 		utilisateurDAO = DAOUtils.getUtilisateurDAO();
 
 		if (value == null) {
-			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Veuillez saisir une adresse mail.",
-					null);
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Veuillez saisir une adresse mail.", null);
 			throw new ValidatorException(message);
 		}
 
@@ -48,7 +47,7 @@ public class EmailValidator implements Validator {
 		boolean matches = VALID_EMAIL_REGEX.matcher(email).matches();
 
 		if (!matches) {
-			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_FATAL,
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
 					"L'email que vous avez entré est incorrect", null);
 			throw new ValidatorException(message);
 		} else {
@@ -59,7 +58,7 @@ public class EmailValidator implements Validator {
 				FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
 						"L'email entré a déjà été utilisé.", null);
 				throw new ValidatorException(message);
-			} 
+			}
 		}
 	}
 

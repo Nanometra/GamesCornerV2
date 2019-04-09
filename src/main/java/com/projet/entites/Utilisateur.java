@@ -36,7 +36,6 @@ public abstract class Utilisateur implements Serializable {
 
 	@NotNull
 	protected String motDePasse;
-	protected String confirmationMotDePasse;
 	
 	@NotNull
 	protected String email;
@@ -93,14 +92,6 @@ public abstract class Utilisateur implements Serializable {
 
 	public void setMotDePasse(String motDePasse) {
 		this.motDePasse = motDePasse;
-	}
-
-	public String getConfirmationMotDePasse() {
-		return confirmationMotDePasse;
-	}
-
-	public void setConfirmationMotDePasse(String confirmationMotDePasse) {
-		this.confirmationMotDePasse = confirmationMotDePasse;
 	}
 
 	public String getEmail() {
@@ -161,10 +152,10 @@ public abstract class Utilisateur implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Utilisateur [nom=" + nom + ", prenom=" + prenom + ", motDePasse=" + motDePasse
-				+ ", confirmationMotDePasse=" + confirmationMotDePasse + ", email=" + email + ", dateInscription="
-				+ dateInscription + ", imageProfil=" + imageProfil + ", description=" + description + ", actif=" + actif
-				+ ", vendeur=" + vendeur + ", admin=" + admin + "]";
+		return "Utilisateur [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", motDePasse=" + motDePasse
+				+ ", email=" + email + ", pseudo=" + pseudo + ", dateInscription=" + dateInscription + ", imageProfil="
+				+ imageProfil + ", description=" + description + ", actif=" + actif + ", vendeur=" + vendeur
+				+ ", admin=" + admin + "]";
 	}
 
 	public int getId() {

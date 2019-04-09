@@ -16,8 +16,9 @@
 		<h2>Inscription Utilisateur</h2>
 
 		<h:form id="inscription">
-			<p:panelGrid columns="3">
+			<p:panelGrid columns="3" style="width: 400px" >
 				<f:facet name="header">
+						<
 <!-- 					<p:graphicImage name="default/images/Sekiro.jpg" />  -->
 				</f:facet>
 
@@ -34,15 +35,22 @@
 				<br />
 				
 				<h:outputText value="Mot de passe *" />
-				<h:inputSecret id="password" styleClass="input" value="#{inscriptionBean.utilisateur.motDePasse}" required="true" />
-				<br />
+				<h:inputSecret id="password" styleClass="input" value="#{inscriptionBean.utilisateur.motDePasse}"  >
+					<f:validator validatorId="passwordValidator" />
+					<f:attribute name="confirmationPassword" value="#{confirmationPassword}" />
+				</h:inputSecret>
+				<p:message for="password" />
+				
+				<h:outputText value="Confirmation du mot de passe *" />
+				<h:inputSecret id="confirmationPassword" binding="#{confirmationPassword}" />
+				<h:message for="confirmationPassword" />
 				
 				<h:outputText value="Description " />
 				<p:inputTextarea rows="6" cols="20" maxlength="255" value="#{inscriptionBean.utilisateur.description}" />
 				<br />
 				
 				<h:outputText value="Email *" />
-				<h:inputText id="email" styleClass="input" value="#{inscriptionBean.utilisateur.email}">
+				<h:inputText id="email" styleClass="input" value="#{inscriptionBean.utilisateur.email}" >
 					<f:validator validatorId="emailValidator" />
 				</h:inputText>
 				<p:message for="email" />

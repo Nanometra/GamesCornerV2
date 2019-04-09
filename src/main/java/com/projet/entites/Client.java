@@ -18,13 +18,13 @@ public class Client extends Utilisateur {
 	// Le panier n'est pas persisté en base
 	private transient Panier panier;
 	
-	@NotNull(message="Veuillez saisir une adresse.")
+	@NotNull
 	private String adresseLivraison;
 	
-	@NotNull(message="Veuillez saisir un code postal.")
+	@NotNull
 	private String codePostal;
 	
-	@NotNull(message = "Veuillez saisir un numéro de téléphone.")
+	@NotNull
 	private String telephone;
 	
 	// Historique des articles achetés (spécifique au client, il est le seul qui peut passer commande)
