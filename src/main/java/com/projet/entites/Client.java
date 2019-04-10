@@ -6,6 +6,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity
 public class Client extends Utilisateur {
@@ -18,13 +19,15 @@ public class Client extends Utilisateur {
 	// Le panier n'est pas persisté en base
 	private transient Panier panier;
 	
-	@NotNull
+	@NotNull(message="Veuillez saisir une adresse de livraison.")
 	private String adresseLivraison;
 	
-	@NotNull
+	@NotNull(message="Veuillez saisir un code postal.")
+	@Pattern(regexp="\\d{5}")
 	private String codePostal;
 	
-	@NotNull
+	@NotNull(message="Veuillez saisir un numéro de téléphone.")
+	@Pattern(regexp="[0-9]{10}")
 	private String telephone;
 	
 	// Historique des articles achetés (spécifique au client, il est le seul qui peut passer commande)

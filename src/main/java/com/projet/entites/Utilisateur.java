@@ -30,7 +30,7 @@ public abstract class Utilisateur implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected int id;
 
-	@NotNull
+	@NotNull(message="Veuillez saisir un nom")
 	protected String nom;
 	protected String prenom;
 

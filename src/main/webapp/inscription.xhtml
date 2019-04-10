@@ -18,16 +18,21 @@
 		<h:form id="inscription">
 			<p:panelGrid columns="3" style="width: 400px" >
 				<f:facet name="header">
-						<
 <!-- 					<p:graphicImage name="default/images/Sekiro.jpg" />  -->
 				</f:facet>
-
+				
+				<f:event listener="#{inscriptionBean.validateNom}" type="postValidate" />
+				
 				<h:outputText value="Nom *" />
-				<h:inputText id="nom" styleClass="input" value="#{inscriptionBean.utilisateur.nom}" />
-				<br />
+				<h:inputText id="nom" styleClass="input" value="#{inscriptionBean.utilisateur.nom}">
+					<f:validateLength minimum="1" />
+				</h:inputText>
+				<p:message for="nom" />
 				
 				<h:outputText value="Prénom " />
-				<h:inputText id="prenom" styleClass="input" value="#{inscriptionBean.utilisateur.prenom}" />
+				<h:inputText id="prenom" styleClass="input" value="#{inscriptionBean.utilisateur.prenom}">
+					<f:validateLength minimum="1" />
+				</h:inputText>
 				<br />
 				
 				<h:outputText value="Pseudo " />
@@ -35,14 +40,14 @@
 				<br />
 				
 				<h:outputText value="Mot de passe *" />
-				<h:inputSecret id="password" styleClass="input" value="#{inscriptionBean.utilisateur.motDePasse}"  >
+				<h:inputText id="password" styleClass="input" value="#{inscriptionBean.utilisateur.motDePasse}"  >
 					<f:validator validatorId="passwordValidator" />
 					<f:attribute name="confirmationPassword" value="#{confirmationPassword}" />
-				</h:inputSecret>
+				</h:inputText>
 				<p:message for="password" />
 				
 				<h:outputText value="Confirmation du mot de passe *" />
-				<h:inputSecret id="confirmationPassword" binding="#{confirmationPassword}" />
+				<h:inputText id="confirmationPassword" binding="#{confirmationPassword}" />
 				<h:message for="confirmationPassword" />
 				
 				<h:outputText value="Description " />
@@ -57,15 +62,15 @@
 				
 				<h:outputText value="Adresse de livraison *" />
 				<h:inputText id="adresse" styleClass="input" value="#{inscriptionBean.utilisateur.adresseLivraison}" />
-				<br />
+				<p:message for="adresse" />
 				
 				<h:outputText value="Code Postal (CP) *" />
 				<h:inputText id="codePostal" styleClass="input" value="#{inscriptionBean.utilisateur.codePostal}" />
-				<br />
+				<p:message for="codePostal" />
 				
 				<h:outputText value="Téléphone *" />
 				<h:inputText id="telephone" styleClass="input" value="#{inscriptionBean.utilisateur.telephone}" />
-				<br />
+				<p:message for="telephone" />
 			</p:panelGrid>
 
 			<h:commandButton value="Valider" action="#{inscriptionBean.inscrire}" />

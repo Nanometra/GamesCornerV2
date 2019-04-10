@@ -15,6 +15,9 @@ import javax.faces.validator.ValidatorException;
 @FacesValidator
 public class PasswordValidator implements Validator {
 
+	private static final String PASSWORD_REGEX_VALIDATION = "[a-zA-Z]{6,}[0-9]{2,}";
+	private FacesMessage message;
+	
 	@Override
 	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
 		
@@ -25,18 +28,23 @@ public class PasswordValidator implements Validator {
 		String confirmationPassword = (String) uiInputConfirmationPassword.getSubmittedValue();		
 		
 		if (password == null || password.isEmpty()) {
-			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Veuillez saisir un mot de passe.", null);
+			message = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Veuillez saisir un mot de passe.", null);
+			throw new ValidatorException(message);
+		}
+		
+		if (!password.matches(PASSWORD_REGEX_VALIDATION)) {
+			message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Le mot de passe doit contenir au moins 8 caractère avec une minuscule, une majuscule et un chiffre.", null);
 			throw new ValidatorException(message);
 		}
 		
 		if (confirmationPassword == null || confirmationPassword.isEmpty()) {
-			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Veuillez confirmer votre mot de passe.", null);
+			message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Veuillez confirmer votre mot de passe.", null);
 			throw new ValidatorException(message);
 		}
 		
 		if (!password.equals(confirmationPassword)) {
 			uiInputConfirmationPassword.setValid(false);
-			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Les 2 mots de passe doivent être identiques.", null);
+			message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Les 2 mots de passe doivent être identiques.", null);
 			throw new ValidatorException(message);
 		}
 	}
