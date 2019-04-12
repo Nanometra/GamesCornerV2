@@ -1,3 +1,6 @@
 = GamesCornerV2
 
-V2 de l'application Games Corner
+Seconde version de l'application Games Corner.
+
+Application JAVA développée avec les technologies suivantes : 
+  
