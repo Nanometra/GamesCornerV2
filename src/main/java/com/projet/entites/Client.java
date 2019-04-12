@@ -23,11 +23,11 @@ public class Client extends Utilisateur {
 	private String adresseLivraison;
 	
 	@NotNull(message="Veuillez saisir un code postal.")
-	@Pattern(regexp="\\d{5}")
+	@Pattern(regexp="\\d{5}", message="Le code postal doit être composé de 5 chiffres.")
 	private String codePostal;
 	
 	@NotNull(message="Veuillez saisir un numéro de téléphone.")
-	@Pattern(regexp="[0-9]{10}")
+	@Pattern(regexp="[0-9]{10}", message="Le numéro de téléphone doit contenir 10 chiffres.")
 	private String telephone;
 	
 	// Historique des articles achetés (spécifique au client, il est le seul qui peut passer commande)
