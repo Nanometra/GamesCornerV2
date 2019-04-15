@@ -38,13 +38,7 @@ L'implémentation de Spring est faite dans la première version du projet : http
 
 L'objectif de ce projet est de proposer une application web fonctionnelle déployée en locale proposant toutes les fonctionnalités d'un vrai site de e-commerce en ligne.
 
-Le site proposera entre autre :
 
-- [*] L'inscription d'un client avec validation sur les différents champs disponibles.
-- [ ] La connexion dudit client avec enregistrement de ses identifiants en session.
-- [ ] le mise en place de cookie pour conserver les informations du client pour la prochaine connexion.
-- [ ] La mise en place du magasin avec ajout de nouveaux jeux (société, rôle, vidéos) et autres goodies qui seront séparés en catégories, et toutes les autres parties du CRUD.
-- [ ] Implémentation du panier transient du client associé à sa session.
  
 
 
