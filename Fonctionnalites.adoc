@@ -1,0 +1,28 @@
+=== Première Version 
+
+De base, le site proposera :
+
+- [*] L'inscription d'un client avec validation sur les différents champs disponibles.
+- [ ] La connexion dudit client avec enregistrement de ses identifiants en session.
+- [ ] le mise en place de cookie pour conserver les informations du client pour la prochaine connexion.
+- [ ] La mise en place du magasin avec ajout de nouveaux jeux (société, rôle, vidéos) et autres goodies qui seront séparés 
+en catégories, et toutes les autres parties du CRUD.
+- [ ] Implémentation du panier transient du client associé à sa session.
+
+=== Prochaines versions 
+
+Les évolutions concerneront des aspects plus avancés qui impliqueront des technologies supplémentaires :
+
+- [ ] Mise en place d'une search bar avec autocomplétion.
+- [ ] Mise en place d'un système d'envoi de mail et de contact à l'administrateur du site.
+- [ ] Implémenter un espace de vente de particulier à particulier avec des vendeurs qui pourront aussi être client. 
+Le statut de vendeur sera indiqué par un flag dans la base de données.
+- [ ] Système de commission sur les ventes d'un particulier avec réduction de cette commission en fonction du nombre d'années
+passés sur le site.
+- [ ] Intégration d'une internationalisation des ressources pour proposer le site en plusieurs langues 
+(Français et Anglais dans un premier temps).
+- [ ] Mettre en place un système de ratings sur les différents articles proposés dans le magasin. 
+- [ ] Envoyer l'application sur un serveur Linux.
+- [ ] Mise en place d'un forum avec admins et utilisateurs normaux avec grades et autres statuts.
+- [ ] Mise en place d'un script qui va supprimer les plus vieilles factures qui existent (soit crontab sur le serveur linux, soit un batch Spring).
+
