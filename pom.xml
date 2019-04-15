@@ -51,6 +51,8 @@
 		<javax.faces-api>2.3</javax.faces-api>
 		<!-- JavaEE API -->
 		<javaee-api.version>8.0</javaee-api.version>
+		<!-- JBCrypt : Crytage des mots de passe avec Hashage et Salage -->
+		<jbcrypt.version>0.4</jbcrypt.version>
 		<!-- Hibernate -->
 		<hibernate.version>5.3.7.Final</hibernate.version>
 		<hibernate.validator.version>6.0.13.Final</hibernate.validator.version>
@@ -162,6 +164,24 @@
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
+		</dependency>
+
+		<!-- ============================================================================== -->
+		<!-- JBcrypt -->
+		<!-- https://mvnrepository.com/artifact/org.mindrot/jbcrypt -->
+		<dependency>
+			<groupId>org.mindrot</groupId>
+			<artifactId>jbcrypt</artifactId>
+			<version>${jbcrypt.version}</version>
+		</dependency>
+
+		<!-- ============================================================================== -->
+		<!-- SLF4J -->
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
 		</dependency>
 
 
