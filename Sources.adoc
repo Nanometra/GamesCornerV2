@@ -1,0 +1,6 @@
+= Sources 
+
+Voici la liste des URLs utilisées pour résoudre les divers problèmes rencontrés au cours du projet : 
+
+* Mise en place d'un système d'encryption, de hashage des mots de passe lors de leur sauvegarde dans la base de données :
+** https://www.devglan.com/corejava/random-password-generator-java
