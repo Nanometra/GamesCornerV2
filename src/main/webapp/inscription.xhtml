@@ -15,9 +15,11 @@
 	<h:body>
 		<h2>Inscription Utilisateur</h2>
 
-		<h:form id="inscription">
+		<h:form id="inscription" enctype="multipart/form-data">
 			<p:panelGrid columns="3" style="width: 400px" >
+				<p:growl id="messages" showDetail="true" />
 				<f:facet name="header">
+					<p:fileUpload value="" mode="simple" skinSimple="true" />
 <!-- 					<p:graphicImage name="default/images/Sekiro.jpg" />  -->
 				</f:facet>
 				
