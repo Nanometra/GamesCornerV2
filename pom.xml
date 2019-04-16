@@ -53,6 +53,8 @@
 		<javaee-api.version>8.0</javaee-api.version>
 		<!-- JBCrypt : Crytage des mots de passe avec Hashage et Salage -->
 		<jbcrypt.version>0.4</jbcrypt.version>
+		<!-- Passay : Générateur de mot de passe random -->
+		<passay.version>1.5.0</passay.version>
 		<!-- Hibernate -->
 		<hibernate.version>5.3.7.Final</hibernate.version>
 		<hibernate.validator.version>6.0.13.Final</hibernate.validator.version>
@@ -166,13 +168,21 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- ============================================================================== -->
+		<!-- ============================ Mot de passes =============================== -->
 		<!-- JBcrypt -->
 		<!-- https://mvnrepository.com/artifact/org.mindrot/jbcrypt -->
 		<dependency>
 			<groupId>org.mindrot</groupId>
 			<artifactId>jbcrypt</artifactId>
 			<version>${jbcrypt.version}</version>
+		</dependency>
+
+		<!-- Passay -->
+		<!-- https://mvnrepository.com/artifact/org.passay/passay -->
+		<dependency>
+			<groupId>org.passay</groupId>
+			<artifactId>passay</artifactId>
+			<version>${passay.version}</version>
 		</dependency>
 
 		<!-- ============================================================================== -->
@@ -183,7 +193,6 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
-
 
 		<!-- ============================================================================== -->
 		<!-- Hibernate -->

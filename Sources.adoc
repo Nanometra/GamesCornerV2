@@ -3,4 +3,56 @@
 Voici la liste des URLs utilisées pour résoudre les divers problèmes rencontrés au cours du projet : 
 
 * Mise en place d'un système d'encryption, de hashage des mots de passe lors de leur sauvegarde dans la base de données :
-** https://www.devglan.com/corejava/random-password-generator-java
+** Solutions techniques :  
+*** https://www.devglan.com/corejava/random-password-generator-java
+*** https://dzone.com/articles/password-encryption-and-decryption-using-bcrypt
+*** https://howtodoinjava.com/security/how-to-generate-secure-password-hash-md5-sha-pbkdf2-bcrypt-examples/
+** Définitions : 
+*** https://stackoverflow.com/questions/4948322/fundamental-difference-between-hashing-and-encryption-algorithms/4948393#4948393
+*** http://dustwell.com/how-to-handle-passwords-bcrypt.html
+*** https://stackoverflow.com/questions/6832445/how-can-bcrypt-have-built-in-salts
+*** https://security.stackexchange.com/questions/184799/bcrypt-no-need-to-store-salt
+*** https://www.baeldung.com/java-password-hashing
+*** https://www.geeketfier.fr/archives/2012/08/29/exemple-de-stockage-de-mot-de-passe-en-java-hashage-et-salage-est-ce-suffisant/
+*** https://dzone.com/articles/hashing-passwords-in-java-with-bcrypt
+
+* Utilisation d'AsciiDoc : 
+** https://blog.oxiane.com/2018/06/13/asciidoc-documentation-as-code/
+
+* Problème "Target Unreachable" sur JSF :
+** https://stackoverflow.com/questions/30128395/identifying-and-solving-javax-el-propertynotfoundexception-target-unreachable
+
+* Externaliser le fichier de properties pour la mise en place de l'entity manager factory :
+** https://stackoverflow.com/questions/12013222/insert-external-data-into-persistence-xml (Spring) 
+
+* Validator JSF :
+** 
+
+* Formulaires JSF :
+** Solutions techniques :
+*** https://stackoverflow.com/questions/8177288/list-of-jsf-2-events
+** Définitions : 
+*** https://stackoverflow.com/questions/13999099/jsf-execution-order-of-fevents
+
+* Mise en place de l'Entity Manager Factory :
+** Solutions techniques :
+*** https://www.objectdb.com/java/jpa/persistence/overview
+*** https://www.codejava.net/frameworks/hibernate/java-hibernate-jpa-annotations-tutorial-for-beginners
+** Défintions :
+*** https://stackoverflow.com/questions/6156832/what-is-the-difference-between-localcontainerentitymanagerfactorybean-and-locale (Spring)
+*** https://stackoverflow.com/questions/1069992/jpa-entitymanager-why-use-persist-over-merge
+
+* Regexp :
+** https://www.lucaswillems.com/fr/articles/25/tutoriel-pour-maitriser-les-expressions-regulieres
+** https://regexr.com/
+
+* Primefaces :
+** https://www.primefaces.org/showcase/index.xhtml
+
+* [CSS] Alignement des différents champs de saisies : 
+** https://stackoverflow.com/questions/34366269/how-to-vertical-align-an-inputtext-and-a-commandbutton-in-primefaces
+
+
+
+
+

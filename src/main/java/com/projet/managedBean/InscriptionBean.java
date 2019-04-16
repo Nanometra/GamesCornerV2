@@ -16,6 +16,7 @@ import com.projet.dao.IUtilisateurDAO;
 import com.projet.entites.Client;
 import com.projet.entites.Utilisateur;
 import com.projet.utils.DAOUtils;
+import com.projet.utils.PasswordUtils;
 
 @ManagedBean(name = "inscriptionBean")
 @RequestScoped
@@ -60,7 +61,14 @@ public class InscriptionBean implements Serializable {
 
 	public String inscrire() {
 		initialiserDateInscription();
+		
+		// On hashe le mot de passe qu'on enregistre ensuite en base.
+		String password = (String) fc.getAttributes().get("password");
+		String computePassword = PasswordUtils.hashPassword(password);
+		utilisateur.setMotDePasse(computePassword);
+		
 		utilisateurDAO.add(utilisateur);
+		
 		FacesMessage message = new FacesMessage("Succès de l'inscription");
 		FacesContext.getCurrentInstance().addMessage(null, message);
 		return "succes";
@@ -69,18 +77,7 @@ public class InscriptionBean implements Serializable {
 	private void initialiserDateInscription() {
 		Date dateInscription = new Date(System.currentTimeMillis());
 		utilisateur.setDateInscription(dateInscription);
-	}
-
-	public void validateNom(ComponentSystemEvent event) {
-		String nom = (String) findComponent(event, "nom");		
-		
-		if (nom == null || nom.isEmpty()) {
-			message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Veuillez saisir votre nom.", null); 
-			fc.addMessage((String) findComponentId(event, "nom"), message);
-			fc.renderResponse();
-		}
-	}
-	
+	}	
 	
 	/*
 	 *  ================================= Méthodes utilitaires pour la classe seulement =============================

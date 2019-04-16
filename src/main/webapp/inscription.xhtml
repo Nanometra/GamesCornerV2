@@ -21,8 +21,6 @@
 <!-- 					<p:graphicImage name="default/images/Sekiro.jpg" />  -->
 				</f:facet>
 				
-				<f:event listener="#{inscriptionBean.validateNom}" type="postValidate" />
-				
 				<h:outputText value="Nom *" />
 				<h:inputText id="nom" styleClass="input" value="#{inscriptionBean.utilisateur.nom}">
 					<f:validateLength minimum="1" />
