@@ -12,6 +12,10 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ComponentSystemEvent;
 import javax.faces.validator.ValidatorException;
 
+import org.primefaces.model.UploadedFile;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.projet.dao.IUtilisateurDAO;
 import com.projet.entites.Client;
 import com.projet.entites.Utilisateur;
@@ -26,11 +30,13 @@ public class InscriptionBean implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = LoggerFactory.getLogger(InscriptionBean.class);
 
 	private Utilisateur utilisateur;
 	private IUtilisateurDAO utilisateurDAO;
 	private FacesMessage message;
 	private FacesContext fc;
+	private UploadedFile file;
 	
 	public InscriptionBean() {
 		utilisateur = new Client();
@@ -58,6 +64,14 @@ public class InscriptionBean implements Serializable {
 	public void setUtilisateurDAO(IUtilisateurDAO utilisateurDAO) {
 		this.utilisateurDAO = utilisateurDAO;
 	}
+	
+	public UploadedFile getFile() {
+		return file;
+	}
+
+	public void setFile(UploadedFile file) {
+		this.file = file;
+	}
 
 	public String inscrire() {
 		initialiserDateInscription();
@@ -69,6 +83,7 @@ public class InscriptionBean implements Serializable {
 		
 		utilisateurDAO.add(utilisateur);
 		
+		LOGGER.info("L'utilisateur a été enregistré en base.");
 		FacesMessage message = new FacesMessage("Succès de l'inscription");
 		FacesContext.getCurrentInstance().addMessage(null, message);
 		return "succes";
@@ -78,6 +93,12 @@ public class InscriptionBean implements Serializable {
 		Date dateInscription = new Date(System.currentTimeMillis());
 		utilisateur.setDateInscription(dateInscription);
 	}	
+	
+	public void upload() {
+		if (file != null) {
+			Faces
+		}
+	}
 	
 	/*
 	 *  ================================= Méthodes utilitaires pour la classe seulement =============================
