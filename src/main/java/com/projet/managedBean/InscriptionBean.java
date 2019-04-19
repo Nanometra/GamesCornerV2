@@ -1,5 +1,7 @@
 package com.projet.managedBean;
 
+import static com.projet.utils.PasswordUtils.hashPassword;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -10,8 +12,8 @@ import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ComponentSystemEvent;
-import javax.faces.validator.ValidatorException;
 
+import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,8 +21,6 @@ import org.slf4j.LoggerFactory;
 import com.projet.dao.IUtilisateurDAO;
 import com.projet.entites.Client;
 import com.projet.entites.Utilisateur;
-import com.projet.utils.DAOUtils;
-import com.projet.utils.PasswordUtils;
 
 @ManagedBean(name = "inscriptionBean")
 @RequestScoped
@@ -40,7 +40,7 @@ public class InscriptionBean implements Serializable {
 	
 	public InscriptionBean() {
 		utilisateur = new Client();
-		utilisateurDAO = DAOUtils.getUtilisateurDAO();
+		utilisateurDAO = getUtilisateurDAO();
 		fc = FacesContext.getCurrentInstance();
 	}
 
@@ -78,7 +78,7 @@ public class InscriptionBean implements Serializable {
 		
 		// On hashe le mot de passe qu'on enregistre ensuite en base.
 		String password = (String) fc.getAttributes().get("password");
-		String computePassword = PasswordUtils.hashPassword(password);
+		String computePassword = hashPassword(password);
 		utilisateur.setMotDePasse(computePassword);
 		
 		utilisateurDAO.add(utilisateur);
@@ -94,9 +94,12 @@ public class InscriptionBean implements Serializable {
 		utilisateur.setDateInscription(dateInscription);
 	}	
 	
-	public void upload() {
+	public void upload(FileUploadEvent event) {
+		file = event.getFile();
 		if (file != null) {
-			Faces
+			LOGGER.info("Le fichier a bien été uploadé.");
+			FacesMessage message = new FacesMessage("Le fichier a bien été uploadé");
+			FacesContext.getCurrentInstance().addMessage(null, message);
 		}
 	}
 	

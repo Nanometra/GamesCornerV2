@@ -1,5 +1,7 @@
 package com.projet.validator;
 
+import static com.projet.utils.DAOUtils.getUtilisateurDAO;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -15,7 +17,6 @@ import javax.faces.validator.ValidatorException;
 
 import com.projet.dao.IUtilisateurDAO;
 import com.projet.entites.Utilisateur;
-import com.projet.utils.DAOUtils;
 
 @ManagedBean
 @RequestScoped
@@ -36,7 +37,7 @@ public class EmailValidator implements Validator {
 	@Override
 	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
 
-		utilisateurDAO = DAOUtils.getUtilisateurDAO();
+		utilisateurDAO = getUtilisateurDAO();
 
 		if (value == null) {
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Veuillez saisir une adresse mail.", null);
