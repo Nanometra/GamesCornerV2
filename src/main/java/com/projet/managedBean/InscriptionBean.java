@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ComponentSystemEvent;
 
@@ -21,6 +22,7 @@ import org.slf4j.LoggerFactory;
 import com.projet.dao.IUtilisateurDAO;
 import com.projet.entites.Client;
 import com.projet.entites.Utilisateur;
+import com.projet.utils.DAOUtils;
 
 @ManagedBean(name = "inscriptionBean")
 @RequestScoped
@@ -37,10 +39,11 @@ public class InscriptionBean implements Serializable {
 	private FacesMessage message;
 	private FacesContext fc;
 	private UploadedFile file;
+	private ComponentSystemEvent event;
 	
 	public InscriptionBean() {
 		utilisateur = new Client();
-		utilisateurDAO = getUtilisateurDAO();
+		utilisateurDAO = DAOUtils.getUtilisateurDAO();
 		fc = FacesContext.getCurrentInstance();
 	}
 
@@ -77,7 +80,8 @@ public class InscriptionBean implements Serializable {
 		initialiserDateInscription();
 		
 		// On hashe le mot de passe qu'on enregistre ensuite en base.
-		String password = (String) fc.getAttributes().get("password");
+		ExternalContext ec = fc.getExternalContext();
+		String password = (String) ec.getRequestParameterMap().get("inscription:password");
 		String computePassword = hashPassword(password);
 		utilisateur.setMotDePasse(computePassword);
 		
@@ -95,9 +99,10 @@ public class InscriptionBean implements Serializable {
 	}	
 	
 	public void upload(FileUploadEvent event) {
-		file = event.getFile();
+		// Récupère le fichier depuis FileUploadEvent.
+		this.file = event.getFile();
 		if (file != null) {
-			LOGGER.info("Le fichier a bien été uploadé.");
+			LOGGER.info("Le fichier " + file.getFileName() + " a bien été uploadé.");
 			FacesMessage message = new FacesMessage("Le fichier a bien été uploadé");
 			FacesContext.getCurrentInstance().addMessage(null, message);
 		}

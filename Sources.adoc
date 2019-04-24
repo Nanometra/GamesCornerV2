@@ -52,6 +52,11 @@ Voici la liste des URLs utilisées pour résoudre les divers problèmes rencontr
 * [CSS] Alignement des différents champs de saisies : 
 ** https://stackoverflow.com/questions/34366269/how-to-vertical-align-an-inputtext-and-a-commandbutton-in-primefaces
 
+* FileUpload : 
+** http://www.mastertheboss.com/jboss-web/primefaces/primefaces-file-upload-example
+** https://www.journaldev.com/3229/primefaces-fileupload-component-example-tutorial
+
+
 
 
 

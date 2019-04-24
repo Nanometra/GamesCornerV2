@@ -177,7 +177,7 @@
 			<version>${jbcrypt.version}</version>
 		</dependency>
 
-		<!-- Passay -->
+		<!-- Passay : Password validation et génération -->
 		<!-- https://mvnrepository.com/artifact/org.passay/passay -->
 		<dependency>
 			<groupId>org.passay</groupId>
