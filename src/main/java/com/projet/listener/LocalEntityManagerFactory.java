@@ -26,7 +26,7 @@ public class LocalEntityManagerFactory implements ServletContextListener {
 		try {
 			this.emf = JPAUtils.getEntityManagerFactory();
 			ctx.setAttribute("emf", emf);
-			test = (EntityManagerFactory) ctx.getAttribute("emf");
+//			test = (EntityManagerFactory) ctx.getAttribute("emf");
 //			// Récupération de la connexion depuis la DataSource
 		} catch (DAOConfigurationException | IOException e) {
 			e.printStackTrace();

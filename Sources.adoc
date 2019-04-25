@@ -26,7 +26,7 @@ Voici la liste des URLs utilisées pour résoudre les divers problèmes rencontr
 ** https://stackoverflow.com/questions/12013222/insert-external-data-into-persistence-xml (Spring) 
 
 * Validator JSF :
-** 
+** https://ssouris.github.io/2014/11/03/three-ways-to-implement-email-validation-on-jsf.html
 
 * Formulaires JSF :
 ** Solutions techniques :
@@ -51,6 +51,11 @@ Voici la liste des URLs utilisées pour résoudre les divers problèmes rencontr
 
 * [CSS] Alignement des différents champs de saisies : 
 ** https://stackoverflow.com/questions/34366269/how-to-vertical-align-an-inputtext-and-a-commandbutton-in-primefaces
+
+* FileUpload : 
+** http://www.mastertheboss.com/jboss-web/primefaces/primefaces-file-upload-example
+** https://www.journaldev.com/3229/primefaces-fileupload-component-example-tutorial
+
 
 
 

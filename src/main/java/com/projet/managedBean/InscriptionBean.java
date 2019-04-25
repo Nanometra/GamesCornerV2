@@ -39,6 +39,7 @@ public class InscriptionBean implements Serializable {
 	private FacesMessage message;
 	private FacesContext fc;
 	private UploadedFile file;
+	private ComponentSystemEvent event;
 	
 	public InscriptionBean() {
 		utilisateur = new Client();
@@ -98,9 +99,10 @@ public class InscriptionBean implements Serializable {
 	}	
 	
 	public void upload(FileUploadEvent event) {
-		file = event.getFile();
+		// Récupère le fichier depuis FileUploadEvent.
+		this.file = event.getFile();
 		if (file != null) {
-			LOGGER.info("Le fichier a bien été uploadé.");
+			LOGGER.info("Le fichier " + file.getFileName() + " a bien été uploadé.");
 			FacesMessage message = new FacesMessage("Le fichier a bien été uploadé");
 			FacesContext.getCurrentInstance().addMessage(null, message);
 		}
