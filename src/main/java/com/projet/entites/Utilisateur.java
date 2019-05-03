@@ -1,6 +1,7 @@
 package com.projet.entites;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -12,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Lob;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
@@ -46,7 +48,9 @@ public abstract class Utilisateur implements Serializable {
 	protected Date dateInscription;
 
 	/* Chemin vers l'image de profil de l'utilisateur */
-	protected String imageProfil;
+	@Lob
+	@Column(name="photo", columnDefinition="BLOB")
+	protected byte[] imageProfil;
 
 	/* Description facultative de l'utilisateur */
 	protected String description;
@@ -110,11 +114,11 @@ public abstract class Utilisateur implements Serializable {
 		this.dateInscription = dateInscription;
 	}
 
-	public String getImageProfil() {
+	public byte[] getImageProfil() {
 		return imageProfil;
 	}
 
-	public void setImageProfil(String imageProfil) {
+	public void setImageProfil(byte[] imageProfil) {
 		this.imageProfil = imageProfil;
 	}
 
@@ -154,8 +158,8 @@ public abstract class Utilisateur implements Serializable {
 	public String toString() {
 		return "Utilisateur [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", motDePasse=" + motDePasse
 				+ ", email=" + email + ", pseudo=" + pseudo + ", dateInscription=" + dateInscription + ", imageProfil="
-				+ imageProfil + ", description=" + description + ", actif=" + actif + ", vendeur=" + vendeur
-				+ ", admin=" + admin + "]";
+				+ Arrays.toString(imageProfil) + ", description=" + description + ", actif=" + actif + ", vendeur="
+				+ vendeur + ", admin=" + admin + "]";
 	}
 
 	public int getId() {

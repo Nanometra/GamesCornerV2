@@ -5,9 +5,9 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
+import com.projet.commons.DAOUtils;
 import com.projet.dao.IArticleDAO;
 import com.projet.entites.Article;
-import com.projet.utils.DAOUtils;
 
 public class ArticleDAOImpl implements IArticleDAO {
 

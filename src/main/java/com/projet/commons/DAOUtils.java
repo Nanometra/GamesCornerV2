@@ -1,4 +1,4 @@
-package com.projet.utils;
+package com.projet.commons;
 
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;

@@ -4,7 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
-import com.projet.utils.DAOUtils;
+import com.projet.commons.DAOUtils;
 
 public abstract class AbstractDAO {
 

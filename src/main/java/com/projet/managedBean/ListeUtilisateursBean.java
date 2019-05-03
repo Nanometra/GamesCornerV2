@@ -7,9 +7,9 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import com.projet.commons.DAOUtils;
 import com.projet.dao.IUtilisateurDAO;
 import com.projet.entites.Utilisateur;
-import com.projet.utils.DAOUtils;
 
 @ManagedBean
 @ViewScoped

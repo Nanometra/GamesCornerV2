@@ -1,6 +1,6 @@
 package com.projet.managedBean;
 
-import static com.projet.utils.PasswordUtils.hashPassword;
+import static com.projet.commons.PasswordUtils.hashPassword;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -19,10 +19,10 @@ import org.primefaces.model.UploadedFile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.projet.commons.DAOUtils;
 import com.projet.dao.IUtilisateurDAO;
 import com.projet.entites.Client;
 import com.projet.entites.Utilisateur;
-import com.projet.utils.DAOUtils;
 
 @ManagedBean(name = "inscriptionBean")
 @RequestScoped

@@ -1,6 +1,6 @@
 package com.projet.validator;
 
-import static com.projet.utils.DAOUtils.getUtilisateurDAO;
+import static com.projet.commons.DAOUtils.getUtilisateurDAO;
 
 import java.util.ArrayList;
 import java.util.List;

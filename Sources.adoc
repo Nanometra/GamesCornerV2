@@ -55,8 +55,15 @@ Voici la liste des URLs utilisées pour résoudre les divers problèmes rencontr
 * FileUpload : 
 ** http://www.mastertheboss.com/jboss-web/primefaces/primefaces-file-upload-example
 ** https://www.journaldev.com/3229/primefaces-fileupload-component-example-tutorial
+** http://javaonlineguide.net/2015/07/file-upload-in-jsf-primefaces-5-2-example-simple-advanced-mode.html
 
+* BLOB
+** https://www.baeldung.com/hibernate-lob
+** https://stackoverflow.com/questions/8305633/how-to-insert-uploaded-image-from-pfileupload-as-blob-in-mysql
 
+* Récupération des paramètres en JSF
+** https://stackoverflow.com/questions/3351348/get-request-parameter-values-in-jsf
+** https://stackoverflow.com/questions/19002570/retrieving-value-of-jsf-input-field-without-managed-bean-property
 
 
 

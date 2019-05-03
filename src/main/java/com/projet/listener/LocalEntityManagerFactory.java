@@ -9,8 +9,8 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
+import com.projet.commons.JPAUtils;
 import com.projet.dao.DAOConfigurationException;
-import com.projet.utils.JPAUtils;
 
 // Classe Listener qui se charge lorsque le serveur est allumé
 @WebListener
