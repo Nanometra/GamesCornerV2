@@ -55,6 +55,8 @@
 		<jbcrypt.version>0.4</jbcrypt.version>
 		<!-- Passay : Générateur de mot de passe random -->
 		<passay.version>1.5.0</passay.version>
+		<!-- Mime Magic pour vérifier le type de contenu des fichiers -->
+		<jmimemagic.version>0.1.5</jmimemagic.version>
 		<!-- Hibernate -->
 		<hibernate.version>5.3.7.Final</hibernate.version>
 		<hibernate.validator.version>6.0.13.Final</hibernate.validator.version>
@@ -228,7 +230,12 @@
 			<artifactId>hibernate-jpa-2.1-api</artifactId>
 			<version>${hibernate-jpa.version}</version>
 		</dependency>
-
+		<!-- https://mvnrepository.com/artifact/net.sf.jmimemagic/jmimemagic -->
+		<dependency>
+			<groupId>net.sf.jmimemagic</groupId>
+			<artifactId>jmimemagic</artifactId>
+			<version>${jmimemagic.version}</version>
+		</dependency>
 	</dependencies>
 
 	<!-- =============================================================== -->
