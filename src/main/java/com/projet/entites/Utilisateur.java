@@ -18,6 +18,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.Type;
+
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "discriminant", discriminatorType = DiscriminatorType.STRING)
@@ -50,6 +52,7 @@ public abstract class Utilisateur implements Serializable {
 	/* Chemin vers l'image de profil de l'utilisateur */
 	@Lob
 	@Column(name="photo", columnDefinition="BLOB")
+	@Type(type="org.hibernate.type.BinaryType")
 	protected byte[] imageProfil;
 
 	/* Description facultative de l'utilisateur */
