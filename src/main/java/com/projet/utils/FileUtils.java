@@ -21,20 +21,18 @@ public class FileUtils {
 	private static UploadedFile file;
 	private static byte[] fichier;
 
-	private String destination = "/tmp";
-
-	public static void handleUpload(FileUploadEvent event) throws Exception {
-		fichier = IOUtils.toByteArray(event.getFile().getInputstream());
-	}
-
-	public static void upload(FileUploadEvent event) {
+	private String destination = "C:\\Users\\EXT_NPH42\\Documents\\Documents_Telecharges";
+	
+	public static byte[] upload(FileUploadEvent event) throws Exception {
 		// Récupère le fichier depuis FileUploadEvent.
 		file = event.getFile();
 		if (file != null) {
+			fichier = IOUtils.toByteArray(file.getInputstream());
 			LOGGER.info("Le fichier " + file.getFileName() + " a bien été uploadé.");
 			FacesMessage message = new FacesMessage("Le fichier a bien été uploadé");
 			FacesContext.getCurrentInstance().addMessage(null, message);
 		}
+		return fichier;
 	}
 
 	public void copyFile(String inputName, InputStream in) {

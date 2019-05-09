@@ -105,7 +105,7 @@ public class InscriptionBean implements Serializable {
 			LOGGER.info("Le fichier " + file.getFileName() + " a bien été uploadé.");
 			FacesMessage message = new FacesMessage("Le fichier a bien été uploadé");
 			FacesContext.getCurrentInstance().addMessage(null, message);
-		}
+			utilisateur.setImageProfil(file.getContents());
 	}
 	
 	/*
