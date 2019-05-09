@@ -1,0 +1,10 @@
+= Problèmes rencontrés durant le projet
+
+  * *Erreur java.lang.NoSuchFieldError: TRACE* + 
+  Cette erreur empêche le serveur de déployer le WAR. L'application n'est pas accessible et l'entity manager factory n'est plus
+  initialisée.
+  L'origine provient du jar de JMimeMagic rajoutée qui contient la version 1.2.8 de Log4J or, d'après les sources suivantes : +
+  https://stackoverflow.com/questions/27589543/exception-in-thread-main-java-lang-nosuchfielderror-trace + 
+  https://www.developpez.net/forums/d568641/java/general-java/persistance/jpa/java-lang-nosuchfielderror-trace/ +
+  La solution consiste à supprimer la version de Log4J qui est incluse lorsqu'on importe JMimeMagic.
+  
