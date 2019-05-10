@@ -8,3 +8,11 @@
   https://www.developpez.net/forums/d568641/java/general-java/persistance/jpa/java-lang-nosuchfielderror-trace/ +
   La solution consiste à supprimer la version de Log4J qui est incluse lorsqu'on importe JMimeMagic.
   
+  * *org.postgresql.util.PSQLException: ERREUR: le type « blob » n'existe pas* +
+  Hibernate n'arrive pas à générer la table "utilisateur" car la variable "imageProfil" est un tableau de bytes annoté avec
+  @Lob pour le désigner comme étant un blob (bytea) dans Postgresql. +
+  Précédemment, on a ajouté l'annotation @Column. Il faut enlever cette annotation pour ne laisser que @Lob. +
+  On rajoute également l'annotation @Type(type="org.hibernate.type.BinaryType") pour indiquer à Postgresql que l'on 
+  souhaite que imageProfil soit stocké sous forme de bytea. +
+  L'annotation @Type est spécifique à Hibernate et permet de déterminer le type d'entrée de la variable dans la base de données.
+  

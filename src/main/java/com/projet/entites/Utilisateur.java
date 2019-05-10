@@ -51,7 +51,8 @@ public abstract class Utilisateur implements Serializable {
 
 	/* Chemin vers l'image de profil de l'utilisateur */
 	@Lob
-	@Column(name="photo", columnDefinition="BLOB")
+//	@Column(name="photo", columnDefinition="blob")
+//	@Type(type="org.hibernate.typwe.PrimitiveByteArrayBlobType")
 	@Type(type="org.hibernate.type.BinaryType")
 	protected byte[] imageProfil;
 
