@@ -65,6 +65,7 @@ Voici la liste des URLs utilisées pour résoudre les divers problèmes rencontr
 ** https://stackoverflow.com/questions/3351348/get-request-parameter-values-in-jsf
 ** https://stackoverflow.com/questions/19002570/retrieving-value-of-jsf-input-field-without-managed-bean-property
 
-
+* Mise en place d'une balise <p:uploadFile> dans un <h:form> 
+** https://stackoverflow.com/questions/23495166/pfileupload-with-other-input-elements-commandbutton-in-form
 
 

@@ -16,3 +16,8 @@
   souhaite que imageProfil soit stocké sous forme de bytea. +
   L'annotation @Type est spécifique à Hibernate et permet de déterminer le type d'entrée de la variable dans la base de données.
   
+  * *Le listener FileUploadEvent ne se déclenche pas* +
+  Dans le fichier web.xml, le paramètre *primefaces.UPLOADER* était défini par les valeurs suivantes : +
+  *auto|native|commons* +
+  Il faut modifier ce paramètre et choisir soit *native* soit *commons* pour que l'application rentre de nouveau dans la méthode.
+    

@@ -2,6 +2,7 @@ package com.projet.managedBean;
 
 import static com.projet.commons.PasswordUtils.hashPassword;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -99,8 +100,12 @@ public class InscriptionBean implements Serializable {
 		utilisateur.setDateInscription(dateInscription);
 	}
 
-	public void upload(FileUploadEvent event) throws Exception {
-		byte[] image = FileUtils.upload(event);
+	public void upload(FileUploadEvent event, UploadedFile file) throws Exception {
+		// Récupère le fichier depuis FileUploadEvent.
+		file = event.getFile();
+		byte[] image = FileUtils.upload(file);
+		System.out.println(
+				"Uploaded File Name Is :: " + file.getFileName() + " :: Uploaded File Size :: " + file.getSize());
 		utilisateur.setImageProfil(image);
 	}
 

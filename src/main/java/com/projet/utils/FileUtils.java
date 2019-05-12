@@ -18,14 +18,11 @@ import org.slf4j.LoggerFactory;
 public class FileUtils {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(FileUtils.class);
-	private static UploadedFile file;
 	private static byte[] fichier;
 
 	private String destination = "C:\\Users\\EXT_NPH42\\Documents\\Documents_Telecharges";
 	
-	public static byte[] upload(FileUploadEvent event) throws Exception {
-		// Récupère le fichier depuis FileUploadEvent.
-		file = event.getFile();
+	public static byte[] upload(UploadedFile file) throws Exception {
 		if (file != null) {
 			fichier = IOUtils.toByteArray(file.getInputstream());
 			LOGGER.info("Le fichier " + file.getFileName() + " a bien été uploadé.");
