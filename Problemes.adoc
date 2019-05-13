@@ -20,4 +20,6 @@
   Dans le fichier web.xml, le paramètre *primefaces.UPLOADER* était défini par les valeurs suivantes : +
   *auto|native|commons* +
   Il faut modifier ce paramètre et choisir soit *native* soit *commons* pour que l'application rentre de nouveau dans la méthode.
-    
+  
+  * *javax.el.PropertyNotFoundException: Property '' not found on type* +  
+  Dans les fichiers xhtml, il faut enlever tous les commentaires. Cela semble être la cause de cette erreur.

@@ -68,4 +68,5 @@ Voici la liste des URLs utilisées pour résoudre les divers problèmes rencontr
 * Mise en place d'une balise <p:uploadFile> dans un <h:form> 
 ** https://stackoverflow.com/questions/23495166/pfileupload-with-other-input-elements-commandbutton-in-form
 
-
+* Problème de property not found dans un xhtml
+** https://stackoverflow.com/questions/7064238/property-not-found-with-primefaces-remotecommand

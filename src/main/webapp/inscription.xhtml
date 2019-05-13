@@ -19,8 +19,8 @@
 			<p:panelGrid columns="3" style="width: 400px" >
 				<f:facet name="header">
 					<p:fileUpload value="#{inscriptionBean.utilisateur.imageProfil}" fileUploadListener="#{inscriptionBean.upload}" mode="advanced" 
-					update="messages" skinSimple="true" sizeLimit="1000000" multiple="false" fileLimit="1" allowTypes="/(\.|\/)(jpg|jpe?g|png)$/" />
-<!-- 					<p:graphicImage name="default/images/Sekiro.jpg" />  -->
+					update="messages" skinSimple="true" sizeLimit="1000000" multiple="false" fileLimit="1" allowTypes="/(\.|\/)(jpg|jpe?g|png)$/" oncomplete="inscrire" />
+
 				</f:facet>
 				
 				<h:outputText value="Nom *" />
@@ -72,8 +72,8 @@
 				<h:inputText id="telephone" styleClass="input" value="#{inscriptionBean.utilisateur.telephone}" />
 				<p:message for="telephone" />
 			</p:panelGrid>
-
-			<h:commandButton value="Valider" action="#{inscriptionBean.inscrire}" ajax="false" />
+			<p:remoteCommand name="inscrire" actionListener="#{inscriptionBean.inscrire}" />
+			<p:commandButton value="Valider" action="#{inscriptionBean.inscrire}" ajax="false" />
 		</h:form>
 	
 	<a href="accueil.xhtml" >Accueil</a>
