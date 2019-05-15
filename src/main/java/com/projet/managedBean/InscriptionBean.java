@@ -100,7 +100,7 @@ public class InscriptionBean implements Serializable {
 		utilisateur.setDateInscription(dateInscription);
 	}
 
-	public void upload(FileUploadEvent event, UploadedFile file) throws Exception {
+	public void upload(FileUploadEvent event) throws Exception {
 		// Récupère le fichier depuis FileUploadEvent.
 		file = event.getFile();
 		byte[] image = FileUtils.upload(file);

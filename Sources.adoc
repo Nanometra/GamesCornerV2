@@ -70,3 +70,4 @@ Voici la liste des URLs utilisées pour résoudre les divers problèmes rencontr
 
 * Problème de property not found dans un xhtml
 ** https://stackoverflow.com/questions/7064238/property-not-found-with-primefaces-remotecommand
+
