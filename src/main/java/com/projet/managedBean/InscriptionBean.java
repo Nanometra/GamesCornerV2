@@ -78,7 +78,7 @@ public class InscriptionBean implements Serializable {
 		this.file = file;
 	}
 
-	public String inscrire() {
+	public String inscrire() throws Exception {
 		initialiserDateInscription();
 
 		// On hashe le mot de passe qu'on enregistre ensuite en base.
@@ -86,6 +86,13 @@ public class InscriptionBean implements Serializable {
 		String password = (String) ec.getRequestParameterMap().get("inscription:password");
 		String computePassword = hashPassword(password);
 		utilisateur.setMotDePasse(computePassword);
+		
+		// Fichier uploadé
+		upload();
+		
+		// Le client nouvellement crée n'est pas un vendeur ni un admin
+		utilisateur.setVendeur(false);
+		utilisateur.setAdmin(false);
 
 		utilisateurDAO.add(utilisateur);
 
@@ -100,13 +107,15 @@ public class InscriptionBean implements Serializable {
 		utilisateur.setDateInscription(dateInscription);
 	}
 
-	public void upload(FileUploadEvent event) throws Exception {
+	public void upload() throws Exception {
 		// Récupère le fichier depuis FileUploadEvent.
-		file = event.getFile();
-		byte[] image = FileUtils.upload(file);
-		System.out.println(
-				"Uploaded File Name Is :: " + file.getFileName() + " :: Uploaded File Size :: " + file.getSize());
-		utilisateur.setImageProfil(image);
+//		file = event.getFile();
+		if (file != null) {
+			byte[] image = FileUtils.upload(file);
+			System.out.println(
+					"Uploaded File Name Is :: " + file.getFileName() + " :: Uploaded File Size :: " + file.getSize());
+			utilisateur.setImageProfil(image);
+		}
 	}
 
 	/*

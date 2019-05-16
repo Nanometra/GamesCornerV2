@@ -18,8 +18,8 @@
 			<p:growl id="messages" showDetail="true" />
 			<p:panelGrid columns="3" style="width: 400px" >
 				<f:facet name="header">
-					<p:fileUpload value="#{inscriptionBean.utilisateur.imageProfil}" fileUploadListener="#{inscriptionBean.upload}" mode="advanced" 
-					update="messages" skinSimple="true" sizeLimit="1000000" multiple="false" fileLimit="1" allowTypes="/(\.|\/)(jpg|jpe?g|png)$/" oncomplete="inscrire" />
+					<p:fileUpload value="#{inscriptionBean.file}" mode="simple" 
+					update="messages" sizeLimit="1000000" />
 
 				</f:facet>
 				
@@ -72,7 +72,6 @@
 				<h:inputText id="telephone" styleClass="input" value="#{inscriptionBean.utilisateur.telephone}" />
 				<p:message for="telephone" />
 			</p:panelGrid>
-			<p:remoteCommand name="inscrire" actionListener="#{inscriptionBean.inscrire}" />
 			<p:commandButton value="Valider" action="#{inscriptionBean.inscrire}" ajax="false" />
 		</h:form>
 	
