@@ -86,10 +86,10 @@ public class InscriptionBean implements Serializable {
 		String password = (String) ec.getRequestParameterMap().get("inscription:password");
 		String computePassword = hashPassword(password);
 		utilisateur.setMotDePasse(computePassword);
-		
+
 		// Fichier uploadé
 		upload();
-		
+
 		// Le client nouvellement crée n'est pas un vendeur ni un admin
 		utilisateur.setVendeur(false);
 		utilisateur.setAdmin(false);
@@ -109,12 +109,11 @@ public class InscriptionBean implements Serializable {
 
 	public void upload() throws Exception {
 		// Récupère le fichier depuis FileUploadEvent.
-//		file = event.getFile();
 		if (file != null) {
-			byte[] image = FileUtils.upload(file);
-			System.out.println(
-					"Uploaded File Name Is :: " + file.getFileName() + " :: Uploaded File Size :: " + file.getSize());
+			byte[] image = FileUtils.transformFileToByte(file);
 			utilisateur.setImageProfil(image);
+		} else {
+			LOGGER.error("Le chargement du fichier a échoué.");
 		}
 	}
 

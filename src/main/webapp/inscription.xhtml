@@ -19,8 +19,9 @@
 			<p:panelGrid columns="3" style="width: 400px" >
 				<f:facet name="header">
 					<p:fileUpload value="#{inscriptionBean.file}" mode="simple" 
-					update="messages" sizeLimit="1000000" />
-
+					update="messages" sizeLimit="1000000" >
+						<f:validator validatorId="fileValidator" />
+					</p:fileUpload>
 				</f:facet>
 				
 				<h:outputText value="Nom *" />
