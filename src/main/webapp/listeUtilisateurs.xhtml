@@ -19,7 +19,9 @@
 			paginator="true" rows="10" style="margin-bottom:20px">
 
 			<p:column headerText="Id">
-				<h:outputText value="#{utilisateur.id}" />
+				<h:outputLink value="infoUtilisateur.xhtml">
+					<h:outputText value="#{utilisateur.id}" />
+				</h:outputLink>
 			</p:column>
 
 			<p:column headerText="Nom">
@@ -43,7 +45,9 @@
 			</p:column>
 			
 <!-- 			<p:column headerText="Image de profil"> -->
-<!-- 				<p:graphicImage value="#{utilisateur.imageProfil}" width="200" height="200" /> -->
+<!-- 				<p:graphicImage value="#{utilisateur.imageProfil}" width="200" height="200"> -->
+<!-- 					<f:param></f:param> -->
+<!-- 				</p:graphicImage> -->
 <!-- 			</p:column> -->
 
 			<p:column headerText="Actions">
