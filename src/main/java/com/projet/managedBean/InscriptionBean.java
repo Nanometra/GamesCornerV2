@@ -2,7 +2,6 @@ package com.projet.managedBean;
 
 import static com.projet.commons.PasswordUtils.hashPassword;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -15,7 +14,6 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ComponentSystemEvent;
 
-import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -82,8 +80,7 @@ public class InscriptionBean implements Serializable {
 		initialiserDateInscription();
 
 		// On hashe le mot de passe qu'on enregistre ensuite en base.
-		ExternalContext ec = fc.getExternalContext();
-		String password = (String) ec.getRequestParameterMap().get("inscription:password");
+		String password = (String) fc.getExternalContext().getRequestParameterMap().get("inscription:password");
 		String computePassword = hashPassword(password);
 		utilisateur.setMotDePasse(computePassword);
 

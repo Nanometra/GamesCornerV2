@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import com.projet.commons.DAOUtils;
 import com.projet.dao.IUtilisateurDAO;
@@ -18,6 +18,8 @@ public class InfoUtilisateurBean implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	private FacesContext fc;
 	
 	private Utilisateur utilisateur;
 	private IUtilisateurDAO utilisateurDAO;
@@ -43,6 +45,10 @@ public class InfoUtilisateurBean implements Serializable {
 		this.utilisateurDAO = utilisateurDAO;
 	}
 	
+	public String afficherUtilisateur(Utilisateur utilisateur) {
+		String information = (String) fc.getExternalContext().getRequestParameterMap().get("inscription:password");
 		
+		return "Succes";
+	}
 
 }
