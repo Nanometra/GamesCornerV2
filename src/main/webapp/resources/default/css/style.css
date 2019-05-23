@@ -83,3 +83,7 @@ fieldset {
 	width : 100px; 
 }
 
+.ui-panelgrid .ui-grid-responsive .ui-panelgrid-cell {
+        text-align: center;
+    }
+

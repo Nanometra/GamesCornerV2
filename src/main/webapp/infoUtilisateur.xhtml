@@ -11,48 +11,28 @@
 </h:head>
 
 <h:body>
-	<h:form>
-		<p:dataTable var="utilisateur"
-			value="#{listeUtilisateursBean.listeUtilisateurs}"
-			id="listeUtilisateurs"
-			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
-			paginator="true" rows="10" style="margin-bottom:20px">
-			
-<!-- 			<p:column> -->
-<!-- 				<p:selectBooleanCheckbox value="#{utilisateur.id}" /> -->
-<!-- 			</p:column> -->
-			
-			<p:column headerText="Id">
-				<h:outputText value="#{utilisateur.id}" />
-			</p:column>
 
-			<p:column headerText="Nom">
-				<h:outputText value="#{utilisateur.nom}" />
-			</p:column>
+	<p:panelGrid columns="2">
+		<f:facet name="header">
+			<!--         <p:graphicImage name="demo/images/misc/kobe.png" /> -->
+		</f:facet>
 
-			<p:column headerText="Prénom">
-				<h:outputText value="#{utilisateur.prenom}" />
-			</p:column>
+		<h:outputText value="Nom" />
+		<h:outputText value="" />
 
-			<p:column headerText="Pseudo">
-				<h:outputText value="#{utilisateur.pseudo}" />
-			</p:column>
+		<h:outputText value="Prénom" />
+		<h:outputText value="" />
 
-			<p:column headerText="Telephone">
-				<h:outputText value="#{utilisateur.telephone}" />
-			</p:column>
+		<h:outputText value="Pseudo" />
+		<h:outputText value="" />
 
-			<p:column headerText="Email">
-				<h:outputText value="#{utilisateur.email}" />
-			</p:column>
+		<h:outputText value="Téléphone" />
+		<h:outputText value="" />
 
-			<p:column headerText="Action">
-				<h:commandLink action="#{listeUtilisateursBean.supprimerUtilisateur(utilisateur)}">
-					<p:graphicImage name="default/images/supprimer.png" width="50"  />
-				</h:commandLink>
-			</p:column>
-		</p:dataTable>
-	</h:form>
+		<h:outputText value="Email" />
+		<h:outputText value="" />
+	</p:panelGrid>
+
 	<br />
 	<a href="accueil.xhtml">Accueil</a>
 </h:body>
