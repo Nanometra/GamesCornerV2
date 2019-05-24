@@ -5,14 +5,15 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 import com.projet.commons.DAOUtils;
 import com.projet.dao.IUtilisateurDAO;
 import com.projet.entites.Utilisateur;
 
 @ManagedBean
-@ViewScoped
+@RequestScoped
 public class ListeUtilisateursBean implements Serializable{
 
 	/**
@@ -22,6 +23,7 @@ public class ListeUtilisateursBean implements Serializable{
 
 	private List<Utilisateur> listeUtilisateurs;
 	private IUtilisateurDAO utilisateurDAO;
+	private FacesContext fc;
 	
 	public ListeUtilisateursBean() {
 		super();
@@ -47,6 +49,15 @@ public class ListeUtilisateursBean implements Serializable{
 
 	public void setUtilisateurDAO(IUtilisateurDAO utilisateurDAO) {
 		this.utilisateurDAO = utilisateurDAO;
+	}
+	
+	public Utilisateur afficherUtilisateur() {
+		String information = (String) fc.getExternalContext().getRequestParameterMap().get("listeUtilisateur:param.utilisateur_id");
+		int utilisateur_id = Integer.parseInt(information);
+		
+		Utilisateur utilisateur = utilisateurDAO.find(utilisateur_id);
+		
+		return utilisateur;
 	}
 	
 	public String supprimerUtilisateur(Utilisateur utilisateur) {

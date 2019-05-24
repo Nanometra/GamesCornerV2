@@ -45,10 +45,15 @@ public class InfoUtilisateurBean implements Serializable {
 		this.utilisateurDAO = utilisateurDAO;
 	}
 	
-	public String afficherUtilisateur(Utilisateur utilisateur) {
-		String information = (String) fc.getExternalContext().getRequestParameterMap().get("inscription:password");
-		
-		return "Succes";
-	}
+//	@PostConstruct
+//	public String afficherUtilisateur(Utilisateur utilisateur) {
+//		String information = (String) fc.getExternalContext().getRequestParameterMap().get("listeUtilisateur:param.utilisateur_id");
+//		int id = Integer.parseInt(information);
+//		
+//		utilisateur = utilisateurDAO.find(id);
+//		
+//		
+//		return "Succes";
+//	}
 
 }

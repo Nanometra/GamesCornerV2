@@ -11,7 +11,7 @@
 </h:head>
 
 <h:body>
-	<h:form id="inscription">
+	<h:form id="listeUtilisateur">
 		<p:dataTable var="utilisateur"
 			value="#{listeUtilisateursBean.listeUtilisateurs}"
 			id="listeUtilisateurs"
@@ -21,6 +21,7 @@
 			<p:column headerText="Id">
 				<h:outputLink value="infoUtilisateur.xhtml">
 					<h:outputText value="#{utilisateur.id}" />
+					<f:param value="#{utilisateur.id}" name="utilisateur_id" />
 				</h:outputLink>
 			</p:column>
 
