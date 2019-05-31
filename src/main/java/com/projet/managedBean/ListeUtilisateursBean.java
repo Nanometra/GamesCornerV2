@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import com.projet.commons.DAOUtils;
@@ -13,7 +13,7 @@ import com.projet.dao.IUtilisateurDAO;
 import com.projet.entites.Utilisateur;
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class ListeUtilisateursBean implements Serializable{
 
 	/**
@@ -22,7 +22,7 @@ public class ListeUtilisateursBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	private List<Utilisateur> listeUtilisateurs;
-	private IUtilisateurDAO utilisateurDAO;
+	private transient IUtilisateurDAO utilisateurDAO;
 	private FacesContext fc;
 	
 	public ListeUtilisateursBean() {
@@ -52,12 +52,10 @@ public class ListeUtilisateursBean implements Serializable{
 	}
 	
 	public Utilisateur afficherUtilisateur() {
-		String information = (String) fc.getExternalContext().getRequestParameterMap().get("listeUtilisateur:param.utilisateur_id");
-		int utilisateur_id = Integer.parseInt(information);
-		
-		Utilisateur utilisateur = utilisateurDAO.find(utilisateur_id);
-		
-		return utilisateur;
+		String information = fc.getExternalContext().getRequestParameterMap().get("listeUtilisateur:param.id");
+		int utilisateurId = Integer.parseInt(information);
+				
+		return utilisateurDAO.find(utilisateurId);
 	}
 	
 	public String supprimerUtilisateur(Utilisateur utilisateur) {
@@ -66,7 +64,7 @@ public class ListeUtilisateursBean implements Serializable{
 	}
 	
 	public void modifierUtilisateur(Utilisateur utilisateur) {
-		
+		// TODO Pas encore implémenté
 	}
 	
 }

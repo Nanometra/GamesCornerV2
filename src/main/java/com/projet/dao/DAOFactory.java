@@ -14,7 +14,11 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class DAOFactory {
-	
+		
+	private DAOFactory() {
+		super();
+	}
+
 	private static final DAOFactory singleton = new DAOFactory();
 	
 	/*
@@ -22,12 +26,12 @@ public class DAOFactory {
 	 */
 
 	public static EntityManagerFactory getEMF(String PU, InputStream fichierBase, InputStream... inputStreams)
-			throws DAOConfigurationException, IOException {
+			throws IOException {
 		Properties props = new Properties();
 
-		Map<String, String> properties = new HashMap<String, String>();
-		Map<Integer, String> keys = new HashMap<Integer, String>();
-		Map<Integer, String> concat = new HashMap<Integer, String>();
+		Map<String, String> properties = new HashMap<>();
+		Map<Integer, String> keys = new HashMap<>();
+		Map<Integer, String> concat = new HashMap<>();
 
 		try {
 			// Chargement du fichier contenant le nom des propriétés.
@@ -49,9 +53,7 @@ public class DAOFactory {
 			}
 		}
 
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory(PU, properties);
-
-		return emf;
+		return Persistence.createEntityManagerFactory(PU, properties);
 	}
 	
 	/*
@@ -63,9 +65,7 @@ public class DAOFactory {
 	}
 	
 	public static EntityManagerFactory getEMF(String PU) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory(PU);
-		
-		return emf;
+		return Persistence.createEntityManagerFactory(PU);
 	}
 	
 	/*
@@ -109,7 +109,7 @@ public class DAOFactory {
 	private static Map<Integer, String> mergeFichiers(Properties props, InputStream... inputStream)
 			throws IOException {
 
-		Map<Integer, String> value = new HashMap<Integer, String>();
+		Map<Integer, String> value = new HashMap<>();
 
 		for (int i = 0; i < inputStream.length; i++) {
 			props.load(inputStream[i]);
@@ -136,13 +136,5 @@ public class DAOFactory {
 
 		return properties;
 	}
-	
-	/*
-	 * ==================================================================================================================
-	 */
-
-//	public Connection getConnexion() {
-//		return DriverManager.
-//	}
 	
 }

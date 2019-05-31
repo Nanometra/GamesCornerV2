@@ -10,6 +10,8 @@ import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
 import org.primefaces.model.UploadedFile;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.projet.utils.FileUtils;
 
@@ -18,6 +20,8 @@ import com.projet.utils.FileUtils;
 @FacesValidator
 public class FileValidator implements Validator {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(FileValidator.class);
+	
 	private UploadedFile file;
 	private byte[] image;
 
@@ -42,7 +46,7 @@ public class FileValidator implements Validator {
 	}
 
 	@Override
-	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
+	public void validate(FacesContext context, UIComponent component, Object value) {
 
 		if (value != null) {
 			file = (UploadedFile) value;
@@ -51,7 +55,7 @@ public class FileValidator implements Validator {
 				image = FileUtils.transformFileToByte(file);
 				type = FileUtils.getMimeType(image);
 			} catch (Exception e) {
-				e.printStackTrace();
+				LOGGER.error(e.getMessage());
 			}
 
 			if (!type.startsWith("image/")) {

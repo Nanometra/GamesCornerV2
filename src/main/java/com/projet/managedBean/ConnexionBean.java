@@ -31,6 +31,7 @@ public class ConnexionBean implements Serializable {
 	}
 	
 	public String connexion() {
+		// TODO Méhotde à compléter
 		return "succes";
 	}
 	

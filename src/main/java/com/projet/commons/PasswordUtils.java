@@ -17,15 +17,18 @@ public class PasswordUtils {
 	// 10-31 (tranche de valeurs possibles).
 	private static final int workload = 12; 
 	
+	private PasswordUtils() {
+		super();
+	}
+
 	// Générateur de mot de passe random
 	public static String generateRandomPassword() {
 		// Liste de règles qui vont s'appliquer aux mots de passe.
 		List regles = Arrays.asList(new CharacterRule(EnglishCharacterData.UpperCase, 1), new CharacterRule(EnglishCharacterData.LowerCase, 1), new CharacterRule(EnglishCharacterData.Digit, 1), new CharacterRule(EnglishCharacterData.Special, 1));
 		
 		PasswordGenerator generateur = new PasswordGenerator();		
-		String password = generateur.generatePassword(8, regles);
 		
-		return password;
+		return generateur.generatePassword(8, regles);
 	}
 	
 	// Hashage du mot de passe

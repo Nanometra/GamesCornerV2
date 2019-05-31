@@ -27,14 +27,11 @@ public class FileUtils {
 	public static byte[] transformFileToByte(UploadedFile file) throws Exception {
 		if (file != null) {
 			fichier = IOUtils.toByteArray(file.getInputstream());
-//			LOGGER.info("Le fichier " + file.getFileName() + " a bien été uploadé.");
-//			FacesMessage message = new FacesMessage("Le fichier a bien été uploadé");
-//			FacesContext.getCurrentInstance().addMessage(null, message);
 		}
 		return fichier;
 	}
 
-	public void copyFile(String inputName, InputStream in) {
+	public void Download(String inputName, InputStream in) {
 		try {
 			// Ecrit l'inputStream dans un outputStream (file)
 			OutputStream out = new FileOutputStream(new File(destination + inputName));
@@ -50,16 +47,16 @@ public class FileUtils {
 			out.flush();
 			out.close();
 
-			System.out.println("Fichier créée");
+			LOGGER.info("Fichier créée");
 		} catch (IOException e) {
-			System.out.println(e.getMessage());
+			LOGGER.error(e.getMessage());
 		}
 	}
 
 	public static String getMimeType(final byte[] image)
 			throws MagicParseException, MagicMatchNotFoundException, MagicException {
 		MagicMatch mime = Magic.getMagicMatch(image, true);
-		String type = mime.getMimeType();
-		return type;
+		
+		return mime.getMimeType();
 	}
 }

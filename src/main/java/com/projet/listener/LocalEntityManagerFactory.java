@@ -9,6 +9,9 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.projet.commons.JPAUtils;
 import com.projet.dao.DAOConfigurationException;
 
@@ -17,19 +20,18 @@ import com.projet.dao.DAOConfigurationException;
 public class LocalEntityManagerFactory implements ServletContextListener {
 
 	private static EntityManagerFactory emf;
-	private EntityManagerFactory test;
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(LocalEntityManagerFactory.class);
 	
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
 		ServletContext ctx = event.getServletContext();
 		
 		try {
-			this.emf = JPAUtils.getEntityManagerFactory();
+			emf = JPAUtils.getEntityManagerFactory();
 			ctx.setAttribute("emf", emf);
-//			test = (EntityManagerFactory) ctx.getAttribute("emf");
-//			// Récupération de la connexion depuis la DataSource
 		} catch (DAOConfigurationException | IOException e) {
-			e.printStackTrace();
+			LOGGER.error(e.getMessage());
 		}	
 	}
 

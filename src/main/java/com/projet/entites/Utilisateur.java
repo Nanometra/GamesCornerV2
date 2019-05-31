@@ -76,6 +76,9 @@ public abstract class Utilisateur implements Serializable {
 
 	public Utilisateur() {
 		super();
+		this.nom = "";
+		this.motDePasse = "";
+		this.email = "";
 	}
 
 	public String getNom() {

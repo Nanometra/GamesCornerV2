@@ -14,11 +14,6 @@ public class ArticleDAOImpl implements IArticleDAO {
 	private EntityManagerFactory emf;
 	private EntityManager em;
 
-//	private static EntityManager getEntityManager(EntityManagerFactory emf) {
-//		EntityManager em = emf.createEntityManager();
-//		return em;
-//	}
-
 	public ArticleDAOImpl() {
 		super();
 	}
@@ -59,7 +54,7 @@ public class ArticleDAOImpl implements IArticleDAO {
 		em = DAOUtils.getEntityManager(emf);
 
 		Article article = em.find(Article.class, entity.getId());
-		em.merge(entity);
+		em.merge(article);
 
 	}
 

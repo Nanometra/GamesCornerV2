@@ -36,6 +36,9 @@ public class Client extends Utilisateur {
 
 	public Client() {
 		super();
+		this.adresseLivraison = "";
+		this.codePostal = "";
+		this.telephone = "";
 	}
 
 	public Panier getPanier() {

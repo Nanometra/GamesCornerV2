@@ -15,12 +15,12 @@ import javax.faces.validator.ValidatorException;
 @FacesValidator
 public class PasswordValidator implements Validator {
 
-	private static final String PASSWORD_REGEX_VALIDATION = "[a-zA-Z]{6,}[0-9]{2,}";
-	private FacesMessage message;
-	
+	private static final String MOTDEPASSE_REGEX_VALIDATION = "[a-zA-Z]{6,}[0-9]{2,}";
+
 	@Override
-	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
+	public void validate(FacesContext context, UIComponent component, Object value) {
 		
+		FacesMessage message;
 		String password = (String) value;
 		
 		// Confirmation du mot de passe
@@ -32,7 +32,7 @@ public class PasswordValidator implements Validator {
 			throw new ValidatorException(message);
 		}
 		
-		if (!password.matches(PASSWORD_REGEX_VALIDATION)) {
+		if (!password.matches(MOTDEPASSE_REGEX_VALIDATION)) {
 			message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Le mot de passe doit contenir au moins 8 caractère avec une minuscule, une majuscule et un chiffre.", null);
 			throw new ValidatorException(message);
 		}

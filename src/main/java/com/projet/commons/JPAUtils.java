@@ -16,9 +16,12 @@ public class JPAUtils {
 	private static final String FICHIER_JDBC = "com/projet/properties/db.properties";
 	private static final String FICHIER_HIBERNATE = "/com/projet/properties/hibernate.properties";
 	private static final String FICHIER_JPA = "/com/projet/properties/jpa.properties";
-	
-	
-	public static EntityManagerFactory getEntityManagerFactory() throws DAOConfigurationException, IOException {
+
+	private JPAUtils() {
+		super();
+	}
+
+	public static EntityManagerFactory getEntityManagerFactory() throws IOException {
 		
 		ClassLoader cl = Thread.currentThread().getContextClassLoader();
 		InputStream fichierJdbc = cl.getResourceAsStream(FICHIER_JDBC);
@@ -36,11 +39,11 @@ public class JPAUtils {
 			throw new DAOConfigurationException("Le fichier " + FICHIER_JPA + " est introuvable.");
 		}
 		
-		return emf = getEMF(PU, fichierJpa, fichierJdbc, fichierHibernate);
+		return getEMF(PU, fichierJpa, fichierJdbc, fichierHibernate);
 	}
 	
 	public static EntityManagerFactory getEntityManagerFactorySansFiles() {
-		return emf = getEMF(PU);
+		return getEMF(PU);
 	}
 	
 	public static EntityManager getEntityManager() {

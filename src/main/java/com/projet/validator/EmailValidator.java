@@ -2,7 +2,6 @@ package com.projet.validator;
 
 import static com.projet.commons.DAOUtils.getUtilisateurDAO;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -25,7 +24,6 @@ public class EmailValidator implements Validator {
 
 	public static final Pattern VALID_EMAIL_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9]+\\.[A-Z]{2,6}$",
 			Pattern.CASE_INSENSITIVE);
-//	public static final Pattern VALID_EMAIL_REGEX = Pattern.compile("[a-zA-Z0-9]+@[a-zA-Z0-9]+\\\\\\\\.[a-zA-Z0-9]+", Pattern.CASE_INSENSITIVE);
 
 	private String email;
 	private IUtilisateurDAO utilisateurDAO;
@@ -35,7 +33,7 @@ public class EmailValidator implements Validator {
 	}
 
 	@Override
-	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
+	public void validate(FacesContext context, UIComponent component, Object value) {
 
 		utilisateurDAO = getUtilisateurDAO();
 
@@ -52,10 +50,9 @@ public class EmailValidator implements Validator {
 					"L'email que vous avez entré est incorrect", null);
 			throw new ValidatorException(message);
 		} else {
-			List<Utilisateur> listeUtilisateur = new ArrayList<Utilisateur>();
-			listeUtilisateur = utilisateurDAO.findByEmail(email);
+			List<Utilisateur> listeUtilisateur = utilisateurDAO.findByEmail(email);
 
-			if (listeUtilisateur.size() >= 1) {
+			if (listeUtilisateur.isEmpty()) {
 				FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
 						"L'email entré a déjà été utilisé.", null);
 				throw new ValidatorException(message);

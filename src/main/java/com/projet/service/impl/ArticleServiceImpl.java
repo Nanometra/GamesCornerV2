@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import com.projet.commons.DAOUtils;
 import com.projet.dao.IArticleDAO;
 import com.projet.entites.Article;
 import com.projet.service.IArticleService;
@@ -14,7 +13,7 @@ public class ArticleServiceImpl implements IArticleService {
 
 	private  IArticleDAO articleDao;
 	
-	public ArticleServiceImpl(IArticleDAO articleDao) {
+	public ArticleServiceImpl() {
 		super();
 	}
 

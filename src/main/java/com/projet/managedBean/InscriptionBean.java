@@ -10,7 +10,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ComponentSystemEvent;
 
@@ -35,7 +34,7 @@ public class InscriptionBean implements Serializable {
 	private static final Logger LOGGER = LoggerFactory.getLogger(InscriptionBean.class);
 
 	private Utilisateur utilisateur;
-	private IUtilisateurDAO utilisateurDAO;
+	private transient IUtilisateurDAO utilisateurDAO;
 	private FacesMessage message;
 	private FacesContext fc;
 	private UploadedFile file;
@@ -46,11 +45,6 @@ public class InscriptionBean implements Serializable {
 		utilisateurDAO = DAOUtils.getUtilisateurDAO();
 		fc = FacesContext.getCurrentInstance();
 	}
-
-//	@PostConstruct
-//	public void init() {
-//		utilisateur = new Client();
-//	}
 
 	public Utilisateur getUtilisateur() {
 		return utilisateur;
@@ -80,7 +74,7 @@ public class InscriptionBean implements Serializable {
 		initialiserDateInscription();
 
 		// On hashe le mot de passe qu'on enregistre ensuite en base.
-		String password = (String) fc.getExternalContext().getRequestParameterMap().get("inscription:password");
+		String password = fc.getExternalContext().getRequestParameterMap().get("inscription:password");
 		String computePassword = hashPassword(password);
 		utilisateur.setMotDePasse(computePassword);
 
@@ -94,7 +88,7 @@ public class InscriptionBean implements Serializable {
 		utilisateurDAO.add(utilisateur);
 
 		LOGGER.info("L'utilisateur a été enregistré en base.");
-		FacesMessage message = new FacesMessage("Succès de l'inscription");
+		message = new FacesMessage("Succès de l'inscription");
 		FacesContext.getCurrentInstance().addMessage(null, message);
 		return "succes";
 	}
@@ -114,31 +108,4 @@ public class InscriptionBean implements Serializable {
 		}
 	}
 
-	/*
-	 * ================================= Méthodes utilitaires pour la classe
-	 * seulement =============================
-	 */
-
-	// Permet de récupérer un composant dans le formulaire
-	private static Object findComponent(ComponentSystemEvent event, String component) {
-		UIInput uiInputComponent = findUIInput(event, component);
-		Object composant = uiInputComponent.getLocalValue();
-
-		return composant;
-	}
-
-	// Permet de récupérer l'ID d'un composant dans le formulaire
-	private static Object findComponentId(ComponentSystemEvent event, String component) {
-		UIInput uiInputComponent = findUIInput(event, component);
-		Object composant = uiInputComponent.getClientId();
-
-		return composant;
-	}
-
-	private static UIInput findUIInput(ComponentSystemEvent event, String component) {
-		UIComponent components = event.getComponent();
-		UIInput uiInputComponent = (UIInput) components.findComponent(component);
-
-		return uiInputComponent;
-	}
 }

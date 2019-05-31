@@ -5,13 +5,17 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.projet.dao.AbstractDAO;
 import com.projet.dao.IUtilisateurDAO;
-import com.projet.entites.Client;
 import com.projet.entites.Utilisateur;
 
 public class UtilisateurDAOImpl extends AbstractDAO implements IUtilisateurDAO {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(UtilisateurDAOImpl.class);	
+	
 	public UtilisateurDAOImpl() {
 		super();
 	}
@@ -26,20 +30,16 @@ public class UtilisateurDAOImpl extends AbstractDAO implements IUtilisateurDAO {
 
 	@Override
 	public List<Utilisateur> findAll() {
-		List<Utilisateur> listeUtilisateurs = new ArrayList<Utilisateur>();
+		List<Utilisateur> listeUtilisateurs = new ArrayList<>();
 
 		try {
 			super.initOperation();
-//			CriteriaBuilder builder = em.getCriteriaBuilder();
-//			CriteriaQuery<Utilisateur> query = builder.createQuery(Utilisateur.class);
-//			Root<Utilisateur> listeUtilisateurs = query.from(Utilisateur.class);
-//			query.select(listeUtilisateurs);
 
 			Query query = em.createQuery("SELECT u FROM Utilisateur u");
 			listeUtilisateurs = query.getResultList();
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOGGER.error(e.getMessage());
 		} finally {
 			if (em != null) {
 				em.close();
@@ -58,7 +58,7 @@ public class UtilisateurDAOImpl extends AbstractDAO implements IUtilisateurDAO {
 			if (tx != null) {
 				tx.rollback();
 			}
-			e.printStackTrace();
+			LOGGER.error(e.getMessage());
 		} finally {
 			if (em != null) {
 				em.close();
@@ -77,7 +77,7 @@ public class UtilisateurDAOImpl extends AbstractDAO implements IUtilisateurDAO {
 			if (tx != null) {
 				tx.rollback();
 			}
-			e.printStackTrace();
+			LOGGER.error(e.getMessage());
 		} finally {
 			if (em != null) {
 				em.close();
@@ -95,12 +95,10 @@ public class UtilisateurDAOImpl extends AbstractDAO implements IUtilisateurDAO {
 	@Override
 	public List<Utilisateur> findByEmail(String email) {
 		super.initOperation();
-		Utilisateur utilisateur = new Client();
-		List<Utilisateur> listeUtilisateur = new ArrayList<Utilisateur>();
 		
 		Query query = em.createQuery("SELECT u FROM Utilisateur u WHERE u.email =:email");
 		query.setParameter("email", email);
-		listeUtilisateur = (List<Utilisateur>) query.getResultList();
+		List<Utilisateur> listeUtilisateur = (List<Utilisateur>) query.getResultList();
 		
 		em.close();
 		return listeUtilisateur;
