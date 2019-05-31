@@ -17,6 +17,14 @@
 		<p:growl id="messages" />
 
 		<p:menubar>
+			<p:submenu label="Utilsateur" icon="pi pi-file">
+				<p:menuitem value="Inscription" url="http://localhost:8080/GamesCornerV2/inscription.xhtml" />
+				<p:menuitem value="Connexion" url="http://localhost:8080/GamesCornerV2/connexion.xhtml" />
+				<p:menuitem value="Liste des utilisateurs" url="http://localhost:8080/GamesCornerV2/listeUtilisateurs.xhtml" />
+				<p:separator />
+				<p:menuitem value="Quitter" url="http://localhost:8080/GamesCornerV2/accueil.xhtml" />
+			</p:submenu>
+			
 			<p:submenu label="Fichier" icon="pi pi-file">
 				<p:submenu label="Nouveau" icon="pi pi-briefcase">
 					<p:menuitem value="Project" url="#" />
@@ -56,13 +64,7 @@
 			</p:submenu>
 
 			<p:menuitem value="Quitter" url="http://localhost:8080/GamesCornerV2/" />
-				
-			<p:menuitem value="Connexion" url="http://localhost:8080/GamesCornerV2/connexion.xhtml" />
-			
-			<p:menuitem value="Inscription" url="http://localhost:8080/GamesCornerV2/inscription.xhtml" />
-
-			<p:menuitem value="Liste des utilisateurs" url="http://localhost:8080/GamesCornerV2/listeUtilisateurs.xhtml" />
-		
+						
 			<f:facet name="options">
 				<p:inputText style="margin:1px 10px 1px 1px;" placeholder="Rechercher" />
 				<p:commandButton type="button" value="Logout" icon="pi pi-home" />
