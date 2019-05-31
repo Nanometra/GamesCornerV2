@@ -1,5 +1,8 @@
 package com.projet.managedBean;
 
+import static javax.faces.context.FacesContext.getCurrentInstance;
+
+import java.io.IOException;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
@@ -42,5 +45,13 @@ public class InfoUtilisateurBean implements Serializable {
 		this.utilisateurDAO = utilisateurDAO;
 	}
 	
+	public Utilisateur afficherUtilisateur() throws IOException {
+		String information = getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
+		int utilisateurId = Integer.parseInt(information);
+		
+		getCurrentInstance().getExternalContext().redirect("infoUtilisateur.xhtml?id=" + utilisateurId);
+		
+		return utilisateurDAO.find(utilisateurId);
+	}
 
 }

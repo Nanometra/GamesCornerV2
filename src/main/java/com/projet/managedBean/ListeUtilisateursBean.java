@@ -1,12 +1,14 @@
 package com.projet.managedBean;
 
+import static javax.faces.context.FacesContext.getCurrentInstance;
+
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
 
 import com.projet.commons.DAOUtils;
 import com.projet.dao.IUtilisateurDAO;
@@ -23,7 +25,6 @@ public class ListeUtilisateursBean implements Serializable{
 
 	private List<Utilisateur> listeUtilisateurs;
 	private transient IUtilisateurDAO utilisateurDAO;
-	private FacesContext fc;
 	
 	public ListeUtilisateursBean() {
 		super();
@@ -50,14 +51,7 @@ public class ListeUtilisateursBean implements Serializable{
 	public void setUtilisateurDAO(IUtilisateurDAO utilisateurDAO) {
 		this.utilisateurDAO = utilisateurDAO;
 	}
-	
-	public Utilisateur afficherUtilisateur() {
-		String information = fc.getExternalContext().getRequestParameterMap().get("listeUtilisateur:param.id");
-		int utilisateurId = Integer.parseInt(information);
-				
-		return utilisateurDAO.find(utilisateurId);
-	}
-	
+		
 	public String supprimerUtilisateur(Utilisateur utilisateur) {
 		utilisateurDAO.delete(utilisateur.getId());
 		return "listeUtilisateurs";

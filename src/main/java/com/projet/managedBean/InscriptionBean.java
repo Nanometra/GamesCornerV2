@@ -1,6 +1,7 @@
 package com.projet.managedBean;
 
 import static com.projet.commons.PasswordUtils.hashPassword;
+import static javax.faces.context.FacesContext.getCurrentInstance;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -8,8 +9,6 @@ import java.util.Date;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.component.UIComponent;
-import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ComponentSystemEvent;
 
@@ -36,14 +35,12 @@ public class InscriptionBean implements Serializable {
 	private Utilisateur utilisateur;
 	private transient IUtilisateurDAO utilisateurDAO;
 	private FacesMessage message;
-	private FacesContext fc;
 	private UploadedFile file;
 	private ComponentSystemEvent event;
 
 	public InscriptionBean() {
 		utilisateur = new Client();
 		utilisateurDAO = DAOUtils.getUtilisateurDAO();
-		fc = FacesContext.getCurrentInstance();
 	}
 
 	public Utilisateur getUtilisateur() {
@@ -74,7 +71,7 @@ public class InscriptionBean implements Serializable {
 		initialiserDateInscription();
 
 		// On hashe le mot de passe qu'on enregistre ensuite en base.
-		String password = fc.getExternalContext().getRequestParameterMap().get("inscription:password");
+		String password = getCurrentInstance().getExternalContext().getRequestParameterMap().get("inscription:password");
 		String computePassword = hashPassword(password);
 		utilisateur.setMotDePasse(computePassword);
 
