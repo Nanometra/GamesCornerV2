@@ -44,15 +44,16 @@
 			<p:column headerText="Email">
 				<h:outputText value="#{utilisateur.email}" />
 			</p:column>
-			
-<!-- 			<p:column headerText="Image de profil"> -->
-<!-- 				<p:graphicImage value="#{utilisateur.imageProfil}" width="200" height="200"> -->
-<!-- 					<f:param></f:param> -->
-<!-- 				</p:graphicImage> -->
-<!-- 			</p:column> -->
+
+			<!-- 			<p:column headerText="Image de profil"> -->
+			<!-- 				<p:graphicImage value="#{utilisateur.imageProfil}" width="200" height="200"> -->
+			<!-- 					<f:param></f:param> -->
+			<!-- 				</p:graphicImage> -->
+			<!-- 			</p:column> -->
 
 			<p:column headerText="Actions">
-				<h:commandLink action="#{listeUtilisateursBean.supprimerUtilisateur(utilisateur)}">
+				<h:commandLink
+					action="#{listeUtilisateursBean.supprimerUtilisateur(utilisateur)}">
 					<p:graphicImage name="default/images/supprimer.png" width="50" />
 
 				</h:commandLink>

@@ -2,9 +2,10 @@ package com.projet.managedBean;
 
 import static javax.faces.context.FacesContext.getCurrentInstance;
 
-import java.io.IOException;
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
+import javax.faces.annotation.ManagedProperty;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -23,6 +24,20 @@ public class InfoUtilisateurBean implements Serializable {
 		
 	private Utilisateur utilisateur;
 	private transient IUtilisateurDAO utilisateurDAO;
+	
+	@ManagedProperty(value="#{param.id}")
+	String id;
+	
+//	@PostConstruct
+	private Utilisateur afficherUtilisateur() {
+		
+		String information = getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
+		int utilisateurId = Integer.parseInt(information);
+		System.out.println("id : " + utilisateurId);
+//		int utilisateurId = Integer.parseInt(id);
+		
+		return utilisateurDAO.find(utilisateurId);
+	}
 	
 	public InfoUtilisateurBean() {
 		super();
@@ -43,15 +58,6 @@ public class InfoUtilisateurBean implements Serializable {
 	
 	public void setUtilisateurDAO(IUtilisateurDAO utilisateurDAO) {
 		this.utilisateurDAO = utilisateurDAO;
-	}
-	
-	public Utilisateur afficherUtilisateur() throws IOException {
-		String information = getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
-		int utilisateurId = Integer.parseInt(information);
-		
-		getCurrentInstance().getExternalContext().redirect("infoUtilisateur.xhtml?id=" + utilisateurId);
-		
-		return utilisateurDAO.find(utilisateurId);
 	}
 
 }

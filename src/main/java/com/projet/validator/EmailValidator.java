@@ -22,7 +22,7 @@ import com.projet.entites.Utilisateur;
 @FacesValidator
 public class EmailValidator implements Validator {
 
-	public static final Pattern VALID_EMAIL_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9]+\\.[A-Z]{2,6}$",
+	public static final Pattern VALID_EMAIL_REGEX = Pattern.compile("^[a-z0-9._%+-]+@[a-z0-9]+\\.[a-z]{2,6}$",
 			Pattern.CASE_INSENSITIVE);
 
 	private String email;
@@ -52,7 +52,7 @@ public class EmailValidator implements Validator {
 		} else {
 			List<Utilisateur> listeUtilisateur = utilisateurDAO.findByEmail(email);
 
-			if (listeUtilisateur.isEmpty()) {
+			if (!listeUtilisateur.isEmpty()) {
 				FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
 						"L'email entré a déjà été utilisé.", null);
 				throw new ValidatorException(message);

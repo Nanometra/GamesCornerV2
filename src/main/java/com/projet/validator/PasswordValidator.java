@@ -15,7 +15,7 @@ import javax.faces.validator.ValidatorException;
 @FacesValidator
 public class PasswordValidator implements Validator {
 
-	private static final String MOTDEPASSE_REGEX_VALIDATION = "[a-zA-Z]{6,}[0-9]{2,}";
+	private static final String MOTDEPASSE_REGEX_VALIDATION = "^\\w{8,}\\S";
 
 	@Override
 	public void validate(FacesContext context, UIComponent component, Object value) {

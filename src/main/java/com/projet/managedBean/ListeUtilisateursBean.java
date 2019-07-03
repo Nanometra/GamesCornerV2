@@ -1,14 +1,12 @@
 package com.projet.managedBean;
 
-import static javax.faces.context.FacesContext.getCurrentInstance;
-
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import com.projet.commons.DAOUtils;
 import com.projet.dao.IUtilisateurDAO;
@@ -60,5 +58,5 @@ public class ListeUtilisateursBean implements Serializable{
 	public void modifierUtilisateur(Utilisateur utilisateur) {
 		// TODO Pas encore implémenté
 	}
-	
+
 }
