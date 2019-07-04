@@ -1,0 +1,89 @@
+@charset "ISO-8859-1";
+
+/* Général ------------------------------------------------------------------------------------- */
+
+body {
+
+}
+
+h1 {
+	/* Centrage horizontal */
+	text-align : center;
+	margin : auto;
+	
+	/* Centrage vertical */
+	position : absolute;
+	left : 50%;
+	top : 50%;
+	width : 200px;
+	height : 200px;
+	margin-left : -100px; /* Doit être égal à la moitié négative du width */
+	margin-right : -100px; /* Doit être égal à la moitié négative du height */    
+}
+
+h2 {
+	/* Centrage horizontal */
+	text-align : center;
+	margin : auto;
+}
+
+label {
+	font-family : "Verdana", sans-serif;
+	font-style : normal; 	
+/* 	font-weight : bold; */
+/* 	display : block; La balise devient de type block */
+	width : 200px; 
+/* 	float : left; */
+}
+
+/* Forms --------------------------------------------------------------------------------------- */
+
+form {
+	text-align: center;
+}
+
+fieldset {
+	position : absolute;
+	margin : auto; 
+	
+	left : 40%;
+	top : 10%;
+	
+	border-style : inset; 
+}
+
+.requis { 
+	color : red;
+}
+
+#inscription {
+	position:absolute;
+    top:50%;
+    left:50%;
+    width:410px; /* A toi de donner la bonne largeur */
+    height:300px; /* A toi de donner la bonne hauteur */
+    margin-left:-200px; /* -largeur/2 */
+    margin-top:-200px; /* -hauteur/2 */
+}
+
+/* Images et couleurs -------------------------------------------------------------------------- */
+
+
+/* Tableaux ------------------------------------------------------------------------------------ */
+
+.c1 {
+	width : 200px; 
+}
+
+.c2 {
+	width : 150px;
+}
+
+.c3 {
+	width : 100px; 
+}
+
+.ui-panelgrid .ui-grid-responsive .ui-panelgrid-cell {
+        text-align: center;
+    }
+

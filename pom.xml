@@ -35,12 +35,33 @@
 		<bootstrap.version>1.0.10</bootstrap.version>
 		<!-- Maven-compiler-plugin -->
 		<maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
+		<!-- Maven-war-plugin -->
+		<maven.war.plugin.version>3.2.2</maven.war.plugin.version>
+		<!-- Maven-resources-plugin -->
+		<maven.resources.plugin.version>3.1.0</maven.resources.plugin.version>
 		<!-- JDK source -->
 		<jdk.source.version>1.8</jdk.source.version>
 		<!-- JDK target -->
 		<jdk.target.version>1.8</jdk.target.version>
 		<!-- slf4J Log Java -->
 		<slf4j.version>1.7.26</slf4j.version>
+		<!-- API pour les EL -->
+		<javax.el-api.version>3.0.1-b06</javax.el-api.version>
+		<!-- API Faces -->
+		<javax.faces-api>2.3</javax.faces-api>
+		<!-- JavaEE API -->
+		<javaee-api.version>8.0</javaee-api.version>
+		<!-- JBCrypt : Crytage des mots de passe avec Hashage et Salage -->
+		<jbcrypt.version>0.4</jbcrypt.version>
+		<!-- Passay : Générateur de mot de passe random -->
+		<passay.version>1.5.0</passay.version>
+		<!-- Mime Magic pour vérifier le type de contenu des fichiers -->
+		<jmimemagic.version>0.1.5</jmimemagic.version>
+		<!-- Hibernate -->
+		<hibernate.version>5.3.7.Final</hibernate.version>
+		<hibernate.validator.version>6.0.13.Final</hibernate.validator.version>
+		<hibernate.search.version>5.10.5.Final</hibernate.search.version>
+		<hibernate-jpa.version>1.0.2.Final</hibernate-jpa.version>
 	</properties>
 
 	<!-- =============================================================== -->
@@ -94,6 +115,21 @@
 			<version>1</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/javax.el/javax.el-api -->
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>javax.el-api</artifactId>
+			<version>${javax.el-api.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/javax.faces/javax.faces-api -->
+		<dependency>
+			<groupId>javax.faces</groupId>
+			<artifactId>javax.faces-api</artifactId>
+			<version>${javax.faces-api}</version>
+			<scope>provided</scope>
+		</dependency>
+
 		<!-- ============================================================================== -->
 
 		<!-- https://mvnrepository.com/artifact/org.primefaces/primefaces -->
@@ -133,14 +169,126 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- ============================ Mot de passes =============================== -->
+		<!-- JBcrypt -->
+		<!-- https://mvnrepository.com/artifact/org.mindrot/jbcrypt -->
+		<dependency>
+			<groupId>org.mindrot</groupId>
+			<artifactId>jbcrypt</artifactId>
+			<version>${jbcrypt.version}</version>
+		</dependency>
+
+		<!-- Passay : Password validation et génération -->
+		<!-- https://mvnrepository.com/artifact/org.passay/passay -->
+		<dependency>
+			<groupId>org.passay</groupId>
+			<artifactId>passay</artifactId>
+			<version>${passay.version}</version>
+		</dependency>
+
+		<!-- ============================================================================== -->
+		<!-- SLF4J -->
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+
+		<!-- ============================================================================== -->
+		<!-- Hibernate -->
+
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate.validator.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-search-orm -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-search-orm</artifactId>
+			<version>${hibernate.search.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax/javaee-api -->
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>${javaee-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api -->
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.1-api</artifactId>
+			<version>${hibernate-jpa.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/net.sf.jmimemagic/jmimemagic -->
+		<dependency>
+			<groupId>net.sf.jmimemagic</groupId>
+			<artifactId>jmimemagic</artifactId>
+			<version>${jmimemagic.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>log4j</groupId>
+					<artifactId>log4j</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 	</dependencies>
-	
+
 	<!-- =============================================================== -->
 	<!-- Build -->
 	<!-- =============================================================== -->
 	<build>
 		<finalName>GamesCornerV2</finalName>
 		<sourceDirectory>src/main/java</sourceDirectory>
+		<!-- Déclaration des ressources du projet -->
+		<resources>
+			<!-- Cette balise permet de filter le répertoire contenant les fichiers 
+				de ressources du projet et Maven va interpréter les références à ces fichiers 
+				lors du build -->
+			<!-- C'est dans ce répertoire que l'on indique les fichiers qui doivent 
+				être filtrés (on remplace les EL par les valeurs définis dans le fichier 
+				de propriétés). -->
+			<!-- <resource> -->
+			<!-- <directory>src/main/resources</directory> -->
+			<!-- <filtering>true</filtering> -->
+			<!-- <includes> -->
+			<!-- <include>**/*.properties</include> -->
+			<!-- <include>**/*.xml</include> -->
+			<!-- </includes> -->
+			<!-- </resource> -->
+			<resource>
+				<directory>src/main/java/META-INF/</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<filtering>false</filtering>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>*</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<!-- Alimente le filtering -->
+		<filters>
+			<filter>src/main/filters/default.properties</filter>
+			<!-- <filter>src/main/java/META-INF/persistence.xml</filter> -->
+		</filters>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -150,6 +298,32 @@
 					<target>${jdk.target.version}</target>
 				</configuration>
 			</plugin>
+			<!-- Ajout d'un plugin Maven pour régler le problème de composants -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${maven.war.plugin.version}</version>
+				<configuration>
+					<warSourceDirectory>src/webapp</warSourceDirectory>
+				</configuration>
+			</plugin>
+			<!-- Plugin pour la copie des resources vers un répertoire de sortie. -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven.resources.plugin.version}</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<db.url>xxx</db.url>
+			</properties>
+		</profile>
+	</profiles>
 </project>

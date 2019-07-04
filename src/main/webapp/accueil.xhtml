@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+	<title>Accueil - Games Corner</title>
+	<h:outputStylesheet library="default" name="css/style.css" />
+</h:head>
+
+<h:body>
+	<h:form>
+		<!-- Utilisation de Menubar de Primefaces --> 
+		<p:growl id="messages" />
+
+		<p:menubar>
+			<p:submenu label="Utilsateur" icon="pi pi-file">
+				<p:menuitem value="Inscription" url="http://localhost:8080/GamesCornerV2/inscription.xhtml" />
+				<p:menuitem value="Connexion" url="http://localhost:8080/GamesCornerV2/connexion.xhtml" />
+				<p:menuitem value="Liste des utilisateurs" url="http://localhost:8080/GamesCornerV2/listeUtilisateurs.xhtml" />
+				<p:separator />
+				<p:menuitem value="Quitter" url="http://localhost:8080/GamesCornerV2/accueil.xhtml" />
+			</p:submenu>
+			
+			<p:submenu label="Fichier" icon="pi pi-file">
+				<p:submenu label="Nouveau" icon="pi pi-briefcase">
+					<p:menuitem value="Project" url="#" />
+					<p:menuitem value="Autre" url="#" />
+				</p:submenu>
+				<p:menuitem value="Ouvrir" url="#" />
+				<p:separator />
+				<p:menuitem value="Quitter" url="http://localhost:8080/GamesCornerV2/accueil.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="Editer" icon="pi pi-pencil">
+				<p:menuitem value="Annuler" url="#" icon="pi pi-angle-double-left" />
+				<p:menuitem value="Remettre" url="#" icon="pi pi-angle-double-right" />
+			</p:submenu>
+
+			<p:submenu label="Aide" icon="pi pi-question">
+				<p:menuitem value="Contents" url="#" />
+				<p:submenu label="Rechercher" icon="pi pi-search">
+					<p:submenu label="Texte">
+						<p:menuitem value="Workspace" url="#" />
+					</p:submenu>
+					<p:menuitem value="Fichier" url="#" />
+				</p:submenu>
+			</p:submenu>
+
+			<p:submenu label="Actions" icon="pi pi-cog">
+				<p:submenu label="Ajax" icon="pi pi-refresh">
+					<p:menuitem value="Sauvegarder" action="#{menuVue.save}"
+						icon="pi pi-save" update="messages" />
+					<p:menuitem value="Mettre à jour" action="#{menuVue.update}"
+						icon="pi pi-refresh" update="messages" />
+				</p:submenu>
+				<p:submenu label="Non-Ajax" icon="pi pi-clone">
+					<p:menuitem value="Supprimer" action="#{menuVue.delete}"
+						icon="pi pi-times" update="messages" ajax="false" />
+				</p:submenu>
+			</p:submenu>
+
+			<p:menuitem value="Quitter" url="http://localhost:8080/GamesCornerV2/" />
+						
+			<f:facet name="options">
+				<p:inputText style="margin:1px 10px 1px 1px;" placeholder="Rechercher" />
+				<p:commandButton type="button" value="Logout" icon="pi pi-home" />
+			</f:facet>
+		</p:menubar>
+	</h:form>
+<!-- 	<ui:composition template="templates/header.xhtml" /> -->
+</h:body>
+</html>

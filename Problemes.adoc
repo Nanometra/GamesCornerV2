@@ -1,0 +1,25 @@
+= Problèmes rencontrés durant le projet
+
+  * *Erreur java.lang.NoSuchFieldError: TRACE* + 
+  Cette erreur empêche le serveur de déployer le WAR. L'application n'est pas accessible et l'entity manager factory n'est plus
+  initialisée.
+  L'origine provient du jar de JMimeMagic rajoutée qui contient la version 1.2.8 de Log4J or, d'après les sources suivantes : +
+  https://stackoverflow.com/questions/27589543/exception-in-thread-main-java-lang-nosuchfielderror-trace + 
+  https://www.developpez.net/forums/d568641/java/general-java/persistance/jpa/java-lang-nosuchfielderror-trace/ +
+  La solution consiste à supprimer la version de Log4J qui est incluse lorsqu'on importe JMimeMagic.
+  
+  * *org.postgresql.util.PSQLException: ERREUR: le type « blob » n'existe pas* +
+  Hibernate n'arrive pas à générer la table "utilisateur" car la variable "imageProfil" est un tableau de bytes annoté avec
+  @Lob pour le désigner comme étant un blob (bytea) dans Postgresql. +
+  Précédemment, on a ajouté l'annotation @Column. Il faut enlever cette annotation pour ne laisser que @Lob. +
+  On rajoute également l'annotation @Type(type="org.hibernate.type.BinaryType") pour indiquer à Postgresql que l'on 
+  souhaite que imageProfil soit stocké sous forme de bytea. +
+  L'annotation @Type est spécifique à Hibernate et permet de déterminer le type d'entrée de la variable dans la base de données.
+  
+  * *Le listener FileUploadEvent ne se déclenche pas* +
+  Dans le fichier web.xml, le paramètre *primefaces.UPLOADER* était défini par les valeurs suivantes : +
+  *auto|native|commons* +
+  Il faut modifier ce paramètre et choisir soit *native* soit *commons* pour que l'application rentre de nouveau dans la méthode.
+  
+  * *javax.el.PropertyNotFoundException: Property '' not found on type* +  
+  Dans les fichiers xhtml, il faut enlever tous les commentaires. Cela semble être la cause de cette erreur.
