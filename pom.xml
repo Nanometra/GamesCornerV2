@@ -22,7 +22,7 @@
 		<!-- Test -->
 		<junit.version>4.10</junit.version>
 		<!-- POSTGRESQL -->
-		<postgresql.version>42.2.5</postgresql.version>
+		<postgresql.version>42.2.25</postgresql.version>
 		<!-- JSF -->
 		<jsf.version>2.2.18</jsf.version>
 		<!-- Servlet API -->
